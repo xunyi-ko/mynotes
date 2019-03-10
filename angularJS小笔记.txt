@@ -1,0 +1,4 @@
+angularJS
+	需要在body标签中，加入ng-app
+		表达式
+			{{表达式}}

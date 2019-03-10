@@ -1,0 +1,75 @@
+Servlet：server applet
+	概念：运行在服务器端的小程序
+		Servlet就是一个接口，定义了java类被浏览器访问到的规则
+		将来我们自定义一个类，实现Servlet接口，重写方法
+	快速入门：
+		1.创建一个JavaEE项目
+		2.定义一个类，实现Servlet接口
+			public class ServletDemo1 implements Servlet
+		3.实现接口中的抽象方法
+		4.配置Servlet
+			在web.xml里配置
+			<servlet>
+				<servlet-name>demo1</servlet-name>
+				<servlet-class>cn.xunyi.ServletDemo</servlet-class>
+			</servlet>
+			<servlet-mapping>
+				<servlet-name>demo1</servlet-name>
+				<url-pattern>/demo1</url-pattern>
+			</servlet-mapping>
+	Servlet执行原理
+		1.当服务器接收到客户端浏览器的请求后，会解析请求URL路径，获取访问的Servlet的资源路径
+		2.查找web.xml文件，会否有对应的<url-pattern>标签体内容
+		3.如果有，则再找到对应的全类名
+		4.tomcat会将字节码文件加载进内存，并且创建其对象
+		5.调用其方法
+	Servlet接口的方法
+		1.public void init(ServletConfig servletConfig) throws ServletException{}
+			初始化方法，在Servlet被创建时执行，只会执行一次
+				在web.xml文件，servlet标签中，添加load-on-startup标签
+					如果标签体为正，则服务器启动时创建
+					如果为负，则在第一次被访问时创建，默认为负
+			Servlet只有一个对象。
+				多个用户同时访问时，可能出现线程安全问题
+			解决方案：尽量不要在Servlet中定义成员变量，即使定义了，也不要修改值
+		2.public void service(ServletRequest servletRequest,ServletResponse servletResponse)throws ServletException,IOException{}
+			提供服务方法，每次Servlet被访问时执行，执行多次
+		3.public void destroy(){}
+			在服务器正常关闭时，会执行一次
+		4.public ServletConfig getServletConfig() {}
+			获取ServletConfig对象
+			ServletConfig：Servlet的配置对象
+		5.public String getServletInfo() {}
+			获取Servlet的一些信息。版本、作者等
+	Servlet3.0：
+		好处
+			支持注解配置。可以不需要web.xml了
+		步骤：
+			1.创建JavaEE项目，选择Servlet的版本3.0以上，可以不创建web.xml
+			2.定义一个类，实现Servlet接口
+			3.复写方法
+			4.在类上使用@WebServlet注解，进行配置
+				@WebServlet("资源路径")
+	Servlet的体系结构
+		Servlet-接口<-GenericServlet-抽象类<-HttpServlet-抽象类
+		GenericServlet-抽象类
+			对除了service方法外的其他抽象方法进行了空实现
+			继承此类，可以只实现service()方法
+		HttpServlet-抽象类
+			1.定义类继承HttpServlet类
+			2.实现doGet()/doPost()方法
+				与html的form标签里的method属性get、post相对应
+	IDEA与tomcat的相关配置
+		1.IDEA会为每一个tomcat部署的项目单独建立一分配置文件
+		2.工作空间项目 和 tomcat部署的web项目
+			tomcat真正访问的是"tomcat部署的web项目"，"tomcat部署的web项目"对应着"工作空间项目"的web目录下的所有资源
+			WEB-INF目录下的资源不能被浏览器直接访问
+				不要把静态资源直接放在此目录下
+	Servlet相关配置
+		1.urlpattern：Servlet访问路径
+			1.一个Servlet可以定义多个访问路径
+			2.路径定义规则：
+				1./xxx
+				2./xxx/xxx
+				3.*.do
+	

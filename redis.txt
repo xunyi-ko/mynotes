@@ -1,0 +1,103 @@
+redis
+	1.概念
+		一款高性能的NOSQL系列的非关系型数据库
+			1.数据之间没有关联关系
+			2.数据存储在内存中
+		优点：
+			1.快速
+			2.扩展性强
+		缺点：
+			1.没有关联
+		支持的键值数据类型
+			1.字符串类型 String
+			2.哈希类型 hash
+			3.列表类型 list
+			4.集合类型 set
+			5.有序集合类型 sortedset
+	2.下载安装
+		解压直接使用
+			redis.windows.conf：配置文件
+			redis-cil.ext：redis的客户端
+			redis-server.exe：redis的服务器端
+	3.命令操作
+		数据结构
+			1.字符串类型 String
+				存储：set key value
+				获取：get key
+				删除：del key
+			2.哈希类型 hash
+				存储：hset key field value
+				获取：hget key field
+					hgetall key		获取所有键值对
+				删除：hdel key field
+			3.列表类型 list：可以添加一个元素到列表的头部(左边)或者尾部(右边)
+				添加：
+					1.lpush key value:加到左边
+					2.rpush key value:加到右边
+				获取：
+					1.lrange key start end:范围获取
+						 如果start和end分别是0和-1,则获取所有
+				删除：
+					lpop key：删除列表最左边的元素，并返回
+					rpop key：删除列表最右边边的元素，并返回
+			4.集合类型 set
+				存储：sadd key value
+				获取：smembers key：获取set集合中所有元素
+				删除：srem key value：删除某个元素
+			5.有序集合类型 sortedset
+				存储：zadd key score value：存储数据以及数据对应的score，用于排序
+				获取：zrange key start end：
+					zrange key start end withscores：连带分数一起查询
+				删除：zrem key value
+		通用命令
+			keys *：查询所有的键
+			type key：获取键对应的value类型
+			del key：删除指定的key value
+		
+	4.持久化操作
+		1.redis是一个内存数据库，当服务器重启或者电脑重启，数据就会丢失。所以我们需要将数据持久化保存到硬盘中
+		2.持久化机制
+			1.RDB：默认方式。不需要进行配置，默认就使用这种机制
+				在一定的间隔时间中，检测key的变化情况，然后持久化数据
+				1.编辑redis.windows.conf
+					save 900 1
+						900秒一个改变，就保存
+					save 300 10
+						300秒10个改变，就保存
+					save 60 10000
+						60秒10000个改变，就保存
+			2.AOF：日志记录的方式，
+				可以记录每一条命令的操作。然后每一次命令操作后，就持久化存储
+				编辑配置文件，改为
+					appendonly yes
+					
+					appendfsync everysec
+						每隔一秒进行一次
+			cmd打开：
+				redis-server.exe redis.windows.conf
+	5.使用Java客户端操作redis
+		Jedis：一款java操作redis数据库的工具
+		使用步骤：
+			下载导入jar包
+			使用
+				1.获取连接
+					Jedis jedis = new Jedis(host,port);
+				2.操作
+					jedis.set(键，值);
+				3.关闭连接
+					jedis.close()
+			方法名和上面的操作名称相同
+				setex(key,time,value)；
+					将key、value存入redis，time秒后自动删除
+	Jedis连接池：JedisPool
+		0.创建一个配置对象
+			JedisPoolConfig config = new JedisPoolConfig()
+			config.setMaxTotal(number);
+			config.setMaxIdle(number);
+		1.创建连接池
+			JedisPool jp = new JedisPool();
+		2.获取连接
+			Jedis jedis = jp.getResource();
+		3.使用
+		4.返回连接
+			jedis.close();
