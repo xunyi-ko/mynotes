@@ -1,0 +1,1 @@
+TransactionRequiredException:由于没有开启事务，却做了需要开启事务的操作，比如更新
