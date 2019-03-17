@@ -1,0 +1,13 @@
+hibernate
+  TransactionRequiredException:
+    原因：由于没有开启事务，却做了需要开启事务的操作，比如更新
+    解决办法：在需要事务的方法上加@Transactional注解，或在类上加这个注解
+  SQLGrammarException: error performing isolated work
+    原因：因为主键没有设置好。没有设置自动增长
+    解决办法：注解@GeneratedValue(strategy = GenerationType.IDENTITY)
+   java.lang.IllegalArgumentException: Failed to create query for method public abstract 
+   java.util.List com.enactus.brier.dao.UniversityJpaDao.getUniversitiesByAreaId(long,int)! 
+   No property id found for type String! Traversed path: University.area.
+    原因：命名问题，可能是因为dao接口和实现类不匹配，实现类名称必须是接口名称加Impl
+          也可能是因为接口和实现类的方法名不同，找不到
+    解决办法：相应的改名即可

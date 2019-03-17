@@ -1,0 +1,103 @@
+Struts2是一种基于mvc模式的轻量级web框架，功能大致等同于SpringMVC
+优点：
+  1.项目开源，使用及拓展方便
+  2.提供Exception处理机制
+  3.Result方式的页面导航，通过Result标签很方便地实现重定向和页面跳转
+  4.方便，使用默认配置即可完成大多数任务项目所需的功能
+  
+编辑web.xml配置文件，配置Struts2的核心过滤器
+  <?xml version="1.0" encoding="UTF-8">
+  <web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns="http://java.sun.com/xml/ns/javaee"
+    xmlns:web="http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
+    xsi:schemaLocatioin=""http://java.sun.com/xml/ns/javaee"
+    http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
+    id="WebApp_ID" version="2.5">
+  <!-- 配置Struts2核心 -->
+  <filter>
+    <filter-name>struts2</filter-name>
+    <filter-class>
+      org.apache.struts2.dispatcher.ng.filter.StrutsPrepareAndExceptionFilter
+    </filter-class>
+  </filter>
+  <filter-mapping>
+    filter-name>struts2</filter-name>
+    <url-pattern>/*</url-pattern>
+  </filter-mapping>
+filter标签内的就是核心控制器，过滤器名是struts2
+
+
+hibernate 轻量级orm框架
+  用于数据库交互
+  spring boot快速整合hibernate
+    //pom.xml文件中添加依赖
+    <dependency>
+      <groupId>org.springframework.boot</groupId>
+      <artifactId>spring-boot-starter-data-jpa</artifactId>
+    </dependency>
+    
+    //properties文件中添加配置属性
+    #mysql
+    spring.datasource.url=jdbc:mysql://localhost:3306/?useunicode=true&characterEncoding=utf8
+    spring.datasource.username=root
+    spring.datasource.password=root
+    spring.datasource.driver-class-name=com.mysql.jdbc.Driver
+    spring.datasource.max-idle=10
+    spring.datasource.max-wait=10000
+    spring.datasource.min-idle=5
+    spring.datasource.initial-size=5
+    # Specify the DBMS
+    spring.jpa.database = MYSQL
+    # Show or not log for each sql query
+    spring.jpa.show-sql = true
+    # Hibernate ddl auto (create, create-drop, update)
+    spring.jpa.hibernate.ddl-auto = update
+    # Naming strategy
+    spring.jpa.hibernate.naming-strategy = org.hibernate.cfg.ImprovedNamingStrategy
+    # stripped before adding them to the entity manager
+    spring.jpa.properties.hibernate.dialect = org.hibernate.dialect.MySQL5Dialect
+    
+    dao接口继承JpaRepository<T,ID>
+    接口就得到许多jpa自带的查询方法可以使用
+    如果想自定义方法，使用如下方式进行查询
+      @Query(value = "SELECT u FROM User u WHERE u.name=:name")
+      public User findName(@Param("name") String name);
+    dao实现类上添加@Repository("Dao")value设为接口名，实现类名必须是接口名加Impl。可以不用implements dao接口
+    
+    实体类上添加注解@Table(name="")name表示表名，之后即可用类名代替表名进行数据库操作
+    实体类属性名与数据库一一对应，主键需要添加@Id,@GeneratedValue注解。
+    如果进行需要开启事务的操作，如插入，更新，则@GeneratedValue(strategy=GenerationType.IDENTITY)
+    如果有数据库中不存在的，需要添加@Transient注解
+    
+    复杂的查询或插入、更新操作需要在实现类中完成，具体操作如下
+    em.merge()操作可以进行插入和更新操作。区别在于主键是否存在。
+      @PersistenceContext
+      private EntityManager em;
+      
+      public int updateUserName(User user) {
+        try {
+          em.merge(user);
+          return 0;
+        } catch (Exception e) {
+          // TODO Auto-generated catch block
+          e.printStackTrace();
+          return 1;
+        }
+      }
+      //查询所有教过此学生课的老师
+      public Teacher getTeacherByStudent(Student student) {
+        String sql = "from Teacher t where t.id in (select teacherId from Course where studentId=:studentId)";
+        Query query = em.createQuery(sql);
+        query.setParameter("id", university.getId());
+        //分页查询，从第0个开始，一次15个
+        query.setFirstResult(0);
+        query.setMaxResults(15);
+        //判断是否有结果，如果有则可以返回单个area，没有则返回空
+        try{
+          return query.getResultList();
+        }catch(Exception e){
+          e.printStackTrace();
+          return null;
+        }
+      }
+    
