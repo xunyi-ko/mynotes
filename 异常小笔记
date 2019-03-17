@@ -1,3 +1,26 @@
+ArrayIndexOutOfBoundsException:数组索引越界异常
+	原因：访问了不存在的索引
+NullPointerException:空指针异常
+	原因：数组已经不再指向堆内存了。(数组 = Null)
+ClassCastException:类型转换异常
+	原因：多态向下转型时类型不匹配
+ConcurrentModificationException:并发修改异常
+	原因：集合修改元素而迭代器不知道
+		所以在迭代器在迭代的时候集合不能修改元素
+		解决方式
+			用ListIterator迭代器的方法添加元素
+FileOutputStream出现FileNotFoundException
+	原因：路径目录不存在
+	解决方法：file.mkdirs()，创建完整路径。
+
+HTML使用$(选择器).html()方法修改标签体内容，内容闪一下就消失
+	可能是因为input设置的是type="submit"，所以提交后会自动消失。
+	解决办法：将type修改为button
+
+Servlet中使用response.sendRedirect(path)无法跳转
+	可能是因为是在AJAX中调用的。最好在前台页面调用页面跳转
+	解决办法：在前台调用页面跳转，location.href="..."
+
 hibernate
   TransactionRequiredException:
     原因：由于没有开启事务，却做了需要开启事务的操作，比如更新
