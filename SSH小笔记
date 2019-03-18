@@ -101,3 +101,30 @@ hibernate 轻量级orm框架
         }
       }
     
+Spring
+  AOP：面向切面编程。为了将与业务无关，却也为业务模块共同调用的逻辑和责任封装起来，减少系统的重复代码。可用于事务、日志等
+  动态代理方式：
+    public class MyBeanFactory{
+      public static UserDao getBean(){
+        //1.准备目标类(IOC)
+        final UserDao userDao = new UserDaoImpl();
+        //2.创建切面类实例
+        final MyAspect myAspect = new MyAspect();
+        //3.使用代理类，增强Bean
+        return Proxy.newProxyInstance(
+          MyAspect.class.getClassLoader(),
+          new Class[]{userDao.class},
+          new InvocationHandler(){
+            @Override
+            public Object invoke(Object proxy,Method method,Object[] args) throws Throwable{
+              //前增强
+              myAspect.doBefore();
+              //调用方法
+              Object obj = method.invoke(userDao,args);
+              //后增强
+              myAspect.doAfter();
+            }
+          }
+        );
+      }
+    }
