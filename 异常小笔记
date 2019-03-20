@@ -34,3 +34,8 @@ hibernate
     原因：命名问题，可能是因为dao接口和实现类不匹配，实现类名称必须是接口名称加Impl
           也可能是因为接口和实现类的方法名不同，找不到
     解决办法：相应的改名即可
+    
+    
+net.sf.json.JSONException: java.lang.ClassCastException: JSON keys must be strings.
+  代码：json.put("data", projectMap);在使用json时出现的错误
+  原因：使用json时，如果往json中存Map，键必须是String类型的

@@ -25,7 +25,59 @@ Struts2是一种基于mvc模式的轻量级web框架，功能大致等同于Spri
     <url-pattern>/*</url-pattern>
   </filter-mapping>
 filter标签内的就是核心控制器，过滤器名是struts2
-
+  struts的控制器功能是通过action完成的，需要在struts.xml文件中写入<action></action>标签
+    action标签的name属性表示action处理的请求访问的url。如name="name",则访问localhost:8080/name时会访问到action
+    class属性表示对应的class文件，需要全限定类名
+    method属性表示访问class文件中的方法
+    result子标签中，name属性表示action的返回值
+      type属性表示视图技术或跳转方式
+        dispatcher:用于跳转页面，通常是jsp页面，这是默认结果
+        chain:处理Action链，跳转后的页面仍能获得上个页面的值
+        redirect:重定向到一个页面，丢失传递的信息
+        redirectAction:重定向到一个Action，丢失传递的信息
+        stream:向浏览器发送InputStream对象，通常用于文件下载
+      标签中的内容则为跳转的页面
+    如<action name="userAction",class="com.xunyi_ko.action.userAction" method="addUser">
+      <result name="success">/success.html</result>
+      <result name="false">/false.html</result>
+    </action>
+    为了减少不必要的重复代码，可以选择使用通配符,格式可参考
+    <action name="*_*",class="com.xunyi_ko.action.{1}Action" method="{2}">
+      <result name="success">/page/{1}/{2}.html</result>
+      <result name="false">/false.html</result>
+    </action>
+    
+ struts中的拦截器，类似于servlet的过滤器的操作
+  在struts.xml中添加拦截器
+    <interceptor name="interceptorName" class="interceptorClass">
+      <param name="paramName">paramValue</param>
+    </interceptor>
+    param标签用于拦截器需要传入参数的时候，可省略
+  有时会需要多个拦截器组合使用，重复配置浪费时间，这时需要使用拦截器栈。使用拦截器栈前，需要使用<interceptors>标签和<interceptor-ref>标签
+  <interceptors>
+    <interceptor name="interceptorName" class="interceptorClass"></interceptor>
+    <interceptor-stack name="interceptorStack">
+      <interceptor-ref name="oneInterceptor"></interceptor-ref>
+      <interceptor-ref name="twoInterceptor"></interceptor-ref>
+      <interceptor-ref name="oneInterceptorStack"></interceptor-ref>
+      <interceptor-ref name="defaultStack"></interceptor-ref>
+    <interceptor-stack>
+  </interceptors>
+  每个包中的Action都要调用同一个拦截器，则需要重复配置拦截器，浪费功夫，struts中有默认拦截器的概念
+  就如同java的无参构造方法，在没有其他构造方法的情况下，默认有一个无参构造方法
+  默认拦截器也是这样。在不配置拦截器的情况下，会自行调用默认拦截器。如果配置了，则不会
+  默认拦截器的配置方法如下
+  <interceptors>
+    <interceptor-stack name="myInterceptorStack">
+      <interceptor-ref name="oneInterceptor"></interceptor-ref>
+      <interceptor-ref name="defaultStack"></interceptor-ref>
+    <interceptor-stack>
+  </interceptors>
+  <default-interceptor-ref name="myInterceptorStack"/>
+ 自定义拦截器 需要直接或间接实现Interceptor接口，重写方法，主要重写intercept方法
+ public abstract String intercept(ActioniInvocation invocation)throws Exception;
+ 拦截器拦截判断在invocation.invoke()前完成，此方法调用后，即进入下一个拦截器或action
+ 
 
 hibernate 轻量级orm框架
   用于数据库交互
@@ -101,3 +153,30 @@ hibernate 轻量级orm框架
         }
       }
     
+Spring
+  AOP：面向切面编程。为了将与业务无关，却也为业务模块共同调用的逻辑和责任封装起来，减少系统的重复代码。可用于事务、日志等
+  动态代理方式：
+    public class MyBeanFactory{
+      public static UserDao getBean(){
+        //1.准备目标类(IOC)
+        final UserDao userDao = new UserDaoImpl();
+        //2.创建切面类实例
+        final MyAspect myAspect = new MyAspect();
+        //3.使用代理类，增强Bean
+        return Proxy.newProxyInstance(
+          MyAspect.class.getClassLoader(),
+          new Class[]{userDao.class},
+          new InvocationHandler(){
+            @Override
+            public Object invoke(Object proxy,Method method,Object[] args) throws Throwable{
+              //前增强
+              myAspect.doBefore();
+              //调用方法
+              Object obj = method.invoke(userDao,args);
+              //后增强
+              myAspect.doAfter();
+            }
+          }
+        );
+      }
+    }
