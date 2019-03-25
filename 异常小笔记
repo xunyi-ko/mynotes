@@ -39,3 +39,14 @@ hibernate
 net.sf.json.JSONException: java.lang.ClassCastException: JSON keys must be strings.
   代码：json.put("data", projectMap);在使用json时出现的错误
   原因：使用json时，如果往json中存Map，键必须是String类型的
+
+Spring boot: java.lang.NoSuchMethodError: 
+javax.servlet.http.HttpServletRequest.getHttpServletMapping()
+Ljavax/servlet/http/HttpServletMapping;
+  原因：Spring Boot 2.1.X 版本使用Tomcat 9 ，用Servlet API v4.但是Spring Boot Web 2.1.X 仍然包含 Servlet API v3.1
+       导致的版本不匹配的问题
+  解决办法：在pom.xml文件中添加tomcat版本信息，覆盖springboot的默认版本信息
+						<properties>
+       			 <tomcat.version>8.5.37</tomcat.version>
+    				<properties>
+
