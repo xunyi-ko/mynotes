@@ -1,0 +1,19 @@
+在前台写上
+    <a onclick="clickStar(1)"><i id="star1" class="fa fa-star-o" aria-hidden="true"></i></a> 
+    <a onclick="clickStar(2)"><i id="star2" class="fa fa-star-o" aria-hidden="true"></i></a>
+    <a onclick="clickStar(3)"><i id="star3" class="fa fa-star-o" aria-hidden="true"></i></a>
+    <a onclick="clickStar(4)"><i id="star4" class="fa fa-star-o" aria-hidden="true"></i></a>
+    <a onclick="clickStar(5)"><i id="star5" class="fa fa-star-o" aria-hidden="true"></i></a>
+    
+在js文件中写
+    function clickStar(num){
+      for(var i=1;i<=5;i++){
+        if(i<=num){
+        $("#star"+i).addClass("fa-star");
+        $("#star"+i).removeClass("fa-star-o");
+        }else{
+          $("#star"+i).addClass("fa-star-o");
+        }
+      }
+    }
+以上仅仅做到了点击切换星星个数，如果希望获取星星个数，需要再添加几句
