@@ -49,4 +49,6 @@ Ljavax/servlet/http/HttpServletMapping;
 						<properties>
        			 <tomcat.version>8.5.37</tomcat.version>
     				<properties>
-
+java.lang.IllegalArgumentException: Parameter value [1] did not match expected type [java.lang.Long (n/a)]
+  原因：我用hibernate向数据库查询数据时，用了int类型的id，导致的数据类型不匹配。
+  解决办法：用long替换id
