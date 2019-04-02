@@ -1,0 +1,40 @@
+获得 layui 后，将其完整地部署到项目目录（或静态资源服务器），只需要引入下述两个文件：
+
+./layui/css/layui.css
+./layui/layui.js //提示：如果是采用非模块化方式（最下面有讲解），此处可换成：./layui/layui.all.js
+
+不用去管其它任何文件。因为他们（比如各模块）都是在最终使用的时候才会自动加载
+
+在js中写入
+layui.use(['layer', 'form'], function(){
+  var layer = layui.layer
+  ,form = layui.form;
+  layer.msg('Hello World');
+});
+即可加载layer/form模块，并用layer模块弹出hello world
+
+layui的流加载
+在加载了flow模块的前提下
+layui.use(['flow'],function(){
+  var flow = layui.flow;
+})
+调用以下方法
+  flow.load({
+    elem: '#demo' //指定列表容器，表示流加载的内容会被放在html的哪个位置
+    ,scrollElem: 'div' //默认是document，表示滚动条所在的容器类型
+    ,isAuto: 'true' //默认是true，表示自动加载
+    ,done: function(page, next){ //到达临界点（默认滚动触发），触发下一页
+      var lis = [];
+      //以jQuery的Ajax请求为例，请求下一页数据（注意：page是从2开始返回）
+      $.get('/api/list?page='+page, function(res){
+        //假设你的列表返回在data集合中
+        layui.each(res.data, function(index, item){
+          lis.push('<li>'+ item.title +'</li>');
+        }); 
+        
+        //执行下一页渲染，第二参数为：满足“加载更多”的条件，即后面仍有分页
+        //pages为Ajax返回的总页数，只有当前页小于总页数的情况下，才会继续出现加载更多
+        next(lis.join(''), page < res.pages);
+      });
+    }
+  });
