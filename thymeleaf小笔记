@@ -4,3 +4,7 @@ thymeleaf
  
  在input标签内使用th:value，可以和value功能基本一致，可以在js中使用$("").val()取出
  textarea标签若想做到input标签这样，必须使用th:text属性而不是th:value属性。取出方式相同
+
+th:text属性与th:utext属性的区别
+  th:text=""不会解析内部的html内容，即会把标签输出
+  th:utext=""会解析html内容，会根据html标签输出内容
