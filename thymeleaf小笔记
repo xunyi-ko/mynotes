@@ -8,3 +8,12 @@ thymeleaf
 th:text属性与th:utext属性的区别
   th:text=""不会解析内部的html内容，即会把标签输出
   th:utext=""会解析html内容，会根据html标签输出内容
+
+迭代 循环
+ 用th:each属性进行
+ <div th:each="entity[,status]:${map}">
+  <div th:text="${entity.value}"></div>
+  <div th:if="${status.odd}" th:text="${entity.value}"></div>//当这是奇数个元素时，显示此行
+  <div th:if="${status.even}" th:text="${entity.value}"></div>//当这是偶数个元素时，显示此行
+  <div th:unless="${status.last}" th:text="${entity.value}"></div>//如果这不是最后一个元素时，显示此行
+ </div>
