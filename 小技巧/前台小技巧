@@ -1,0 +1,2 @@
+<input>标签在type="password"时，会有自动填充的情况，如果想不自动填充，可以添加autocomplete="off".但是有时这样也不行。
+如果这个input标签去掉id和name属性，就不会有自动填充了
