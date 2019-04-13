@@ -38,3 +38,26 @@ layui.use(['flow'],function(){
       });
     }
   });
+  
+  
+打开弹窗
+先加载layer模块
+type=1时，content里的内容相当于html
+type=2时，content时url
+不想要title时可以设为false
+不想手动设置弹窗大小可以area:area
+可以定义更多按钮，比如：btn: ['按钮1', '按钮2', '按钮3', …]，按钮1的回调是yes，而从按钮2开始，则回调为btn2: function(){}，以此类推。
+layer.open({
+		type: 1,
+		title: ['新增活动分类', 'font-size:18px;color:#788188;'],
+		btn:['确定', '取消'],
+		area: ['400px', '200px'],
+		content: content,
+	});
+可以在checkbox改变的时候，调用方法，做判断等，等效于onchange()，但是onchange会在layui的时候失效
+form.on('checkbox(filter)', function(data){
+  console.log(data.elem); //得到checkbox原始DOM对象
+  console.log(data.elem.checked); //是否被选中，true或者false
+  console.log(data.value); //复选框value值，也可以通过data.elem.value得到
+  console.log(data.othis); //得到美化后的DOM对象
+});
