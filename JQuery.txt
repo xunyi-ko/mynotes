@@ -94,4 +94,15 @@ JSON：
 			2.json对象["键名"]
 			3.数组对象[索引]
 
-
+选择器
+	可以用$("input[id^=code]")//表示input标签内，id属性以x开头的元素
+	类似的，$("input[id$='code']");//id属性以code结束的所有input标签
+	$("input[id*='code']");//id属性包含code的所有input标签
+	$("input[name^='code']");//name属性以code开始的所有input标签
+	$("input[name$='code']");//name属性以code结束的所有input标签
+	$("input[name*='code']");//name属性包含code的所有input标签
+	
+拖拽
+	1可以用$(filter).sortable()来让元素可拖拽
+	2$(filter).bind('',function(){})可以为拖拽绑定事件。第一个参数是选择什么时候触发事件
+	3sort：元素发生排序时触发，sortstart：排序动作开始时触发，sortchange：排序发生并且坐标改变时触发  等等
