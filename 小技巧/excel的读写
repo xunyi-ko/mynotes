@@ -1,0 +1,31 @@
+使用Workbook组件
+需要在maven里添加org.apache.poi依赖
+    <dependency>
+        <groupId>org.apache.poi</groupId>
+        <artifactId>poi</artifactId>
+        <version>3.10-FINAL</version>
+    </dependency>
+
+    <dependency>
+        <groupId>org.apache.poi</groupId>
+        <artifactId>poi-ooxml</artifactId>
+        <version>3.10-FINAL</version>
+    </dependency>
+
+在java文件里，使用Workbook组件
+    //Workbook相当于excel文件
+    //Sheet相当于其中的一张表
+    //Row相当于其中的某一行
+    //Cell相当于其中的某个格子
+    Workbook workbook1 = null;						//读取excel
+    Workbook book = null;
+    String fileName = file.getOriginalFilename();	//获取文件名
+    InputStream fis = file.getInputStream();		//根据文件名获取相应的读取对象
+    if (fileName.toLowerCase().endsWith(".xls")) {  //根据后缀名选取合适的子类
+        workbook1 = new HSSFWorkbook(fis);
+        book = new HSSFWorkbook();
+    } else if (fileName.toLowerCase().endsWith(".xlsx")) {
+        workbook1 = new XSSFWorkbook(fis);
+        book = new XSSFWorkbook();
+    }
+    
