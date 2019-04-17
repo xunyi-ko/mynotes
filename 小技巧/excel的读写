@@ -17,7 +17,10 @@
     //Sheet相当于其中的一张表
     //Row相当于其中的某一行
     //Cell相当于其中的某个格子
-    Workbook workbook1 = null;						//读取excel
+    //与ajaxFileUpload结合，完成上传excel
+    MultipartHttpServletRequest multipartRequest = (MultipartHttpServletRequest) request;
+	MultipartFile file = multipartRequest.getFile("upload");//读取excel
+    Workbook workbook1 = null;						
     Workbook book = null;
     String fileName = file.getOriginalFilename();	//获取文件名
     InputStream fis = file.getInputStream();		//根据文件名获取相应的读取对象
@@ -28,4 +31,21 @@
         workbook1 = new XSSFWorkbook(fis);
         book = new XSSFWorkbook();
     }
+    Sheet sheet = book.getSheetAt(0);               //获取第一张表
+    Row row = sheet.getRow(0);                      //获取第一行
+    Cell cell = row.getCell(0);                     //获取第一列的数据
+    String value = cell.getStringValue();           //获取字符串类型的数据
+    double value = cell.getNumbericValue();         //获取double类型的数据
+    int cellType = cell.getCellType();              //获取cell的数据类型(0:double，1:String，2:公式，3:blank，4:boolean，5:error)
     
+
+写excel
+    Workbook book = null;
+    Sheet sheet = book.createSheet();               //也可以使用book.createSheet(String name);
+    Row row = sheet.createRow(0);                   //创建第一行
+    Cell cell = row.createCell(0);                  //在第一行创建第一列
+    cell.setValue(value);                           //设置值
+    
+    //设置完成后
+    OutputStream out = FileOutputStream(path);      //创建输出流对象
+    book.write(out)                                 //将excel写到输出流对象对应的位置
