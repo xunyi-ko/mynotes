@@ -52,3 +52,8 @@ Ljavax/servlet/http/HttpServletMapping;
 java.lang.IllegalArgumentException: Parameter value [1] did not match expected type [java.lang.Long (n/a)]
   原因：我用hibernate向数据库查询数据时，用了int类型的id，导致的数据类型不匹配。
   解决办法：用long替换id
+  
+java.lang.IllegalStateException: Cannot call sendError() after the response has been committe
+	使用response下载文件后，return了东西
+	虽然查到说是关闭了输出流后才会报这个错，但是我不关输出流，照样报错
+	处理方法就是在结束的时候return null;不要返回其他东西
