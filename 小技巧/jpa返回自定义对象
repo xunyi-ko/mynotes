@@ -1,0 +1,7 @@
+sql语句要写成这种形式
+
+"select new com.xunyi.entity.userAccountDTO(u.id as id,a.id as accountId) from "
+					+ "User u,Account a where u.id=a.userId";
+再创建一个对应的userDTO实体类，添加名字相同的变量，还有非常重要的一点！必须要有写一个和参数列表相同的构造方法！！
+
+这样就可以用jpa返回一个自定义的对象了。
