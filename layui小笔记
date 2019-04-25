@@ -45,7 +45,7 @@ layui.use(['flow'],function(){
 type=1时，content里的内容相当于html
 type=2时，content时url
 不想要title时可以设为false
-不想手动设置弹窗大小可以area:area
+
 可以定义更多按钮，比如：btn: ['按钮1', '按钮2', '按钮3', …]，按钮1的回调是yes，而从按钮2开始，则回调为btn2: function(){}，以此类推。
 layer.open({
 		type: 1,
@@ -61,3 +61,13 @@ form.on('checkbox(filter)', function(data){
   console.log(data.value); //复选框value值，也可以通过data.elem.value得到
   console.log(data.othis); //得到美化后的DOM对象
 });
+
+layui.device()可以获得设备信息
+{
+  os: "windows" //底层操作系统，windows、linux、mac等
+  ,ie: false //ie6-11的版本，如果不是ie浏览器，则为false
+  ,weixin: false //是否微信环境
+  ,android: false //是否安卓系统
+  ,ios: false //是否ios系统
+}
+通过获得的设备信息可以调节页面大小等
