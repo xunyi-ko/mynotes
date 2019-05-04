@@ -26,3 +26,23 @@ public boolean isPrime(int p, List<Integer> primes){
     }
     return true;
 }
+
+// 去除isPrime方法
+public int countPrimes(int n) {
+     if(n < 3)
+            return 0;
+        List<Integer> primes = new ArrayList<>();
+        primes.add(2);
+        for(int i = 3; i < n; i += 2) {
+            for(Integer prime : primes) {
+                if(prime > Math.sqrt(i)){
+                    primes.add(i);
+                    break;
+                }
+                if(i % prime == 0) {
+                    break;
+                }
+            }
+        }
+        return primes.size();
+    }
