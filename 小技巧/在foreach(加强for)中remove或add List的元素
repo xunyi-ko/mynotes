@@ -38,7 +38,7 @@ Iterator<String> it = a.iterator();
 while(it.hasNext()){
   String temp = it.next();
   if(){
-    it.add();
     it.remove()
   }
 }
+// iterator没有add方法，想要add可以在迭代结束后进行或者另用一个list存储，迭代结束后add
