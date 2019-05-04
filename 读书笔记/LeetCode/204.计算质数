@@ -1,0 +1,28 @@
+// 算是暴力解法吧
+// 通过存储已有的质数，进行判断
+// 和最初版本有两处优化
+// 1.   prime > Math.sqrt(p)   只要质数大于数的平方根，后面的就没必要再算了
+// 2.   i += 2  除2外的偶数不可能是质数
+public int countPrimes(int n) {
+    if(n < 3)
+        return 0;
+    List<Integer> primes = new ArrayList<>();
+    primes.add(2);
+    for(int i = 3; i < n; i += 2) {
+        if(isPrime(i,primes)) {
+            primes.add(i);
+        }
+    }
+    return primes.size();
+}
+
+public boolean isPrime(int p, List<Integer> primes){
+    for(Integer prime : primes) {
+        if(prime > Math.sqrt(p))
+            return true;
+        if(p % prime == 0) {
+            return false;
+        }
+    }
+    return true;
+}
