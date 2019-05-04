@@ -1,0 +1,29 @@
+buy/sell/cool分别代表购入、出售和冷冻期
+下标表示某天
+
+// 前一天是冷冻期的情况下，以第i天的价格买入股票，或者前一天买入了股票，两者取高的
+buy[i] = Math.max(cool[i - 1] - prices[i], buy[i - 1];
+
+// 避免出现高买低卖的情况，所以将本次卖出与前一天卖出做对比
+sell[i] = Math.max(buy[i - 1] + prices[i], sell[i - 1]);
+
+// 冷冻期永远是在出售的后一天，所以冷冻期的盈利，应该和前一天是出售日的盈利一样
+cool[i] = sell[i - 1];
+public int maxProfit(int[] prices) {
+    int size = prices.length;
+    int buy[] = new int[size];
+    int sell[] = new int[size];
+    int cool[] = new int[size];
+    if (size < 2){
+        return 0;
+    }
+    buy[0] = 0 - prices[0];
+    sell[0] = 0;
+    cool[0] = 0;
+    for(int i = 1; i < size; i++){
+        sell[i] = Math.max(buy[i - 1] + prices[i], sell[i - 1]);
+        buy[i] = Math.max(cool[i - 1] - prices[i],buy[i - 1]);
+        cool[i] = sell[i - 1];
+    }
+    return sell[size - 1];
+}
