@@ -1,0 +1,19 @@
+var canvas = document.createElement('canvas');
+var context = drawCanvas.getContext('2d');
+var drawHeight = $(window).height();
+var drawWidth = $(window).width();
+
+// 要画的图片
+var pic = $("#pic")[0];
+
+img.src = pic.src;
+// 设置画布的大小
+canvas.width = drawWidth;
+canvas.height = drawHeight;
+
+// 五个参数分别是：图像url、x坐标、y坐标、图像宽度、图像高度
+context.drawImage(img,0,0,drawWidth,drawHeight);
+
+// 获取画后的图像的url，可以用来给img标签赋值，也可以传给后台
+var dataUrl = canvas.toDataUrl("image/jpg",1.0);
+
