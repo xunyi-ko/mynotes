@@ -25,3 +25,6 @@ function isWeiXinAndIos() {
     let isIos = /\(i[^;]+;( U;)? CPU.+Mac OS X/i.test(ua); // 是IOS系统
     return isWeixin && isIos;
 }
+
+注意！
+如果是在layer的弹窗里出现这个问题，这种方式是不生效的。
