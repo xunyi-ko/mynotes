@@ -1,0 +1,65 @@
+// 在无限的平面上，机器人最初位于 (0, 0) 处，
+// 面朝北方。机器人可以接受下列三条指令之一：
+
+// "G"：直走 1 个单位
+// "L"：左转 90 度
+// "R"：右转 90 度
+// 机器人按顺序执行指令 instructions，
+// 并一直重复它们。
+
+// 只有在平面中存在环使得机器人永远无法离开时，
+// 返回 true。否则，返回 false。
+public class Solution{
+    int[] position = {0,0};
+    int direction = 0;
+    public boolean isRobotBounded(String instructions) {
+        if(instructions == null)
+            return true;
+
+        if(!instructions.contains("G"))
+            return true;
+        for(int i = 0; i < instructions.length(); i++){
+            char c = instructions.charAt(i);
+            if(c == 'G'){
+                move();
+            }else if(c == 'R'){
+                turnDirection(1);
+            }else{
+                turnDirection(-1);
+            }
+        }
+        if(position[0] == 0 && position[1] == 0){
+            return true;
+        }else{
+            if(direction == 0){
+                return false;
+            }else{
+                return true;
+            }
+        }
+    }
+    private void move(){
+        switch(direction){
+            case 0:
+                position[1]++;
+                break;
+            case 1:
+                position[0]++;
+                break;
+            case 2:
+                position[1]--;
+                break;
+            case 3:
+                position[0]--;
+                break;
+        }
+    }
+
+    private void turnDirection(int i){
+        direction += i;
+        if(direction > 3)
+            direction = 0;
+        if(direction < 0)
+            direction = 3;
+    }
+}
