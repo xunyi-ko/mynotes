@@ -1,0 +1,126 @@
+div {
+	margin-top:0.5em;
+}
+input {
+	padding: .5em;
+	margin: .5em;
+}
+body{
+    height: calc(100% - 16px);
+}
+
+#signatureparent {
+	color:black;
+	background-color:white;
+	/*max-width:600px;*/
+	height: 100%;
+	padding: 0;
+	position: sticky;
+	margin: 0;
+}
+
+/*This is the div within which the signature canvas is fitted*/
+#signature {
+	margin: 0;
+	border: 2px dotted black;
+	background-color:rgb(243, 243, 243);
+	width: 100%;
+	height: 100%;
+	bottom: 0;
+	position: inherit;
+}
+
+/* Drawing the 'gripper' for touch-enabled devices */ 
+html.touch {
+	width:100%;
+}
+/*html.touch #scrollgrabber {
+	float:right;
+	width:4%;
+	margin-right:2%;
+	background-image:url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAAFCAAAAACh79lDAAAAAXNSR0IArs4c6QAAABJJREFUCB1jmMmQxjCT4T/DfwAPLgOXlrt3IwAAAABJRU5ErkJggg==)
+}*/
+html.borderradius #scrollgrabber {
+	border-radius: 1em;
+}
+html{
+	height: 100%;
+}
+.back{
+	float: left;
+	color: #00BCD4;
+	top: 0.2rem;
+	position:absolute;
+}
+.center{
+	top:0.2rem;
+	text-align: center;
+}
+.text-area{
+	height: 55%;
+}
+#content{
+	margin: 0 1rem;
+	height:40%;
+	width: calc(100% - 2rem);
+}
+
+#text{
+	border-style:none;
+	outline:none;
+	resize:none;
+	font-size: 0.92em;
+	width: calc(100% - 2em);
+	margin: 0 1em;
+}
+.no-margin{
+	margin:0;
+	padding:0.2rem;
+}
+
+canvas{
+	height: 100%!important;
+}
+
+#commit{
+	width: 94%;
+	text-align: center;
+	background-color: #2196F3;
+	border:0;
+	margin:3% 3%;
+	bottom: 2%;
+	position: unset;
+	height: 35px;
+}
+.whole-window{
+	margin: 0;
+	height: 100%;
+}
+
+#top{
+	height:5%;
+}
+
+.middle{
+	height:85%;
+}
+
+#undoButton{
+	position:absolute;
+	bottom: 15%;
+	right: 3%;
+}
+#reset{
+	position: absolute;
+	bottom:5%;
+	right:3%;
+}
+#full-screen{
+	position: absolute;
+	top:5%;
+	right: 3%;
+}
+.whole-window{
+    max-width:700px!important;
+    margin: 0 auto;
+}
