@@ -1,0 +1,128 @@
+哈希表是一种数据结构，提供快速的插入和查找。在工作良好的情况下，查询、插入、查找，都可以做到接近O(1)的时间复杂度
+
+哈希表的缺点：它基于数组，因此创建后，难以扩展。在哈希表接近被填满后(占总长度的百分之多少，由填充因子决定)，
+    哈希表要经历一次rehash，也就是遍历一边表，将数据填充到更大的数组中去。
+    这非常的耗时，因此在创建哈希表时，要判断表中要存储多少数据，来初始化合适的大小
+    
+哈希表的下标要通过某种方式计算出对象的哈希值来获得。如果两个对象的哈希值相同，而对象不同时(equals不等)，被称为冲突
+    当发生冲突时，会导致无法顺利的增删改查。因此需要用其他方式来解决这个问题
+    
+    1.开放寻址法
+        如果数据不能直接放在由哈希函数算出的下标所指的单元时，就要寻找数组的其他位置
+        以下有三种开放寻址的方法
+        1.线性探测
+            如果找到的位置有了其他的对象，就查找哈希表的下一个位置，直到找到空白的位置
+            因此，find方法要找到对应的对象，也需要一个一个查找，直到找到空白单元为止
+            
+            public DataItem find(int key){
+                int hashVal = hashFunc(key);
+                
+                while(hashArray[hashVal] != null){
+                    if(hashArray[hashVal].getKey() == key)
+                        return hashArray[hashVal];
+                    ++hashVal;
+                    hashVal %= arraySize;
+                }
+                return null;
+            }
+            当哈希表填充的比较满时，方法要找到对象需要遍历半个表，速度大大减慢。而且表如果是满的，则会陷入死循环
+            
+            public void insert(DataItem item){
+                int key = item.getKey();
+                int hashVal = hashFunc(key);
+                
+                while(hashArray[hashVal] != null && hashArray[hashVal].iData != -1){
+                    ++hashVal;
+                    hashVal %= arraySize;
+                }
+                
+                hashArray[hashVal] = item;
+            }
+            public DataItem delete(int key){
+                int hashVal = hashFunc(key);
+                
+                while(hashArray[hashVal] != null){
+                    if(hashArray[hashVal].getKey() == key){
+                        DataItem temp = hashArray[hashVal];
+                        hashArray[hashVal] = nonItem;
+                        return temp;
+                    }
+                    ++hashVal;
+                    hashVal %= arraySize;
+                }
+                return null;
+            }
+            
+        2.二次探测
+            由于线性探测的缺点，于是有了二次探测。二次探测是一种防止聚集产生的尝试，思想是探测相隔较远的单元，而不是相邻的单元
+            比如第一次探测相隔1位的单元，第二次4位，第三次9位，指数递增。
+            但是这在hash值相同的情况下，还是会发生聚集。
+            
+        3.再哈希法
+            把关键字用不同的哈希函数再做一次哈希化，用这个结果作为探测的步长。对指定的关键字，步长是不变的
+            二次哈希的哈希函数必须有以下特点：
+                ·和第一个哈希函数不同
+                ·不能输出0(否则没有步长，将陷入死循环)
+    2.链地址法
+        开放寻址法通过在哈希表中再找一个空位解决冲突，而另一个方式则是在哈希表每个单元中设置链表。
+        某个数据项的关键字值还是像往常一样映射到哈希表的单元，而数据项本身插入到这个单元的链表中。
+        其他同样映射到这个位置的数据项只需加入到链表中即可
+        
+        hashChain.java程序
+        
+        class Link{
+            private int iData;
+            public Link next;
+            
+            public Link(int it){
+                iData = it;
+            }
+            
+            public int getKey(){
+                return iData;
+            }
+            
+            public void displayLink(){
+                System.out.println(iData + " ");
+            }
+        }
+        
+        class SortedList{
+            private Link first;
+            
+            public void SortedList(){
+                first = null;
+            }
+            
+            public void insert(Link theLink){
+                int key = theLink.getKey();
+                Link previous = null;
+                Link current = first;
+                
+                while(current != null && key > current.getKey()){
+                    previous = current;
+                    current = current.next;
+                }
+                if(previous == null)
+                    first = theLink;
+                else
+                    previous.next = current;
+                theLink.next = current;
+            }
+            
+            public void delete(int key){
+                Link previous = null;
+                Link current = first;
+                
+                while(current != nul && key != current.getKey()){
+                    previous = current;
+                    current = current.next;
+                }
+                if(previous == null){
+                    if(first != null)
+                        first = first.next;
+                } else {
+                    previous.next = current.next;
+                }
+            }
+        }
