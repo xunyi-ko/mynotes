@@ -1,0 +1,43 @@
+// 用的比较笨的方法，转为字符串，反转，再转回数字。
+
+// 给出一个 32 位的有符号整数，你需要将这个整数中每位上的数字进行反转。
+
+// 示例 1:
+
+// 输入: 123
+// 输出: 321
+//  示例 2:
+
+// 输入: -123
+// 输出: -321
+// 示例 3:
+
+// 输入: 120
+// 输出: 21
+public class Solution{
+    public int reverse(int x) {
+		String ans;
+		if(x < 0){
+			try{
+				return -Integer.valueOf(reverse(x, 1));
+			}catch(Exception e){
+				return 0;
+			}
+		}else{
+			try{
+				return Integer.valueOf(reverse(x, 0));
+			}catch(Exception e){
+				return 0;
+			}
+		}
+    }
+	
+	public String reverse(int x, int pos){
+		String numStr = String.valueOf(x);
+		StringBuilder ans = new StringBuilder("");
+		for(int i = numStr.length() - 1; i > pos - 1; i--){
+			ans.append(numStr.charAt(i));
+		}
+		return ans.toString();
+	}
+}
