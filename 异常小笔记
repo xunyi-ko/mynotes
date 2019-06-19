@@ -57,3 +57,12 @@ java.lang.IllegalStateException: Cannot call sendError() after the response has 
 	使用response下载文件后，return了东西
 	虽然查到说是关闭了输出流后才会报这个错，但是我不关输出流，照样报错
 	处理方法就是在结束的时候return null;不要返回其他东西
+java.sql.SQLException: Column '*' not found.
+	可能是因为列名写错。也可能是因为取了别名。
+    select 列名 from 表名 ... 
+    createNativeQuery
+    取与列名不同的别名。
+    List<Object[]> list = (List<Object[]>)query.getResultList()就会报错
+    原因未知
+    解决办法：去掉别名,或者别名和列名一致
+    
