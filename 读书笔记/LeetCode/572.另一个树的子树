@@ -51,3 +51,30 @@ class Solution {
 		return null;
 	}
 }
+
+// 优化
+// 执行用时 : 9 ms, 在所有 Java 提交中击败了 95.70% 的用户
+// 内存消耗 : 38.1 MB, 在所有 Java 提交中击败了 98.80% 的用户
+class Solution{
+	public boolean isSubtree(TreeNode s, TreeNode t) {
+		// 从这里迭代，避免了findNode()方法重复查询同一块区域
+        if(s == null)
+			return false;
+		if(s.val == t.val){
+			if(checkEquals(s.left, t.left) && checkEquals(s.right, t.right)){
+				return true;
+			}
+		}
+		return isSubtree(s.left, t) || isSubtree(s.right, t);
+    }
+	public boolean checkEquals(TreeNode s, TreeNode t){
+		if(s == null && t == null)
+			return true;
+        else if(s == null || t == null)
+			return false;
+        else if(s.val == t.val)
+			return checkEquals(s.left, t.left) && checkEquals(s.right, t.right);
+		else
+		    return false;
+	}
+}
