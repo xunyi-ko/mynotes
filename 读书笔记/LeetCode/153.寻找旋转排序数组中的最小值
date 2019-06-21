@@ -8,24 +8,24 @@
 
 class Solution {
     public int findMin(int[] nums) {
-		int left = 0;
-		int right = nums.length - 1;
-		int pos;
-		while(left < right){
-			pos = (left + right) >>> 1;
-			
-			if(nums[pos] > nums[left] && nums[pos] > nums[right]){
-				left = pos + 1;
+        int left = 0;
+        int right = nums.length - 1;
+        int pos;
+        while(left < right){
+            pos = (left + right) >>> 1;
+
+            if(nums[pos] > nums[left] && nums[pos] > nums[right]){
+                left = pos + 1;
             }else if(nums[pos] < nums[right] && nums[pos] < nums[left]){
-				right = pos;
+                right = pos;
             }else{
-				if(left == pos){
-					return Math.min(nums[left], nums[right]);
-				}else{
-					return Math.min(nums[left], nums[pos]);
-				}
+                if(left == pos){
+                    return Math.min(nums[left], nums[right]);
+                }else{
+                    return Math.min(nums[left], nums[pos]);
+                }
             }
-		}
-		return nums[left];
+        }
+        return nums[left];
     }
 }
