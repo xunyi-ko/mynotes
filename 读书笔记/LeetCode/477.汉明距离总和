@@ -1,0 +1,31 @@
+// 两个整数的 汉明距离 指的是这两个数字的二进制数对应位不同的数量。
+// 计算一个数组中，任意两个数之间汉明距离的总和。
+
+/*
+    思路：
+        最简单的方法是，计算每两个数之间的汉明距离，求和。不过速度太慢。
+        优化解法：
+            获取每一位上的1的个数。    
+            并将数字的个数减去1的个数，再乘以1的个数。
+            求和
+            比如，总共有10个数，最后一位为1的有2个，那么最后一位对于答案的贡献有2 * （10 - 2）= 16
+*/
+class Solution {
+    public int totalHammingDistance(int[] nums) {
+        int sum = 0;
+        int size = nums.length;
+        
+        int temp;
+        for(int i = 0; i < 31; i++){
+            temp = 0;
+            for(int j = 0; j < size; j++){
+                temp += nums[j] & 1;
+                nums[j] >>>= 1;
+            }
+            
+            if(temp == size || temp == 0);
+            else sum += temp * (size - temp);
+        }
+        return sum;
+    }
+}
