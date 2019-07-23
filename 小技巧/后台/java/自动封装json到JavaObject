@@ -1,0 +1,5 @@
+import com.alibaba.fastjson.JSONObject
+
+T t = JSONObject.toJavaObject(JSONObject json, Class<T> clazz);
+自动封装json到javaObject
+自动排除不需要的参数。Object中没有的参数，则为默认值
