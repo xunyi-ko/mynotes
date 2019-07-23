@@ -1,3 +1,4 @@
+需要在启动类上加@EnableScheduling注解
 @Scheduled注解完成定时运行
 一般可以用两个属性
 fixedDelay  值为执行周期的毫秒值
