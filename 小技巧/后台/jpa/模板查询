@@ -5,15 +5,19 @@ jpa可以通过创建模板的方式来查询，模板即实体类的一个对�
 
 查询方法
 ```
-//创建模板对象
-User entity = new User();
-entity.setName("11");
+// 查询用户列表
+public Page<User> getUserList(int page, int row, String name){
+    //创建模板对象
+    User entity = new User();
+    entity.setName(name);
 
-// 创建匹配器
-ExampleMatcher matcher = ExampleMatcher.matching();
-Example<User> ex = Example.of(entity, matcher);
+    // 创建匹配器
+    ExampleMatcher matcher = ExampleMatcher.matching();
+    Example<User> ex = Example.of(entity, matcher);
 
-// 分页
-Pageable pageable = PageRequest.of(0, 10);
-userDao.findAll(ex, pageable);
+    // 分页
+    Pageable pageable = PageRequest.of(page, row);
+    return userDao.findAll(ex, pageable);
+}
+
 ```
