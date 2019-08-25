@@ -101,3 +101,38 @@ redis
 		3.使用
 		4.返回连接
 			jedis.close();
+			
+	集成springboot
+		1.在pom.xml文件中加入
+			<dependency>
+				<groupId>org.springframework.boot</groupId>
+				<artifactId>spring-boot-starter-data-redis</artifactId>
+			</dependency>
+		2.在启动器上加注解
+			@EnableCaching
+		3.在配置文件中添加配置
+			spring:
+				redis:
+					port: 6379
+					host: 127.0.0.1
+		4.在需要的地方加注解
+	redis的注解
+		1.缓存注解
+			@Cacheable：缓存被调用方法的结果（返回值），已经缓存就不再调用注解修饰的方法，适用于查询接口
+			参数：
+				cacheNames：该缓存的方法名称,cacheName也可以使用value 
+				key:缓存的 key，可以为空，如果指定要按照 SpEL 表达式编写，如果不指定，则缺省按照方法的所有参数进行组合,方法的参数 
+				unless: 可以用来做条件判断，为真时，就不会被缓存起来。
+			@CachePut：功能类似Cacheable，但是方法一定会执行，并存入缓存
+			参数：类似以上
+			@CacheEvict：清除缓存
+			参数：
+				value：同Cacheable的cacheNames 和 value
+				key：同上key
+				condition：同上condition，与unless相反
+				allEntries：boolean值，为真时，清除该value的所有缓存
+				beforeInvocation：boolean值。为真时，则会再方法调用前清除缓存
+			
+			@Caching：可以同时发挥以上的注解的作用
+			参数：
+				cacheable，evict，put
