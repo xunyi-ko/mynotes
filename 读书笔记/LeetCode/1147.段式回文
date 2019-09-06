@@ -1,0 +1,51 @@
+class Solution {
+    public int longestDecomposition(String text) {
+        int left = 0;
+        int right = text.length() - 1;
+        
+        int length = 1;
+        int max = 0;
+        int size = text.length();
+        char point = ' ';
+        while(left < right && right >= size){
+            if(length == 1){
+                point = text.charAt(left);
+                if(text.charAt(right) == point){
+                    right--;
+                    left++;
+                    max += 2;
+                }else{
+                    length++;
+                    right--;
+                }
+            }else{
+                if(text.charAt(right) == point){
+                    if(check(left, right, length, text)){
+                        left += length;
+                        length = 1;
+                        max += 2;
+                    }else{
+                        length++;
+                        right--;
+                    }
+                }else{
+                    length++;
+                    right--;
+                }
+            }
+        }
+        
+        if(left < right - 1){
+            max++;
+        }
+        
+        return max;
+    }
+    
+    private boolean check(int left, int right, int length, String text){
+        String leftStr = text.substring(left, left + length);
+        String rightStr = text.substring(right, right + length);
+        
+        return leftStr.equals(rightStr);
+    }
+}
