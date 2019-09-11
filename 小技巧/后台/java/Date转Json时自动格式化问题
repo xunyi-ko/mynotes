@@ -1,8 +1,15 @@
 当将实体数据传回前端时，有时需要将Date对象按照某种格式格式化。
 如"yyyy-MM-yy"/"yyyy年MM月dd日"
 这时，只要在类的对应成员变量上或者getter方法上添加@JsonFormat注解即可（fastJson）
-反过来，如果要从前端传字符串形式的日期到后台，可以通过在变量或者setter方法上添加@DatetimeFormat注解
+反过来，如果要从前端传字符串形式的日期到后台，可以通过在变量或者setter方法上添加@DateTimeFormat注解
 
 注意：
     当参数是通过ajax传到js文件中使用时，JsonFormat是可以正常使用的。但是当传到html文件中时，不会正常格式化，需要用其他方式
     比如thymeleaf的dates.format方法。或者在java中用Json的其他方法进行格式化。
+
+另外：
+    pattern="yyyy-MM-dd hh:mm:ss" 表示12小时制
+    pattern="yyyy-MM-dd HH:mm:ss" 表示24小时制
+    
+    在由Date转为String时，即JsonFormat注解，会碰到因为时区导致的时间显示错误的问题。
+    添加参数timezone = "GMT+8"即可人为补上8小时
