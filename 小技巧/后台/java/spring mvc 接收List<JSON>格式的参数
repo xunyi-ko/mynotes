@@ -1,0 +1,34 @@
+首先，当js通过Json传递List参数，可以通过
+
+var list = new Array();
+list.push({a:'a',b:'b'});
+list.push({a:'a',b:'b'});
+var json = {
+    list:list
+};
+$.ajax({
+    type:"POST",
+    data:json,
+    tradition:true,
+    url:"",
+    success:function(){}
+})
+
+在java中，使用
+@RequestMapping("")
+public String getParam(@RequestParam(value="list", required=false) List<String> list){
+    
+}
+当list长度不等于1时，这种方式可以很好的完成
+但是等于1时，由于list和json都是用'，'进行分隔，所以当只有一条时，会把json拆为多个String
+
+因此，可以用String接收，然后用json处理
+
+@RequestMapping("")
+public String getParam(@RequestParam(value="list",required=false String list){
+    JSONArray array = JSONArray.parseArray(list);
+    for(Object obj : array){
+        JSONObject json = JSONObject.parseObject(obj.toString());
+        String a = json.getString("a");
+    }
+}
