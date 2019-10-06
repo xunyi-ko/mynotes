@@ -1,0 +1,3 @@
+forName()本质也是调用了ClassLoader的。不过forName可以进行更丰富的操作
+如forName("className")，会将类加载进虚拟机，并且初始化类，而ClassLoader只会加载进虚拟机，不会初始化
+Class.forName(name, initialize, loader)可以自主选择是否初始化。而forName(name)默认会初始化
