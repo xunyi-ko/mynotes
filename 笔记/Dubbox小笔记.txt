@@ -1,0 +1,85 @@
+Dubbox
+	致力于提供高性能和透明化的RPC远程服务调用方案，以及SOA服务治理方案
+	简单地说，Dubbox就是个服务框架，如果没有分布式的需求，其实是不需要用的
+	只有在分布式的时候，才有Dubbox这样的分布式服务框架的需求
+	本质上是个远程服务调用的分布式框架
+	
+	在虚拟机上安装jdk、zookeeper。
+		虚拟机IP地址 192.168.25.129
+	安装使用zookeeper
+		alt+p 进入sftp界面
+			put d:/Shared zookeeper-3.4.6.tar.gz
+				传入虚拟机
+		解压缩
+			tar -zxvf zookeeper-3.4.6.tar.gz
+		进入解压文件
+			cd zookeeper-3.4.6
+		创建文件夹
+			mkdir data
+		进入配置文件夹
+			cd conf
+		修改配置文件名称
+			mv zoo_sample.cfg zoo.cfg
+		编辑配置文件
+			vim zoo.cfg
+				i	进入编辑模式
+				dataDir=/root/zookeeper-3.4.6/data
+				esc	退出编辑模式
+				:wq	保存
+		进入bin文件夹
+			cd ..
+			cd bin
+		启动服务
+			./zkServer.sh start
+		停止服务
+			./zkServer.sh stop
+		查询服务状态
+			./zkServer.sh status
+	
+	安装dubbox本地仓库
+		将dubbox jar包放入D:/Shared
+		执行命令
+			mvn install:install-file -Dfile=d:\Shared\dubbo-2.8.4.jar -DgroupId=com.alibaba -DartifactId=dubbo -Dversion=2.8.4 -Dpackaging=jar
+	
+	配置离线约束
+		http://code.alibaba.com/schema/dubbo/dubbo.xsd
+
+	maven中引入dubbox依赖
+		<groupId>com.alibaba</groupId>
+		<artifactId>dubbo</artifactId>
+		<version>2.8.4</version>
+		
+		<groupId>org.apache.zokeeper</groupId>
+		<artifactId>zookeeper</artifactId>
+		<version>3.4.6</version>
+		
+		<groupId>com.github.sproschupf</groupId>
+		<artifactId>zkclient</artifactId>
+		<version>0.1</version>
+		
+		<groupId>javassist</groupId>
+		<artifactId>javassist</artifactId>
+		<version>3.11.0.GA</version>
+		
+	服务提供方spring中引入dubbox
+		<dubbo:application name="工程名"/>
+		<dubbo:registry address="zookeeper://192.168.25.128:2181"/>
+		<dubbo:annotation package="cn.xunyi.demo.service"/>
+	
+	服务消费方
+		spring中引入dubbox
+			<dubbo:application name="工程名"/>
+			<dubbo:registry address="zookeeper://192.168.25.128:2181"/>
+			<dubbo:annotation package="cn.xunyi.demo.controller"/>
+		自动注入
+			@Reference	dubbo包	远程依赖注入	取代@Autowired
+	
+	管理中心
+		将war包部署到虚拟机，tomcat中
+		执行
+			./startup.sh
+		进入管理中心页面
+			IP地址:端口/dubbo-admin
+			
+
+	
