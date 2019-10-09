@@ -83,4 +83,7 @@ dubbo的端口冲突问题
 	解决办法：在配置文件中加入dubbo.application.qos-port=xxxxx来切换端口，或者使用dubbo.application.qos-enable=false,关闭这个功能
 
 org.hibernate.hql.internal.QueryExecutionRequestException: Not supported for DML
-	
+	@Query("update User u set u.name=1 where u.name = 2")
+	发生情况：无法增删改，语句执行失败
+	原因：缺少Modifying注解
+	解决办法：添加注解
