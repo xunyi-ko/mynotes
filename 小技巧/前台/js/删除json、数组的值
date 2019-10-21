@@ -1,6 +1,6 @@
 // 删除json的值
 var json = {name : "zhangsan", age : "21", gender : "male"};
-delete json[name];
+delete json.name;
 console.log(json);
 
 // 删除数组的值
@@ -12,6 +12,6 @@ array.splice(0, 1);
 
 // 查看元素是否为空
 $.isEmptyObject(json); // false
-delete json[age];
-delete json[gender];
+delete json.age;
+delete json.gender;
 $.isEmptyObject(json); // 
