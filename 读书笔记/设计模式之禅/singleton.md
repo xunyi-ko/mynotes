@@ -2,7 +2,7 @@
 让一个类只产生一个实例。spring的默认策略就是单例
 
 #### 懒汉模式
-```
+```java
 // 懒加载，只在使用的时候创建实例
 // 双检锁，用于保证安全
 public class Singleton{
@@ -25,7 +25,7 @@ public class Singleton{
 ```
 
 #### 饿汉模式
-```
+```java
 // 加载class文件时就实例化了，不需要考虑线程问题
 public class Singleton{
     private static Singleton singleton = new Singleton();
@@ -39,7 +39,7 @@ public class Singleton{
 ```
 
 #### 登记式
-```
+```java
 // 采用内部类的方式
 public class Singleton {  
     private static class SingletonHolder {  
@@ -52,7 +52,7 @@ public class Singleton {
 }
 ```
 #### 枚举类
-```
+```java
 // 保证绝对的单例，线程安全
 public enum Singleton{
     INSTANCE;
