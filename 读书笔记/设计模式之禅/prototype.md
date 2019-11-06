@@ -6,7 +6,7 @@
 速度比new要快不少
 
 
-```
+```java
 // 浅克隆，基本类型和String是克隆来的，但其他对象还是原来的句柄
 public class Pattern{
     @Test
