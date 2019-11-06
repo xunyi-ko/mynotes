@@ -43,16 +43,16 @@ net.sf.json.JSONException: java.lang.ClassCastException: JSON keys must be strin
 Spring boot: java.lang.NoSuchMethodError: 
 javax.servlet.http.HttpServletRequest.getHttpServletMapping()
 Ljavax/servlet/http/HttpServletMapping;
-  原因：Spring Boot 2.1.X 版本使用Tomcat 9 ，用Servlet API v4.但是Spring Boot Web 2.1.X 仍然包含 Servlet API v3.1
-       导致的版本不匹配的问题
-  解决办法：在pom.xml文件中添加tomcat版本信息，覆盖springboot的默认版本信息
-						<properties>
-       			 <tomcat.version>8.5.37</tomcat.version>
-    				<properties>
+	原因：Spring Boot 2.1.X 版本使用Tomcat 9 ，用Servlet API v4.但是Spring Boot Web 2.1.X 仍然包含 Servlet API v3.1
+    	导致的版本不匹配的问题
+	解决办法：在pom.xml文件中添加tomcat版本信息，覆盖springboot的默认版本信息
+		<properties>
+			<tomcat.version>8.5.37</tomcat.version>
+		<properties>
 java.lang.IllegalArgumentException: Parameter value [1] did not match expected type [java.lang.Long (n/a)]
-  原因：我用hibernate向数据库查询数据时，用了int类型的id，导致的数据类型不匹配。
-  解决办法：用long替换id
-  
+	原因：我用hibernate向数据库查询数据时，用了int类型的id，导致的数据类型不匹配。
+	解决办法：用long替换id
+
 java.lang.IllegalStateException: Cannot call sendError() after the response has been committe
 	使用response下载文件后，return了东西
 	虽然查到说是关闭了输出流后才会报这个错，但是我不关输出流，照样报错
@@ -82,3 +82,8 @@ dubbo的端口冲突问题
 	原因：在同一台机器上启动多个dubbo项目，dubbo会自动启动qos-server，使用22222端口
 	解决办法：在配置文件中加入dubbo.application.qos-port=xxxxx来切换端口，或者使用dubbo.application.qos-enable=false,关闭这个功能
 
+org.hibernate.hql.internal.QueryExecutionRequestException: Not supported for DML
+	@Query("update User u set u.name=1 where u.name = 2")
+	发生情况：无法增删改，语句执行失败
+	原因：缺少Modifying注解
+	解决办法：添加注解
