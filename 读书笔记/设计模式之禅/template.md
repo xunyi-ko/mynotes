@@ -1,7 +1,7 @@
 ### 模板方法模式  
 抽取共通方法，就类似于基本的继承的用法  
 
-```
+```java
 public abstract class Animal{
     public void breath(){
         System.out.println("animal need to breath");
@@ -39,7 +39,7 @@ public class Bird extends Animal{
 }
 ```
 场景类  
-```
+```java
 public class Scene{
     public static void main(String[] args){
         Animal cat = new Cat();
