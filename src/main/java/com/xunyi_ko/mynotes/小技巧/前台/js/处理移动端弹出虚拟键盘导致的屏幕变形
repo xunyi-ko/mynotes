@@ -1,0 +1,3 @@
+// 在js加载时，就强行固定屏幕高度，避免屏幕变形
+
+$(".whole-window").height($(window).height());

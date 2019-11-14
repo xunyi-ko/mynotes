@@ -1,0 +1,44 @@
+首先下载ajaxFileUpload.js
+在html文件中导入
+ajaxFileUpload文件必须在jquery文件后导入，否则会显示ajaxFileUpload is not a function的错误
+
+ajax = $.ajaxFileUpload({
+			url : '/systems/uploadCompetition?competitionId='+competitionId,// 用于文件上传的服务器端请求地址
+			secureuri : false,// 一般设置为false
+			fileElementId : 'upload', //文件上传的容器id，是input，type="file"
+			dataType : 'json',// 返回值类型 一般设置为json
+			cache : false,
+			async : false,
+			complete : function(XMLHttpRequest, status) {
+				layer.close(index1);
+				if (status == 'timeout') {// 超时,status还有success,error等值的情况
+					ajax.abort();
+					alert(getI18Text("usermanage-outtime"));
+				}
+			},
+			success : function(result) {
+				layer.close(index1);
+				if (result.resultCode == 0) {
+					$.download("/download/xlsx?fileName="+encodeURI("赛事成绩导入结果表.xlsx")+"&filePath="+encodeURI(result.filePath));
+					layer.alert(result.resultMsg,
+						function() {
+							window.parent.location.reload()
+						});
+				} else if (result.resultCode == 1) {
+					alert(result.resultMsg);
+				} else if (result.resultCode == -1) {
+					alert(getI18Text("punchPointImportError"));
+				} else if (result.resultCode == -2) {
+					alert(getI18Text("institutionManage.loginTimeOut"));
+				}
+			},
+			error : function(data, status, e) {
+				alert(getI18Text("syserror"));
+				alert(e);
+			}
+		});
+$.download是一个下载方式，在上传操作成功后执行，需要添加
+  jQuery.download = function(url, method){
+    jQuery('<form action="'+url+'" method="'+(method||'post')+'">' + '</form>').appendTo('body').submit().remove();
+  };
+  用隐藏表单的方式进行下载，可以添加更多的参数，进行更丰富的操作

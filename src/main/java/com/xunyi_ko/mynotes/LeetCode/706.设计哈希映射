@@ -1,0 +1,121 @@
+// 使用链表法设计的哈希映射
+// 默认容量为8
+class MyHashMap {
+    private double factory = 0.75;
+    private final DEFAULT_CAPACITY = 8;
+    private Entry[] values;
+    private int size = 0;
+    private int capacity;
+	
+    /** Initialize your data structure here. */
+    public MyHashMap() {
+        values = new Entry[capacity = DEFAULT_CAPACITY];
+    }
+    
+    public MyHashMap(int capacity) {
+        this.capacity == capacity;
+        values = new Entry[capacity];
+    }
+    
+    /** value will always be non-negative. */
+    public void put(int key, int value) {
+		if(size * 1.0 / capacity > factory){
+			rehash();
+		}
+		int hash = hash(key);
+		Entry e = values[hash];
+        if(e == null){
+            values[hash] = new Entry(key, value);
+            size++;
+        }else{
+			if(e.key == key){
+				e.value = value;
+				return;
+			}
+            while(e.next != null){
+				e = e.next;
+				if(e.key == key){
+					e.value = value;
+					return;
+				}
+			}
+			e.next = new Entry(key, value);
+        }
+    }
+    
+    /** Returns the value to which the specified key is mapped, or -1 if this map contains no mapping for the key */
+    public int get(int key) {
+        int hash = hash(key);
+        Entry e = values[hash];
+		while(e != null){
+			if(e.key == key){
+				return e.value;
+			}
+			e = e.next;
+        }
+		return -1;
+    }
+    
+    /** Removes the mapping of the specified value key if this map contains a mapping for the key */
+    public void remove(int key) {
+        int hash = hash(key);
+        Entry e = values[hash];
+		if(e == null)
+			return;
+		if(e.key == key){
+			values[hash] = e.next;
+			return;
+		}
+		
+		Entry pre = e;
+		e = e.next;
+		while(e != null){
+			if(e.key == key){
+				pre.next = e.next;
+				return;
+			}
+			pre = pre.next;
+			e = e.next;
+		}
+    }
+    
+    private int hash(int key){
+        return key % this.capacity;
+    }
+    
+    private void rehash(){
+        int c2 = capacity;
+        this.capacity *= 2;
+		
+        Entry[] v2 = values;
+		values = new Entry[capacity];
+		Entry e;
+        for(int i = 0; i < c2; i++){
+            if(v2[i] == null);
+            else{
+                e = v2[i];
+				while(e != null){
+					put(e.key, e.value);
+					e = e.next;
+				}
+            }
+        }
+    }
+    class Entry{
+        int key;
+        int value;
+		Entry next;
+        public Entry(int key, int value){
+            this.key = key;
+            this.value = value;
+			this.next = null;
+        }
+        public boolean equals(Object o){
+            return this.hashCode() == o.hashCode();
+        }
+        
+        public int hashCode(){
+            return Integer.valueOf(key).hashCode();
+        }
+    }
+}

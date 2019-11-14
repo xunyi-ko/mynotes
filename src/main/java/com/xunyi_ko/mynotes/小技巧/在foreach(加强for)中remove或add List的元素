@@ -1,0 +1,44 @@
+在阿里巴巴java开发手册中说，不要在foreach中remove或者add，
+原因是foreach本质是使用Iterator进行循环的，每次循环前先调用hasNext(),再调用next()
+public E next() {
+  checkForComodification();
+  int i = cursor;
+  if (i >= size)
+    throw new NoSuchElementException();
+  Object[] elementData = ArrayList.this.elementData;
+  if (i >= elementData.length)
+    throw new ConcurrentModificationException();
+  cursor = i + 1;
+  return (E) elementData[lastRet = i];
+}
+final void checkForComodification() {
+  if (modCount != expectedModCount)
+    throw new ConcurrentModificationException();
+}
+checkForComodification方法会判断是否进行了修改，可能是为了避免并发的情况，所以干脆抛异常
+在ArrayList中的add()和remove()方法都会对modCount进行自增操作，但是expectedModCount却没有变化
+因此，如果想要循环添加或删除，可以使用迭代器里的remove()和add()方法
+public void remove() {
+  if (lastRet < 0)
+    throw new IllegalStateException();
+  checkForComodification();
+  try {
+    ArrayList.this.remove(lastRet);
+    cursor = lastRet;   //index of last element returned;-1 if no such
+    lastRet = -1;
+    expectedModCount = modCount;
+  } catch (IndexOutOfBoundsException ex) {
+    throw new ConcurrentModificationException();
+  }
+}
+其中重新修改了expectedModCount，checkForComodification就不会报错了
+可以选择以下方式进行迭代
+List<String> a = new ArrayList<>();
+Iterator<String> it = a.iterator();
+while(it.hasNext()){
+  String temp = it.next();
+  if(){
+    it.remove()
+  }
+}
+// iterator没有add方法，想要add可以在迭代结束后进行或者另用一个list存储，迭代结束后add

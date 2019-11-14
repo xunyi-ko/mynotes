@@ -1,0 +1,6 @@
+white-space: nowrap;
+text-overflow: ellipsis;
+overflow: hidden;
+这三个加一块，既可以让过长的字段收敛。变成以下样子
+
+sssssssssssssssssssssssssssss...

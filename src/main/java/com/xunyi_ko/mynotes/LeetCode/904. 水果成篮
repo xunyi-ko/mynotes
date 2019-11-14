@@ -1,0 +1,59 @@
+// 执行用时 :8 ms, 在所有 Java 提交中击败了100.00%的用户
+// 内存消耗 :48.5 MB, 在所有 Java 提交中击败了100.00%的用户
+// 在一排树中，第 i 棵树产生 tree[i] 型的水果。
+// 你可以从你选择的任何树开始，然后重复执行以下步骤：
+
+// 把这棵树上的水果放进你的篮子里。如果你做不到，就停下来。
+// 移动到当前树右侧的下一棵树。如果右边没有树，就停下来。
+// 请注意，在选择一颗树后，你没有任何选择：你必须执行步骤 1，然后执行步骤 2，然后返回步骤 1，然后执行步骤 2，依此类推，直至停止。
+
+// 你有两个篮子，每个篮子可以携带任何数量的水果，但你希望每个篮子只携带一种类型的水果。
+
+class Solution {
+    public int totalFruit(int[] tree) {
+        int size = tree.length;
+        //如果只有小于三棵树，则直接返回长度即可
+        if(size < 3){
+            return size;
+        }
+        // 用于存储最近的水果中最远的位置
+        // 如 1,1,1,1,1,2,2,2,1 存储8,0
+        int[] position = new int[]{0,0};
+        int max = 0;
+        int ans = 1;
+        
+        // 第一个篮子装的水果，和第二个篮子装的水果。-1表示没有装水果
+        int one = tree[0];
+        int two = -1;
+        int i = 1;
+        // 当第二个篮子是空的时，为它找到一个水果
+        while(two == -1 && i < size){
+            if(tree[i] != one){
+                two = tree[i];
+                position[1] = i;
+            }
+            ans++;
+            i++;
+        }
+        
+        for(; i < size; i++){
+            if(tree[i] == one){
+                ans++;
+				position[0] = position[1] > position[0] ? i : position[0];
+            }else if(two == tree[i]){
+                ans++;
+				position[1] = position[1] > position[0] ? position[1] : i;
+            }else{
+                // 根据position判断舍弃哪个水果
+				position[0] = Math.max(position[0], position[1]);
+                position[1] = i;
+                // 将先找到的水果放在one，后找到的放在two
+                one = tree[position[0]];
+                two = tree[i];
+                max = Math.max(max, ans);
+                ans = i - position[0] + 1;
+            }
+        }
+        return Math.max(max, ans);
+    }
+}

@@ -1,0 +1,34 @@
+springmvc
+	约束
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	拦截器
+		1.编写拦截器类
+			需要实现HandlerInterceptor接口
+				preHandle方法
+					可以在拦截的页面方法执行前执行。返回true则放行
+					返回false则不放行
+				postHandle方法
+					在拦截页面方法执行后执行。即如果页面被放行了。才会执行
+				afterCompletion方法
+					在最后再执行
+		2.配置拦截器
+			在springmvc.xml中配置
+				<mvc:interceptors>
+					//配置拦截器
+					<mvc:interceptor>
+						//要拦截的具体的方法路径
+						<mvc:mapping path="/user/*"/>
+						<mvc:exclude-mapping path=""/>
+						//配置拦截器对象
+						<bean class="cn.xunyi.controller.interceptor.MyInterceptor"/>
+					<mvc:interceptor>
+				<mvc:interceptors>
+			

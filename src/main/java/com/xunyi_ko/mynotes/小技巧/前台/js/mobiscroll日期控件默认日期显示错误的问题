@@ -1,0 +1,18 @@
+$('#date').mobiscroll().date({
+    lang: 'zh', // Specify language like: lang: 'pl' or omit setting to use default
+    display: 'bottom', // Specify display mode like: display: 'bottom' or omit setting to use default
+    mode: 'scroller', // More info about mode: https://docs.mobiscroll.com/3-0-0_beta5/datetime#!opt-mode
+    buttons: ['set', 'clear','cancel'],
+    clearText : "清空",           
+    theme : "android-holo",
+    startYear: (new Date()).getFullYear() - 10, //开始年份  
+    endYear: (new Date()).getFullYear() ,//结束年份 
+    dateFormat: 'yyyy年mm月dd日',
+    max:new Date((new Date()).getFullYear(),(new Date()).getMonth(),(new Date()).getDate(),(new Date()).getHours(),(new Date()).getMinutes()),
+    onClear:function(event, inst){//清空事件
+        $("#lostTime").val("");
+    },
+});
+
+点开来的默认日期总是十年前
+解决办法：将dateFormat改为'yy年mm月dd日'即可

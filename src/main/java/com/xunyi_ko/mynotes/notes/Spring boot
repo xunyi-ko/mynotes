@@ -1,0 +1,8 @@
+@OneToMany
+    一对多，即一个对象对应另一张表的多个对象，如同一个公司有多个人
+    @OneToMany(cascade = { CascadeType.REFRESH, CascadeType.PERSIST,CascadeType.MERGE, CascadeType.REMOVE }, mappedBy = "type")
+    private List<User> users;
+    mappedBy里是关联的users的列名
+    表示本表的主键关联另一张表的哪个字段，外键关系由另一张表维护
+    默认懒加载，要实现可以取出数据，需要在方法上添加@Transactional注解，并在配置文件中添加spring.jpa.open-in-view=true
+    

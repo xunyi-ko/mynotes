@@ -1,0 +1,33 @@
+未通过
+class Solution {
+    public String addStrings(String num1, String num2) {
+        byte[] nums1 = num1.getBytes();
+        byte[] nums2 = num2.getBytes();
+        
+        int length1 = nums1.length;
+        int length2 = nums2.length;
+        byte[] res = new byte[Math.max(length1, length2)];
+        int reslength = res.length;
+        int step = 0; // 存储是否进位
+        int num = 0;	// 某位的数值
+        while(length1 > 0 || length2 > 0) {
+        	byte last1 = 0;
+        	byte last2 = 0;
+        	if(length1 > 0) {
+        		last1 = nums1[--length1];
+        	}
+        	if(length2 > 0) {
+        		last2 = nums2[--length2];
+        	}
+        	
+        	num = (last1 + last2 + step) % 10;
+        	step = (last1 + last2 + step) / 10;
+        	
+        	res[--reslength] = (byte)num;
+        }
+        if(step != 0) {
+        	return (new String("1") + res.toString());
+        }
+        return res.toString();
+    }
+}

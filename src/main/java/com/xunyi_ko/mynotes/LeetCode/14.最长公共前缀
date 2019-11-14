@@ -1,0 +1,29 @@
+// 找出字符串数组中各个字符串的最长公共前缀
+
+class Solution {
+    public String longestCommonPrefix(String[] strs) {
+        // 如果字符串数组为空，返回空字符串
+        if(strs == null || strs.length ==0)
+            return "";
+            
+        // 定义第一个字符串为对照
+        String one = strs[0];
+        for(int i = 0;i < one.length(); i++){
+            // 依次获取字符串的每个字符，用于对比
+            char c = one.charAt(i);
+            
+            // 在每个字符串中对比
+            for(int j = 1; j < strs.length; j++){
+                // 如果这个字符串已经到末尾了，公共前缀自然也就不可能更长了
+                if(i == strs[j].length())
+                    return strs[j];
+                // 如果出现对应位置的字符不同，就可以返回了
+                if(strs[j].charAt(i) != c){
+                    return i == 0 ? "" : one.substring(0,i);
+                }
+            }
+        }
+        // one是最短字符串的情况
+        return one;
+    }
+}

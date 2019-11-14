@@ -1,3 +1,5 @@
+package com.xunyi_ko.mynotes.mytools;
+
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
@@ -8,10 +10,10 @@ import java.util.List;
 
 public class TidyPic {
 	public static void main(String[] args) throws IOException {
-		//т╜м╪ф╛нд╪Ч╣ьж╥
-		String readDirect = "D:\\BaiduNetdisk\\м╞╩╜╨╒вс";
-		//р╙╢Ф╥енд╪Ч╣д╣ьж╥
-		String writeDirect = "D:\\BaiduNetdisk\\м╞╩╜╨╒всвВф╥";
+		//т╜м╪ф╛О©╫д╪О©╫О©╫О©╫ж╥
+		String readDirect = "D:\\BaiduNetdisk\\м╞О©╫О©╫О©╫О©╫О©╫О©╫";
+		//р╙О©╫О©╫О©╫О©╫д╪О©╫О©╫д╣О©╫ж╥
+		String writeDirect = "D:\\BaiduNetdisk\\м╞О©╫О©╫О©╫О©╫О©╫О©╫О©╫О©╫ф╥";
 		
 		restorePic(readDirect,writeDirect);
 	}
@@ -19,7 +21,7 @@ public class TidyPic {
 	public static void restorePic(String readDirect,String writeDirect) {
 		File readFile = new File(readDirect);
 		int readFileLength = readFile.getAbsolutePath().length();
-		// ╠ИюЗнд╪Ч╪пё╛╩Ях║р╩╦Жнд╪Ч╪пдзкЫспнд╪ЧюЮпмнд╪Ч╣дFile╤тоСап╠М
+		// О©╫О©╫О©╫О©╫О©╫д╪О©╫О©╫пёО©╫О©╫О©╫х║р╩О©╫О©╫О©╫д╪О©╫О©╫О©╫О©╫О©╫О©╫О©╫О©╫О©╫О©╫д╪О©╫О©╫О©╫О©╫О©╫О©╫д╪О©╫О©╫О©╫FileО©╫О©╫О©╫О©╫О©╫п╠О©╫
 		List<File> returnFiles = traversalFiles(readFile);
 		
 		File kid = null;
@@ -80,8 +82,8 @@ public class TidyPic {
 	}
 	
 	/**
-	 * ╩Ях║р╩╦Жнд╪Ч╪пдзкЫспнд╪ЧюЮпмнд╪Ч╣дFile╤тоСап╠М
-	 * @param readDirect ╤ах║нд╪Ч╣днд╪Ч╪п╣ьж╥
+	 * О©╫О©╫х║р╩О©╫О©╫О©╫д╪О©╫О©╫О©╫О©╫О©╫О©╫О©╫О©╫О©╫О©╫д╪О©╫О©╫О©╫О©╫О©╫О©╫д╪О©╫О©╫О©╫FileО©╫О©╫О©╫О©╫О©╫п╠О©╫
+	 * @param readDirect О©╫О©╫х║О©╫д╪О©╫О©╫О©╫О©╫д╪О©╫О©╫п╣О©╫ж╥
 	 * @return
 	 */
 	public static List<File> traversalFiles(File readDirect) {

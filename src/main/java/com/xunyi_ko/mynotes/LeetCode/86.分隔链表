@@ -1,0 +1,61 @@
+/**
+ * Definition for singly-linked list.
+ * public class ListNode {
+ *     int val;
+ *     ListNode next;
+ *     ListNode(int x) { val = x; }
+ * }
+ */
+class Solution {
+    public ListNode partition(ListNode head, int x) {
+        if(head == null){
+            return head;
+        }
+        // 第一个链节点，作为返回值
+        ListNode first = head;
+        // 最近一个比x小的节点
+        ListNode lastSmallNode = null;
+        // 上一个节点
+        ListNode pre = null;
+        // 标志位
+        boolean flg = true;
+        // 如果所有的节点都比x小，直接返回头部节点
+        while(head != null && flg){
+            if(head.val < x);
+            else{
+                // 找到第一个比较大的节点，给flg赋值，给最近一个小节点赋值
+                flg = false;
+                lastSmallNode = pre;
+            }
+            pre = head;
+            head = head.next;
+        }
+        if(flg){
+            return first;
+        }
+        
+        // 遍历节点
+        while(head != null){
+            // 这里遍历时，只要将小的节点前移，大的节点不管
+            if(head.val < x){
+                // 这种情况是碰到的第一个节点就是大节点，因此pre并没有被赋值
+                if(lastSmallNode == null){
+                    // 将这个节点作为头部节点，并为缺少的节点赋值
+                    pre.next = head.next;
+                    head.next = first;
+                    first = head;
+                    lastSmallNode = first;
+                }else{
+                    // 正常遍历，前移小节点
+                    pre.next = head.next;
+                    head.next = lastSmallNode.next;
+                    lastSmallNode.next = head;
+                    lastSmallNode = lastSmallNode.next;
+                }
+            }
+            pre = head;
+            head = head.next;
+        }
+        return first;
+    }
+}

@@ -1,0 +1,124 @@
+//存储图片的方法
+private Picture GenerateImage(String imgStr, Long picid, String picname, String pictype) {
+		try {
+			// 对字节数组字符串进行Base64解码并生成图片 // 图像数据为空
+			if (imgStr == null) {
+				return null;
+			}
+
+			BASE64Decoder decoder = new BASE64Decoder();
+			// Base64解码
+			byte[] bytes = decoder.decodeBuffer(imgStr);
+      
+			Picture picture = new Picture();
+      
+      //判断是新增图片还是覆盖图片
+			if (picid != null && picid > 0) {
+				pitcure = this.commonService.getFileInfo(picid);
+				if (pitcure == null) {
+					pitcure = new Pitcure();
+				}
+			}
+
+			System.out.println("start bytes.length:" + bytes.length);
+      //计算图片大小，太大就取消
+			if (Common.bytes2kb(bytes.length) > 10) {
+				return null;
+			}
+			System.out.println("end bytes.length:" + bytes.length);
+
+			pitcure.setFileName(picname);
+			pitcure.setFileData(bytes);
+			pitcure.setFileType(pictype.toLowerCase());
+			pitcure.setUploadTime(new Date());
+
+			// 保存至数据库
+			pitcure = this.commonService.savePicture(pitcure);
+
+			return pitcure;
+		} catch (Exception e) {
+			e.printStackTrace();
+			return null;
+		}
+	}
+  
+  //controller
+  @RequestMapping(value = "/savePicture")
+	@ResponseBody
+	public JSONObject saveCompetition(HttpServletRequest request) {
+		JSONObject res = new JSONObject();
+
+		String picIdStr = request.getParameter("picId");
+		String byteStr = request.getParameter("getDataURL");
+		String fileName = request.getParameter("fileName");
+		String fileType = request.getParameter("fileType");
+		
+		Competition competition = new Competition();
+		Long id = null;
+		Long picId = null;
+		Date date = null;
+    
+		if (picIdStr != null && !picIdStr.equals("undefined")) {
+			picId = Long.valueOf(picIdStr);
+		}
+
+    //前台传回的图片数据中，会包括前面的图片信息，比如image/jpeg之类的，所以要截取掉
+		int delLength = byteStr.indexOf(',') + 1;
+		String str = byteStr.substring(delLength, byteStr.length());
+		Picture picture = GenerateImage(str, picId, fileName, fileType);
+		if (picture == null) {
+			res.put("resultCode", 1);
+			res.put("resultMsg", "上传图片失败，请稍后重试");
+			return res;
+		}
+		res.put("resultCode", 0);
+		res.put("resultMsg", "上传图片成功");
+
+		return res;
+	}
+  
+  
+  
+  
+//读取数据库中的图片
+
+  <img src="/pictures/getPictures?id=1"/>
+  
+  @Controller
+  @RequestMapping(value = "/pictures")
+  public class PictureController {
+    @Autowired
+    private CommonService commonService;
+
+    @RequestMapping(value = "/getPictures", method = RequestMethod.GET)
+    @ResponseBody
+    public ResponseEntity<Object> getPictures(HttpServletRequest request) {
+      try {
+        String id = request.getParameter("id");
+        if(id == null || id.trim().isEmpty()) {
+          return null;
+        }
+        Picture picture = commonService.getPictureInfo(Long.parseLong(id));
+        if(picture == null) {
+          return null;
+        }
+
+
+        HttpHeaders headers = new HttpHeaders();  
+            headers.add("Cache-Control", "no-cache, no-store, must-revalidate");  
+            headers.add("Content-Disposition", String.format("attachment; filename=\"%s\"", file.getFileName()));  
+            headers.add("Pragma", "no-cache");  
+            headers.add("Expires", "0");  
+
+            return ResponseEntity  
+                    .ok()  
+                    .headers(headers)  
+                    .contentLength(picture.getPictureData().length)  
+                    .contentType(MediaType.parseMediaType("application/octet-stream"))  
+                    .body(new InputStreamResource(new ByteArrayInputStream(picture.getPictureData())));  
+      } catch (Exception e) {
+        e.printStackTrace();
+        return null;
+      }
+    }
+  }

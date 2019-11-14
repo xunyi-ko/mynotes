@@ -1,0 +1,56 @@
+var canvas = document.createElement('canvas');
+var context = drawCanvas.getContext('2d');
+var drawHeight = $(window).height();
+var drawWidth = $(window).width();
+
+// 要画的图片
+var pic = $("#pic")[0];
+
+img.src = pic.src;
+// 设置画布的大小
+canvas.width = drawWidth;
+canvas.height = drawHeight;
+
+// 五个参数分别是：图像url、x坐标、y坐标、图像宽度、图像高度
+context.drawImage(img,0,0,drawWidth,drawHeight);
+img.src = pic.src;
+
+img.onload = function(){
+    context.drawImage(img,100,100,200,200);
+    // 文字信息
+    var message = "hello,world!";
+    // 填充文字的时候，canvas并不会自动换行，只会一路写下去，所以要另写一个方法
+    context.fillText(message,100,120);
+    drawText(context,message,80,400,220);
+    $("#poster")[0].src = drawCanvas.toDataURL("jpg", 1.0);
+}
+
+
+// 获取画后的图像的url，可以用来给img标签赋值，也可以传给后台
+var dataUrl = canvas.toDataUrl("image/jpg",1.0);
+
+// 文字自动换行 length代表每逢多长换行
+function drawText(context,message,x,y,length){
+    var chr = message.split("");
+    var temp = "";              
+    var row = [];
+    
+    context.font = "15px Arial";
+    context.fillStyle = "black";
+    context.textBaseline = "middle";
+    
+    for(var a = 0; a < chr.length; a++){
+        if( context.measureText(temp).width < length );
+        else{
+            row.push(temp);
+            temp = "";
+        }
+        temp += chr[a];
+    }
+    
+    row.push(temp);
+    
+    for(var b = 0; b < row.length; b++){
+        context.fillText(row[b],x,y+(b+1)*20);
+    }
+}
