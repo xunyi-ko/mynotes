@@ -1,7 +1,0 @@
-构造方法：
-    无参构造
-    带参构造：
-        public ConcurrentHashMap(int initialCapacity) ，构造初始大小为initialCapacity的map
-            this.sizeCtl为ConcurrentHashMap的容量
-        public ConcurrentHashMap(Map<? extends K, ? extends V> m) ,初始大小为默认大小16，然后执行putAll
-        

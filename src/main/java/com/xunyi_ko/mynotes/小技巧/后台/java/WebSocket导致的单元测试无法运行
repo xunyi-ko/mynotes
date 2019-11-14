@@ -1,2 +1,0 @@
-@SpringBootTest注解添加参数
-webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT

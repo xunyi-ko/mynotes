@@ -1,2 +1,0 @@
-jquery对象使用attr("checked",true)赋值或者attr("checked")==true判断时，可能会无效，原因可能是jquery1.7后的版本更新造成的
-    可以使用prop("checked",true)或prop("checked")==true来进行。类似的使用attr方法的操作都可以用prop来取代
