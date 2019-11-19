@@ -8,3 +8,6 @@
 ```
 
 >这是缩进
+
+restart.include.mapper=/mapper-[\\w-\\.]+jar
+restart.include.pagehelper=/pagehelper-[\\w-\\.]+jar
