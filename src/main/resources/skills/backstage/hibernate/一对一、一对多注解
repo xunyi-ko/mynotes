@@ -1,0 +1,14 @@
+@OneToOne 一对一
+@OneToMany 一对多
+@ManyToMany 多对多
+@ManyToOne 多对一
+
+多对一或一对一默认为立即加载， 即对象取出来后就顺带取出来了
+多对多或一对多默认为懒加载，即需要通过getter来加载
+
+如果想要修改加载策略，可以通过在注解上配置参数 fetch = FetchType.LAZY 或  EAGER
+
+序列化失败异常
+    貌似是懒加载时，对象为空，导致的问题。
+    在配置文件中加入 spring.jackson.serialization.FAIL_ON_EMPTY_BEANS=false 即可
+    或者在参数或类上添加注解@JsonIgnoreProperties(value = {"handler","hibernateLazyInitializer","fieldHandler"})
