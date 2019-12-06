@@ -1,103 +1,101 @@
 package com.xunyi_ko.mynotes.mytools;
 
+import java.io.BufferedOutputStream;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
-import java.util.LinkedList;
+import java.util.Arrays;
 import java.util.List;
 
-public class TidyPic {
-	public static void main(String[] args) throws IOException {
-		//ԭͼƬ�ļ���ַ
-		String readDirect = "D:\\BaiduNetdisk\\ͯ������";
-		//Ҫ����ļ��ĵ�ַ
-		String writeDirect = "D:\\BaiduNetdisk\\ͯ��������Ʒ";
-		
-		restorePic(readDirect,writeDirect);
-	}
-	
-	public static void restorePic(String readDirect,String writeDirect) {
-		File readFile = new File(readDirect);
-		int readFileLength = readFile.getAbsolutePath().length();
-		// �����ļ��У���ȡһ���ļ����������ļ������ļ���File�����б�
-		List<File> returnFiles = traversalFiles(readFile);
-		
-		File kid = null;
-		File pic = null;
-		byte[] chs = null;
-		FileInputStream fis = null;
-        FileOutputStream fos = null;
-		for(File file:returnFiles) {
-			String direct = file.getAbsolutePath();
-			String path = direct.substring(readFileLength);
-			String[] folders = path.split("\\\\");
+import org.junit.Test;
 
-			String course = folders[folders.length-2];
-			String[] s = folders[folders.length-1].split("\\.");
-			String name = s[0];
-			StringBuilder writeFile = new StringBuilder(writeDirect).append("\\");
-			for(int i=0;i<folders.length-2;i++) {
-				writeFile.append(folders[i]);
-			}
-			writeFile.append("\\");
-			writeFile.append(name);
-			kid = new File(writeFile.toString());
-			if (!kid.exists()) {
-				kid.mkdirs();
-			}
-			writeFile.append("\\");
-			pic = new File(writeFile + course + ".jpg");
-			if (!pic.exists()) {
-				try {
-					fis = new FileInputStream(file);
-					fos = new FileOutputStream(pic);
-					chs = new byte[1024];
-					int len = 0;
-					while ((len = fis.read(chs)) != -1) {
-						fos.write(chs, 0, len);
-					}
-					System.out.println(writeFile + course + ".jpg");
-				} catch (FileNotFoundException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				} catch (IOException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				}finally {
-					try {
-						fos.close();
-						fis.close();
-					} catch (IOException e) {
-						// TODO Auto-generated catch block
-						e.printStackTrace();
-					}
-				}
-				
-			}
-			
-		}
-		System.out.println("over");
+public class TidyPic {
+    private final static String FROM = "D:\\BaiduNetdisk\\童画孩子";
+    private final static String TO = "D:\\BaiduNetdisk\\童画孩子作品";
+    private final static File FROM_FILE = new File(FROM);
+    
+    private final static String FILE_EXT = ".jpg";
+    
+	public static void main(String[] args) throws IOException {
+        restore(FROM_FILE);
 	}
 	
 	/**
-	 * ��ȡһ���ļ����������ļ������ļ���File�����б�
-	 * @param readDirect ��ȡ�ļ����ļ��е�ַ
+	 * 复制文件到新的位置
+	 * @param readDirect 读取文件的地址
+	 * @param from 原文件地址
+	 * @param to 新文件地址
 	 * @return
 	 */
-	public static List<File> traversalFiles(File readDirect) {
-		File[] files = readDirect.listFiles();
-		List<File> list = new LinkedList<>();
-		if(files == null)
-			return null;
-		for(File file:files) {
-			if(file.isDirectory()) {
-				list.addAll(traversalFiles(file));
-			}else {
-				list.add(file);
-			}
-		}
-		return list;
+	public static void restore(File readDirect) {
+		// 用stream遍历
+	    if(readDirect == null) {
+	        return;
+	    }
+	    File[] fileArray = readDirect.listFiles();
+	    if(fileArray == null || fileArray.length == 0) {
+	        return;
+	    }
+	    List<File> files = Arrays.asList(fileArray);
+	    files.parallelStream().forEach(file -> {
+	        if(file.isDirectory()) {
+	            restore(file);
+	        }else {
+	            // 如果是文件，则复制到对应的地址
+	            copyTo(file);
+	        }
+	    });
+	}
+	
+	private static void copyTo(File file) {
+	    if(!file.getAbsolutePath().startsWith(FROM)) {
+	        return;
+	    }
+	    File readFile = new File(FROM);
+        int readFileLength = readFile.getAbsolutePath().length();
+	    
+	    String direct = file.getAbsolutePath();
+        String path = direct.substring(readFileLength);
+        String[] folders = path.split("\\\\");
+
+        String course = folders[folders.length-2];
+        String[] s = folders[folders.length-1].split("\\.");
+        String name = s[0];
+        StringBuilder writeFile = new StringBuilder(TO).append("\\");
+        for(int i=0;i<folders.length-2;i++) {
+            writeFile.append(folders[i]);
+        }
+        writeFile.append("\\");
+        writeFile.append(name);
+        File kid = new File(writeFile.toString());
+        if (!kid.exists()) {
+            kid.mkdirs();
+        }
+        writeFile.append("\\");
+        File pic = new File(writeFile + course + FILE_EXT);
+        if (!pic.exists()) {
+            try (
+                FileInputStream fis = new FileInputStream(file);
+                BufferedOutputStream fos = new BufferedOutputStream(new FileOutputStream(pic))
+            ){
+                byte[] chs = new byte[1024];
+                int len = 0;
+                while ((len = fis.read(chs)) != -1) {
+                    fos.write(chs, 0, len);
+                }
+                System.out.println(writeFile + course + FILE_EXT);
+            } catch (FileNotFoundException e) {
+                e.printStackTrace();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+	}
+	
+	@Test
+	public void testTraversalFiles() {
+	    restore(new File("F:"));
 	}
 }
