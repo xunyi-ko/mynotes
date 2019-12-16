@@ -1,8 +1,5 @@
 package com.xunyi_ko.mynotes.leetcode;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import org.junit.Test;
 
 
