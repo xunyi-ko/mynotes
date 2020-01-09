@@ -1,18 +1,18 @@
 git
-ÓÃssh·½Ê½½«±¾µØ²Ö¿âÍÆËÍµ½Ô¶³Ì²Ö¿â(github)
-	´ò¿ªgitbash
+ï¿½ï¿½sshï¿½ï¿½Ê½ï¿½ï¿½ï¿½ï¿½ï¿½Ø²Ö¿ï¿½ï¿½ï¿½ï¿½Íµï¿½Ô¶ï¿½Ì²Ö¿ï¿½(github)
+	ï¿½ï¿½gitbash
 		ssh-keygen -t rsa
-			ÃØÔ¿»á²úÉúÔÚ±¾»úÓÃ»§ÎÄ¼þ¼ÐÏÂ.sshÎÄ¼þ¼ÐÄÚ
-	½«¹«Ô¿(.pubºó×º)´æÈëgithub
-		Ñ¡Ôñsettings	SSH and GPG keys	New sshkey
-	È»ºó¾Í¿ÉÒÔ¸ù¾ÝgithubÌáÊ¾£¬ÓÃgitbashÃüÁîÐÐ½«±¾µØ²Ö¿âÍÆËÍµ½Ô¶³Ì²Ö¿â
-	Ò²¿ÉÒÔÊ¹ÓÃtortoiseGit
-ÓÃhttps·½Ê½ÍÆËÍ
-	ÓëÒÔÉÏÀàËÆµÄ·½Ê½£¬µ«ÊÇ²»ÐèÒªÉú³ÉÃØÔ¿£¬ÐèÒªÊäÈëÕËºÅÃÜÂë
+			ï¿½ï¿½Ô¿ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ú±ï¿½ï¿½ï¿½ï¿½Ã»ï¿½ï¿½Ä¼ï¿½ï¿½ï¿½ï¿½ï¿½.sshï¿½Ä¼ï¿½ï¿½ï¿½ï¿½ï¿½
+	ï¿½ï¿½ï¿½ï¿½Ô¿(.pubï¿½ï¿½×º)ï¿½ï¿½ï¿½ï¿½github
+		Ñ¡ï¿½ï¿½settings	SSH and GPG keys	New sshkey
+	È»ï¿½ï¿½Í¿ï¿½ï¿½Ô¸ï¿½ï¿½ï¿½githubï¿½ï¿½Ê¾ï¿½ï¿½ï¿½ï¿½gitbashï¿½ï¿½ï¿½ï¿½ï¿½Ð½ï¿½ï¿½ï¿½ï¿½Ø²Ö¿ï¿½ï¿½ï¿½ï¿½Íµï¿½Ô¶ï¿½Ì²Ö¿ï¿½
+	Ò²ï¿½ï¿½ï¿½ï¿½Ê¹ï¿½ï¿½tortoiseGit
+ï¿½ï¿½httpsï¿½ï¿½Ê½ï¿½ï¿½ï¿½ï¿½
+	ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ÆµÄ·ï¿½Ê½ï¿½ï¿½ï¿½ï¿½ï¿½Ç²ï¿½ï¿½ï¿½Òªï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ô¿ï¿½ï¿½ï¿½ï¿½Òªï¿½ï¿½ï¿½ï¿½ï¿½Ëºï¿½ï¿½ï¿½ï¿½ï¿½
 
-ÔÚlinux¼°ÆäÉÏ°²×°git·þÎñ»·¾³×¼±¸
+ï¿½ï¿½linuxï¿½ï¿½ï¿½ï¿½ï¿½Ï°ï¿½×°gitï¿½ï¿½ï¿½ñ»·¾ï¿½×¼ï¿½ï¿½
 	yum -y install curl curl-devel zlib-devel openssl-devel perl cpio expat-devel gettext-devel gcc cc
 	
-	´ò¿ªsecureCRT
-	´ò¿ªsftp·þÎñ
-		ÊäÈëput gitÑ¹Ëõ°üÂ·¾¶
+	ï¿½ï¿½secureCRT
+	ï¿½ï¿½sftpï¿½ï¿½ï¿½ï¿½
+		ï¿½ï¿½ï¿½ï¿½put gitÑ¹ï¿½ï¿½ï¿½ï¿½Â·ï¿½ï¿½  
