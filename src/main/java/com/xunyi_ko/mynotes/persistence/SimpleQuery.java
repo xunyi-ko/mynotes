@@ -7,7 +7,7 @@ import javax.persistence.EntityManager;
 @SuppressWarnings("rawtypes")
 public interface SimpleQuery<T> {
     SimpleQuery select(String... names);
-    SimpleQuery from(String table);
+    SimpleQuery from(String... tables);
     SimpleQuery where(QueryFilter filter);
     SimpleQuery and(QueryFilter filter);
     SimpleQuery or(QueryFilter filter);
