@@ -1,7 +1,7 @@
 /**
  * 
  */
-package com.xunyi_ko.mynotes.utils;
+package com.xunyi_ko.mynotes.util;
 
 import java.lang.reflect.Constructor;
 import java.lang.reflect.Field;

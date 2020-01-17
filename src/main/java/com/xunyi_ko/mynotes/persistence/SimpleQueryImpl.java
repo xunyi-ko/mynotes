@@ -16,7 +16,7 @@ import javax.persistence.EntityManager;
 import javax.persistence.Query;
 import javax.persistence.TypedQuery;
 
-import com.xunyi_ko.mynotes.utils.ObjectUtil;
+import com.xunyi_ko.mynotes.util.ObjectUtil;
 
 public class SimpleQueryImpl<T> implements SimpleQuery<T>{
     Class<T> clazz;
@@ -56,20 +56,17 @@ public class SimpleQueryImpl<T> implements SimpleQuery<T>{
         }
     }
 
-
     @Override
     public SimpleQuery<T> select(String... selects) {
         this.selects = selects;
         return this;
     }
 
-
     @Override
     public SimpleQuery<T> from(String... tables) {
         this.tables = tables;
         return this;
     }
-
 
     @Override
     public SimpleQuery<T> where(QueryFilter filter) {
@@ -80,7 +77,6 @@ public class SimpleQueryImpl<T> implements SimpleQuery<T>{
         return this;
     }
 
-
     @Override
     public SimpleQuery<T> and(QueryFilter filter) {
         this.filters.add(filter);
@@ -88,14 +84,12 @@ public class SimpleQueryImpl<T> implements SimpleQuery<T>{
         return this;
     }
 
-
     @Override
     public SimpleQuery<T> or(QueryFilter filter) {
         this.filters.add(filter);
         operations.add(FilterOperation.OR);
         return this;
     }
-
 
     @Override
     public SimpleQuery<T> orderBy(String col, Direction direction) {
@@ -107,7 +101,6 @@ public class SimpleQueryImpl<T> implements SimpleQuery<T>{
         return this;
     }
 
-
     @Override
     public SimpleQuery<T> groupBy(String... cols) {
         groups = Arrays.asList(cols);
@@ -116,10 +109,10 @@ public class SimpleQueryImpl<T> implements SimpleQuery<T>{
     
     @Override
     @SuppressWarnings("unchecked")
-    public List<T> getResultList(EntityManager em) {
+    public List<T> getResultList(EntityManager em, boolean isNative) {
         validate();
         
-        List list = getResult(em);
+        List list = getResult(em, isNative);
         if(selects != null && selects.length != 1 && clazz != null) {
             list = dealResultList(list);
         }
@@ -132,12 +125,12 @@ public class SimpleQueryImpl<T> implements SimpleQuery<T>{
     }
     
     private boolean typed() {
-        return selects == null && clazz != null;
+        return (selects == null || selects.length == 1) && clazz != null;
     }
     
     @Override
-    public T getSingleResult(EntityManager em) {
-        return getResultList(em).get(0);
+    public T getSingleResult(EntityManager em, boolean isNative) {
+        return getResultList(em, isNative).get(0);
     }
     
     private static final String SELECT = "select";
@@ -236,21 +229,33 @@ public class SimpleQueryImpl<T> implements SimpleQuery<T>{
     }
     
     // 获取值
-    private List getResult(EntityManager em) {
-        Query query;
-        if(typed()) {
-            query = em.createNativeQuery(getSQL(), clazz);
-        }else {
-            query = em.createNativeQuery(getSQL());
-        }
-        
+    private List getResult(EntityManager em, boolean isNative) {
+        Query query = getQuery(em, typed(), isNative);
         if(filters != null) {
             for(QueryFilter filter : filters) {
                 filter.filter(query);
             }
         }
-        
         return query.getResultList();
+    }
+    
+    private Query getQuery(EntityManager em, boolean isTyped, boolean isNative) {
+        String sql = getSQL();
+        Query query;
+        if(isNative) {
+            if(isTyped) {
+                query = em.createNativeQuery(sql, clazz);
+            }else {
+                query = em.createNativeQuery(sql);
+            }
+        }else {
+            if(isTyped) {
+                query = em.createQuery(sql, clazz);
+            }else {
+                query = em.createQuery(sql);
+            }
+        }
+        return query;
     }
     
     // 分离select字段

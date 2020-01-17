@@ -14,8 +14,15 @@ public interface SimpleQuery<T> {
     SimpleQuery orderBy(String name, Direction direction);
     SimpleQuery groupBy(String... cols);
     
-    List<T> getResultList(EntityManager em);
-    T getSingleResult(EntityManager em);
+    default List<T> getResultList(EntityManager em){
+        return getResultList(em, false);
+    }
+    List<T> getResultList(EntityManager em, boolean isNative);
+    
+    default T getSingleResult(EntityManager em) {
+        return getSingleResult(em, false);
+    }
+    T getSingleResult(EntityManager em, boolean isNative);
     
     enum Direction{
         ASC,DESC;

@@ -10,9 +10,9 @@ public class QueryFilterImpl implements QueryFilter{
     private final String prefix;
     
     List<QueryFilterEntry> entrys;
-    List<SQLOperation> sqlOperations;
-    List<Operation> operations;
-    private enum Operation{
+    List<RelationalOperator> sqlOperations;
+    List<LogicOperator> operations;
+    private enum LogicOperator{
         AND,OR;
     }
     
@@ -27,18 +27,18 @@ public class QueryFilterImpl implements QueryFilter{
     }
     
     @Override
-    public QueryFilter and(String name, SQLOperation operation, Object value) {
-        addOperation(name, value, operation, Operation.AND);
+    public QueryFilter and(String name, RelationalOperator operation, Object value) {
+        addOperation(name, value, operation, LogicOperator.AND);
         return this;
     }
     @Override
-    public QueryFilter or(String name, SQLOperation operation, Object value) {
-        addOperation(name, value, operation, Operation.OR);
+    public QueryFilter or(String name, RelationalOperator operation, Object value) {
+        addOperation(name, value, operation, LogicOperator.OR);
         return this;
     }
     
     
-    private void addOperation(String name, Object value, SQLOperation sqlOperation, Operation operation) {
+    private void addOperation(String name, Object value, RelationalOperator sqlOperation, LogicOperator operation) {
         entrys.add(new QueryFilterEntry(name, value));
         sqlOperations.add(sqlOperation);
         operations.add(operation);
@@ -50,13 +50,13 @@ public class QueryFilterImpl implements QueryFilter{
     public void where(StringBuilder sql) {
         for(int i = 0; i < entrys.size(); i++) {
             QueryFilterEntry entry = entrys.get(i);
-            SQLOperation sqlOperation = sqlOperations.get(i);
-            Operation operation = operations.get(i);
+            RelationalOperator rela = sqlOperations.get(i);
+            LogicOperator logic = operations.get(i);
             
             if(i != 0) {
-                sql.append(operation.name());
+                sql.append(logic.name());
             }
-            sql.append(entry.getName()).append(sqlOperation.getSymbol()).append(COLON).append(prefix).append(i).append(BLANK);
+            sql.append(entry.getName()).append(rela.getSymbol()).append(COLON).append(prefix).append(i).append(BLANK);
         }
     }
     @Override

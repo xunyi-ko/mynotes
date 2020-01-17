@@ -13,7 +13,7 @@ import org.springframework.test.context.junit4.SpringRunner;
 
 import com.xunyi_ko.mynotes.data.SysUserData;
 import com.xunyi_ko.mynotes.persistence.QueryFilterImpl;
-import com.xunyi_ko.mynotes.persistence.SQLOperation;
+import com.xunyi_ko.mynotes.persistence.RelationalOperator;
 import com.xunyi_ko.mynotes.persistence.SimpleQuery;
 import com.xunyi_ko.mynotes.persistence.SimpleQueryImpl;
 
@@ -27,7 +27,7 @@ public class QueryTest {
     public void select() {
         SimpleQuery<SysUserData> query = new SimpleQueryImpl<>(SysUserData.class);
         query.select("user_id userId", "username username")
-        .from("sys_user").where(new QueryFilterImpl().and("user_id", SQLOperation.EQUALS, 1));
+        .from("sys_user").where(new QueryFilterImpl().and("user_id", RelationalOperator.EQUALS, 1));
         
         List<SysUserData> list = query.getResultList(em);
         
