@@ -1,149 +1,149 @@
 oracle
-	´´½¨±í¿Õ¼ä
+	åˆ›å»ºè¡¨ç©ºé—´
 		create tablespace tsname
-		datafile '±í¿Õ¼äÂ·¾¶£¬ÒÔdbfÎªºó×º'
+		datafile 'è¡¨ç©ºé—´è·¯å¾„ï¼Œä»¥dbfä¸ºåç¼€'
 		size 100m
-		autoextend on	--µ±±í¿Õ¼ä²»×ãÊ±×Ô¶¯À©Èİ
-		next 10m;	--Ò»´ÎÀ©Èİ10MB
+		autoextend on	--å½“è¡¨ç©ºé—´ä¸è¶³æ—¶è‡ªåŠ¨æ‰©å®¹
+		next 10m;	--ä¸€æ¬¡æ‰©å®¹10MB
 	
-	É¾³ı±í¿Õ¼ä
+	åˆ é™¤è¡¨ç©ºé—´
 		drop tablespace tsname;
 	
-	´´½¨ÓÃ»§
+	åˆ›å»ºç”¨æˆ·
 		create user username
 		identified by password
 		default tablespace tsname;
 	
-	¸øÓÃ»§ÊÚÈ¨	oracleÊı¾İ¿âÖĞ³£ÓÃµÄ½ÇÉ«
-	connect--Á¬½Ó½ÇÉ«£¬»ù±¾½ÇÉ«
-	resource--¿ª·¢Õß½ÇÉ«
-	dba--³¬¼¶¹ÜÀíÔ±½ÇÉ«
-	grant dba to username;--ÊÚÈ¨
+	ç»™ç”¨æˆ·æˆæƒ	oracleæ•°æ®åº“ä¸­å¸¸ç”¨çš„è§’è‰²
+	connect--è¿æ¥è§’è‰²ï¼ŒåŸºæœ¬è§’è‰²
+	resource--å¼€å‘è€…è§’è‰²
+	dba--è¶…çº§ç®¡ç†å‘˜è§’è‰²
+	grant dba to username;--æˆæƒ
 	
-	Êı¾İÀàĞÍ			ÃèÊö
-	Varchar varchar2	±íÊ¾Ò»¸ö×Ö·û´®
-	NUMBER				NUMBER(n)±íÊ¾Ò»¸öÕûÊı£¬³¤¶ÈÊÇn
-						NUMBER(m,n)±íÊ¾Ò»¸öĞ¡Êı£¬×Ü³¤¶ÈÊÇm£¬Ğ¡Êı²¿·ÖÊÇn£¬ÕûÊı²¿·ÖÊÇm-n
-	DATA				ÈÕÆÚÀàĞÍ	ÄêÔÂÈÕÊ±·ÖÃë
-	CLOB				´ó¶ÔÏó£¬±íÊ¾´óÎÄ±¾Êı¾İÀàĞÍ£¬¿É´æ4G
-	BLOB				´ó¶ÔÏó£¬±íÊ¾¶ş½øÖÆÊı¾İ£¬¿É´æ4G
+	æ•°æ®ç±»å‹			æè¿°
+	Varchar varchar2	è¡¨ç¤ºä¸€ä¸ªå­—ç¬¦ä¸²
+	NUMBER				NUMBER(n)è¡¨ç¤ºä¸€ä¸ªæ•´æ•°ï¼Œé•¿åº¦æ˜¯n
+						NUMBER(m,n)è¡¨ç¤ºä¸€ä¸ªå°æ•°ï¼Œæ€»é•¿åº¦æ˜¯mï¼Œå°æ•°éƒ¨åˆ†æ˜¯nï¼Œæ•´æ•°éƒ¨åˆ†æ˜¯m-n
+	DATA				æ—¥æœŸç±»å‹	å¹´æœˆæ—¥æ—¶åˆ†ç§’
+	CLOB				å¤§å¯¹è±¡ï¼Œè¡¨ç¤ºå¤§æ–‡æœ¬æ•°æ®ç±»å‹ï¼Œå¯å­˜4G
+	BLOB				å¤§å¯¹è±¡ï¼Œè¡¨ç¤ºäºŒè¿›åˆ¶æ•°æ®ï¼Œå¯å­˜4G
 	
-	´´½¨Ò»¸öperson±í
+	åˆ›å»ºä¸€ä¸ªpersonè¡¨
 		create table perason(
 			pid number(20),
 			pname varchar2(10)
 		);
 	
-	ĞŞ¸Ä±í½á¹¹
-		Ìí¼ÓÒ»ÁĞ
+	ä¿®æ”¹è¡¨ç»“æ„
+		æ·»åŠ ä¸€åˆ—
 			alter table person add gender number(1);
 		
-		ĞŞ¸ÄÁĞÀàĞÍ
+		ä¿®æ”¹åˆ—ç±»å‹
 			alter table person modify gender char(1);
 		
-		ĞŞ¸ÄÁĞÃû³Æ
+		ä¿®æ”¹åˆ—åç§°
 			alter table person rename column gender to sex;
 		
-		É¾³ıÒ»ÁĞ
+		åˆ é™¤ä¸€åˆ—
 			alter table person drop column sex;
 	
-	Êı¾İµÄÔöÉ¾¸Ä	×¢Òâ£¡ÔöÉ¾¸ÄºóÒªÌá½»ÊÂÎñ commit;
-		Ìí¼ÓÒ»Ìõ¼ÇÂ¼
-			insert into person (pid,pname) values(1,'Ğ¡Ã÷');
+	æ•°æ®çš„å¢åˆ æ”¹	æ³¨æ„ï¼å¢åˆ æ”¹åè¦æäº¤äº‹åŠ¡ commit;
+		æ·»åŠ ä¸€æ¡è®°å½•
+			insert into person (pid,pname) values(1,'å°æ˜');
 		
-		ĞŞ¸ÄÒ»Ìõ¼ÇÂ¼
-			updateperson set pname='Ğ¡Âí' where pid=1;
+		ä¿®æ”¹ä¸€æ¡è®°å½•
+			updateperson set pname='å°é©¬' where pid=1;
 		
-		É¾³ı
-			delete from person;	--É¾³ı±íÖĞÈ«²¿¼ÇÂ¼
-			drop table person;	--É¾³ı±í½á¹¹
-			truncate table person	--ÏÈÉ¾³ı±í£¬ÔÙÖØĞÂ´´½¨±í£¬µÈÍ¬ÓÚÉ¾³ıËùÓĞ¼ÇÂ¼
+		åˆ é™¤
+			delete from person;	--åˆ é™¤è¡¨ä¸­å…¨éƒ¨è®°å½•
+			drop table person;	--åˆ é™¤è¡¨ç»“æ„
+			truncate table person	--å…ˆåˆ é™¤è¡¨ï¼Œå†é‡æ–°åˆ›å»ºè¡¨ï¼Œç­‰åŒäºåˆ é™¤æ‰€æœ‰è®°å½•
 	
-	ĞòÁĞ£ºÄ¬ÈÏ´Ó1¿ªÊ¼£¬Ò»´ÎµİÔö£¬Ö÷ÒªÓÃÀ´¸øÖ÷¼ü¸³ÖµÊ¹ÓÃ
-		ĞòÁĞ²»ÊôÓÚÈÎºÎÒ»ÕÅ±í£¬µ«ÊÇ¿ÉÒÔÂß¼­ºÍ±í×ö°ó¶¨
+	åºåˆ—ï¼šé»˜è®¤ä»1å¼€å§‹ï¼Œä¸€æ¬¡é€’å¢ï¼Œä¸»è¦ç”¨æ¥ç»™ä¸»é”®èµ‹å€¼ä½¿ç”¨
+		åºåˆ—ä¸å±äºä»»ä½•ä¸€å¼ è¡¨ï¼Œä½†æ˜¯å¯ä»¥é€»è¾‘å’Œè¡¨åšç»‘å®š
 		create sequence s_person;
-		select s_person.nextval from dual;	--dual:Ğé±í£¬Ö»ÊÇÓÃÀ´²¹È«Óï·¨£¬Ã»ÓĞÈÎºÎÒâÒå
-			--s_person.nextvalÎªÏÂÒ»¸öÊı×Ö
-			--s_person.currvalÎªµ±Ç°Êı¾İ
-			Ìí¼Ó¼ÇÂ¼Ê±¿ÉÒÔÓÃ
+		select s_person.nextval from dual;	--dual:è™šè¡¨ï¼Œåªæ˜¯ç”¨æ¥è¡¥å…¨è¯­æ³•ï¼Œæ²¡æœ‰ä»»ä½•æ„ä¹‰
+			--s_person.nextvalä¸ºä¸‹ä¸€ä¸ªæ•°å­—
+			--s_person.currvalä¸ºå½“å‰æ•°æ®
+			æ·»åŠ è®°å½•æ—¶å¯ä»¥ç”¨
 				insert into person(pid,pname)values(s_person.nextval,'name');
 	
-	scottÓÃ»§£¬ÃÜÂëtiger
-		½âËøscottÓÃ»§¡£ĞèÒª³¬¼¶¹ÜÀíÔ±È¨ÏŞ
+	scottç”¨æˆ·ï¼Œå¯†ç tiger
+		è§£é”scottç”¨æˆ·ã€‚éœ€è¦è¶…çº§ç®¡ç†å‘˜æƒé™
 			alter user scott account unlock;
-		½âËøÃÜÂë[Ò²¿ÉÓÃÓÚÖØÖÃÃÜÂë]
+		è§£é”å¯†ç [ä¹Ÿå¯ç”¨äºé‡ç½®å¯†ç ]
 			alter user scott identified by tiger;
 	
-	µ¥ĞĞº¯Êı£º×÷ÓÃÓÚÒ»ĞĞ£¬·µ»ØÒ»¸öÖµ
-		×Ö·ûº¯Êı
-			select upper('aaa') from dual	--»ñµÃ´óĞ´µÄ×Ö·û´®
-			select lower('AAA') from dual	--»ñµÃĞ¡Ğ´µÄ×Ö·û´®
-		ÊıÖµº¯Êı
-			select round(26.16,2)from dual	--ËÄÉáÎåÈë£¬ºóÃæµÄ²ÎÊı±íÊ¾±£ÁôµÄĞ¡ÊıÎ»Êı£¬Èç¹ûÊÇ¸ºÊı£¬´ú±íÈ¡ÕûÊ®Õû°Ù¶ÔµÈ¡£
-			select trunc(26.16,1)from dual	--Ö±½Ó½ØÈ¡
-			select mod(10,3)from dual		--ÇóÓàÊı
-		ÈÕÆÚº¯Êı
-			select sysdate from dual;	--²éÑ¯µ±Ç°Ê±¼ä
-			select sysdate-e.hiredate from emp e;	--²éÑ¯µ±Ç°Ê±¼ä¼õÈ¥emp±íµÄÊı¾İ
-		×ª»»º¯Êı
-			ÈÕÆÚ×ª×Ö·û´®
+	å•è¡Œå‡½æ•°ï¼šä½œç”¨äºä¸€è¡Œï¼Œè¿”å›ä¸€ä¸ªå€¼
+		å­—ç¬¦å‡½æ•°
+			select upper('aaa') from dual	--è·å¾—å¤§å†™çš„å­—ç¬¦ä¸²
+			select lower('AAA') from dual	--è·å¾—å°å†™çš„å­—ç¬¦ä¸²
+		æ•°å€¼å‡½æ•°
+			select round(26.16,2)from dual	--å››èˆäº”å…¥ï¼Œåé¢çš„å‚æ•°è¡¨ç¤ºä¿ç•™çš„å°æ•°ä½æ•°ï¼Œå¦‚æœæ˜¯è´Ÿæ•°ï¼Œä»£è¡¨å–æ•´åæ•´ç™¾å¯¹ç­‰ã€‚
+			select trunc(26.16,1)from dual	--ç›´æ¥æˆªå–
+			select mod(10,3)from dual		--æ±‚ä½™æ•°
+		æ—¥æœŸå‡½æ•°
+			select sysdate from dual;	--æŸ¥è¯¢å½“å‰æ—¶é—´
+			select sysdate-e.hiredate from emp e;	--æŸ¥è¯¢å½“å‰æ—¶é—´å‡å»empè¡¨çš„æ•°æ®
+		è½¬æ¢å‡½æ•°
+			æ—¥æœŸè½¬å­—ç¬¦ä¸²
 				select ro_char(sysdate,'yyyy--mm--dd hh:mi:ss')from dual
-				select ro_char(sysdate,'yyyy--mm--dd hh24:mi:ss')from dual	--24Ğ¡Ê±
-				select ro_char(sysdate,'fm yyyy--mm--dd hh:mi:ss')from dual	--Èç¹ûÔÂ¡¢ÈÕÊÇ¸öÎ»Êı£¬²»ÏÔÊ¾0
-			×Ö·û´®×ªÈÕÆÚ
+				select ro_char(sysdate,'yyyy--mm--dd hh24:mi:ss')from dual	--24å°æ—¶
+				select ro_char(sysdate,'fm yyyy--mm--dd hh:mi:ss')from dual	--å¦‚æœæœˆã€æ—¥æ˜¯ä¸ªä½æ•°ï¼Œä¸æ˜¾ç¤º0
+			å­—ç¬¦ä¸²è½¬æ—¥æœŸ
 				select to_date('2018-10-22','yyyy--mm--dd hh:mi:ss')from dual
-		Í¨ÓÃº¯Êı
-			select nvl(e.comm,0) from emp e;	--Èç¹ûe.commÊÇnull£¬ÔòÎª0
-		Ìõ¼ş±í´ïÊ½
-			Í¨ÓÃĞ´·¨
+		é€šç”¨å‡½æ•°
+			select nvl(e.comm,0) from emp e;	--å¦‚æœe.commæ˜¯nullï¼Œåˆ™ä¸º0
+		æ¡ä»¶è¡¨è¾¾å¼
+			é€šç”¨å†™æ³•
 				select e.ename,
 					case e.ename
-						when 'SMITH' then 'Ê·ÃÜË¹'
-						when 'ALLEN' then '°¬Â×'
-						when 'WARD' then 'ÎÖµÂ'
-						else 'ÎŞÃû'	--¿ÉÒÔÊ¡ÂÔ
+						when 'SMITH' then 'å²å¯†æ–¯'
+						when 'ALLEN' then 'è‰¾ä¼¦'
+						when 'WARD' then 'æ²ƒå¾·'
+						else 'æ— å'	--å¯ä»¥çœç•¥
 						end
 			from emp e;
-			oracle×¨ÓÃĞ´·¨
-				oracleÖĞ³ıÁËÆğ±ğÃû£¬¶¼ÓÃµ¥ÒıºÅ
+			oracleä¸“ç”¨å†™æ³•
+				oracleä¸­é™¤äº†èµ·åˆ«åï¼Œéƒ½ç”¨å•å¼•å·
 				select e.ename
 					decode(e.ename,
-					'SMITH','Ê·ÃÜË¹',
-					'ALLEN','°¬Â×',
-					'WARD','ÎÖµÂ',
-					'ÎŞÃû'--¿ÉÒÔÊ¡ÂÔ) "±ğÃû"--Ë«ÒıºÅ¿ÉÒÔÊ¡ÂÔ
+					'SMITH','å²å¯†æ–¯',
+					'ALLEN','è‰¾ä¼¦',
+					'WARD','æ²ƒå¾·',
+					'æ— å'--å¯ä»¥çœç•¥) "åˆ«å"--åŒå¼•å·å¯ä»¥çœç•¥
 				from emp e;
-	¶àĞĞº¯Êı[¾ÛºÏº¯Êı]£º×÷ÓÃÓÚ¶àĞĞ£¬·µ»ØÒ»¸öÖµ
-		ÊıÑ§±í´ïÊ½
-			select count(*) from emp;	--Í³¼Æ
-			select sum(sal) from emp;	--×ÜºÍ
-			select max(sal) from emp;	--×î´óÖµ
-			select min(sal) from emp;	--×îĞ¡Öµ
-			select avg(sal) from emp;	--Æ½¾ùÖµ
+	å¤šè¡Œå‡½æ•°[èšåˆå‡½æ•°]ï¼šä½œç”¨äºå¤šè¡Œï¼Œè¿”å›ä¸€ä¸ªå€¼
+		æ•°å­¦è¡¨è¾¾å¼
+			select count(*) from emp;	--ç»Ÿè®¡
+			select sum(sal) from emp;	--æ€»å’Œ
+			select max(sal) from emp;	--æœ€å¤§å€¼
+			select min(sal) from emp;	--æœ€å°å€¼
+			select avg(sal) from emp;	--å¹³å‡å€¼
 	
-	·Ö×é²éÑ¯
-		²éÑ¯Ã¿¸ö²¿ÃÅµÄÆ½¾ù¹¤×Ê
+	åˆ†ç»„æŸ¥è¯¢
+		æŸ¥è¯¢æ¯ä¸ªéƒ¨é—¨çš„å¹³å‡å·¥èµ„
 			select e.deptno,avg(e.sal)
 			from emp e
 			group by e.deptno;
-		²éÑ¯Æ½¾ù¹¤×Ê¸ßÓÚ2000µÄ²¿ÃÅĞÅÏ¢
+		æŸ¥è¯¢å¹³å‡å·¥èµ„é«˜äº2000çš„éƒ¨é—¨ä¿¡æ¯
 			select e.deptno,avg(e.sal) a
 			from emp e
 			group by e.deptno
-			having avg(e.sal)>2000;	--a>2000ÊÇ´íµÄ¡£ËùÓĞÌõ¼ş¶¼²»ÄÜÊ¹ÓÃ±ğÃûÀ´ÅĞ¶Ï
+			having avg(e.sal)>2000;	--a>2000æ˜¯é”™çš„ã€‚æ‰€æœ‰æ¡ä»¶éƒ½ä¸èƒ½ä½¿ç”¨åˆ«åæ¥åˆ¤æ–­
 			
-	¶à±í²éÑ¯ÖĞµÄÒ»Ğ©¸ÅÄî
-		µÑ¿¨¶û»ı	Í¬Ê±²éÑ¯¶àÕÅ±íÊ±£¬»á°Ñ¼ÇÂ¼ÊıÏà³ËÏÔÊ¾£¬µ¼ÖÂ³öÏÖÎŞÓÃÊı¾İ
-		µÈÖµÁ¬½Ó
+	å¤šè¡¨æŸ¥è¯¢ä¸­çš„ä¸€äº›æ¦‚å¿µ
+		ç¬›å¡å°”ç§¯	åŒæ—¶æŸ¥è¯¢å¤šå¼ è¡¨æ—¶ï¼Œä¼šæŠŠè®°å½•æ•°ç›¸ä¹˜æ˜¾ç¤ºï¼Œå¯¼è‡´å‡ºç°æ— ç”¨æ•°æ®
+		ç­‰å€¼è¿æ¥
 			select * 
 			from emp e,dept d
 			where e.deptno=d.deptno;
-		ÄÚÁ¬½Ó
+		å†…è¿æ¥
 			select * 
 			from emp e inner join dept d
 			on e.deptno=d.deptno;
 		
-		orcaleÖĞ×¨ÓÃÍâÁ¬½Ó
+		orcaleä¸­ä¸“ç”¨å¤–è¿æ¥
 			select *
 			from emp e,dept d
 			where e.deptno=d.deptno(+);
@@ -152,76 +152,76 @@ oracle
 			from emp e,dept d
 			where e.deptno(+)=d.deptno;
 		
-		×ÔÁ¬½Ó
+		è‡ªè¿æ¥
 			select e1.ename,e2.name
 			from emp e1,emp e2
 			where e1.mgr = e2.empno;
 		
-		×Ó²éÑ¯	°Ñ²éÑ¯Óï¾ä×÷Îª²éÑ¯Ìõ¼ş
+		å­æŸ¥è¯¢	æŠŠæŸ¥è¯¢è¯­å¥ä½œä¸ºæŸ¥è¯¢æ¡ä»¶
 			select * from emp where sal in
 			(select sal from emp were deptno=10);
 		
-		oracleÖĞµÄ·ÖÒ³
-			rownumĞĞºÅ£ºµ±ÎÒÃÇ×öselect²Ù×÷Ê±£¬»á×Ô¶¯³öÏÖĞĞºÅ¡£
+		oracleä¸­çš„åˆ†é¡µ
+			rownumè¡Œå·ï¼šå½“æˆ‘ä»¬åšselectæ“ä½œæ—¶ï¼Œä¼šè‡ªåŠ¨å‡ºç°è¡Œå·ã€‚
 				select rownum,e.* from emp e order by e.sal desc;
-					ÅÅĞò£¬²¢ÏÔÊ¾ĞĞºÅ¡£µ«ÊÇÓÉÓÚÊÇÏÈ²éÑ¯ºóÅÅĞò£¬ĞĞºÅÔÚÅÅĞòÇ°ÒÑ¾­¶¨ÁË£¬ËùÒÔĞĞºÅÊÇÂÒµÄ
+					æ’åºï¼Œå¹¶æ˜¾ç¤ºè¡Œå·ã€‚ä½†æ˜¯ç”±äºæ˜¯å…ˆæŸ¥è¯¢åæ’åºï¼Œè¡Œå·åœ¨æ’åºå‰å·²ç»å®šäº†ï¼Œæ‰€ä»¥è¡Œå·æ˜¯ä¹±çš„
 				select rownum,t.*
 				from (select e,* from emp e order by e.sal desc) t;
-					ÅÅĞòºóÔÙÖØĞÂÌá¹©ĞĞºÅ
-			ÀûÓÃrownum½øĞĞ·ÖÒ³²éÑ¯
+					æ’åºåå†é‡æ–°æä¾›è¡Œå·
+			åˆ©ç”¨rownumè¿›è¡Œåˆ†é¡µæŸ¥è¯¢
 				select * from(
 					select rownum rn,e.* from(
 						select * from emp order by sal desc
 					) e where rownum<11
 				)where rn>5;
-				ÓÃ¸ørownumÈ¡±ğÃûµÄ·½Ê½£¬ÔÚÍâ²ãµ÷ÓÃÄÚ²ãµÄrownumÖµ
+				ç”¨ç»™rownumå–åˆ«åçš„æ–¹å¼ï¼Œåœ¨å¤–å±‚è°ƒç”¨å†…å±‚çš„rownumå€¼
 		
-	ÊÓÍ¼£ºÌá¹©Ò»¸ö²éÑ¯µÄ´°¿Ú£¬ËùÓĞÊı¾İÀ´×ÔÔ­±í
-		ÓÃ²éÑ¯µ½µÄÓï¾äÀ´´´½¨Ò»¸ö±í
+	è§†å›¾ï¼šæä¾›ä¸€ä¸ªæŸ¥è¯¢çš„çª—å£ï¼Œæ‰€æœ‰æ•°æ®æ¥è‡ªåŸè¡¨
+		ç”¨æŸ¥è¯¢åˆ°çš„è¯­å¥æ¥åˆ›å»ºä¸€ä¸ªè¡¨
 			create table emp as select * from scott.emp;
-		´´½¨ÊÓÍ¼[±ØĞëÓĞdbaÈ¨ÏŞ]
+		åˆ›å»ºè§†å›¾[å¿…é¡»æœ‰dbaæƒé™]
 			create view v_emp as select ename,job from emp;
-		´´½¨Ö»¶ÁÊÓÍ¼
+		åˆ›å»ºåªè¯»è§†å›¾
 			create view v_emp1 as select ename,job from emp with read only;
-		²éÑ¯ÊÓÍ¼
+		æŸ¥è¯¢è§†å›¾
 			select * from v_emp;
-		ĞŞ¸ÄÊÓÍ¼(²»ÍÆ¼ö)--µÈÓÚĞŞ¸ÄÔ­±í
+		ä¿®æ”¹è§†å›¾(ä¸æ¨è)--ç­‰äºä¿®æ”¹åŸè¡¨
 			update v_emp set job='CLERK' where ename='ALLEN';
 			commit
-		×÷ÓÃ
-			1.ÊÓÍ¼¿ÉÒÔÆÁ±ÎµôÒ»Ğ©Ãô¸ĞÁĞ
-			2.±£Ö¤×Ü²¿ºÍ·Ö²¼Êı¾İ¼°Ê±Í³Ò»
+		ä½œç”¨
+			1.è§†å›¾å¯ä»¥å±è”½æ‰ä¸€äº›æ•æ„Ÿåˆ—
+			2.ä¿è¯æ€»éƒ¨å’Œåˆ†å¸ƒæ•°æ®åŠæ—¶ç»Ÿä¸€
 	
-	Ë÷Òı£º¾ÍÊÇÔÚ±íµÄÁĞÉÏ¹¹½¨Ò»¸ö¶ş²æÊ÷
-		´ïµ½´ó·ù¶ÈÌá¸ß²éÑ¯Ğ§ÂÊµÄÄ¿µÄ£¬µ«ÊÇË÷Òı»áÓ°ÏìÔöÉ¾¸ÄµÄĞ§ÂÊ
-		µ¥ÁĞË÷Òı
+	ç´¢å¼•ï¼šå°±æ˜¯åœ¨è¡¨çš„åˆ—ä¸Šæ„å»ºä¸€ä¸ªäºŒå‰æ ‘
+		è¾¾åˆ°å¤§å¹…åº¦æé«˜æŸ¥è¯¢æ•ˆç‡çš„ç›®çš„ï¼Œä½†æ˜¯ç´¢å¼•ä¼šå½±å“å¢åˆ æ”¹çš„æ•ˆç‡
+		å•åˆ—ç´¢å¼•
 			create index idx_ename on emp(ename);
-			µ¥ÁĞË÷Òı´¥·¢¹æÔò£ºÌõ¼ş±ØĞëÊÇË÷ÒıµÄÔ­Ê¼Öµ
-		¸´ºÏË÷Òı
+			å•åˆ—ç´¢å¼•è§¦å‘è§„åˆ™ï¼šæ¡ä»¶å¿…é¡»æ˜¯ç´¢å¼•çš„åŸå§‹å€¼
+		å¤åˆç´¢å¼•
 			create index idx_enamejob on emp(ename,job);
-			¸´ºÏË÷ÒıµÚÒ»ÁĞÎªÓÅÏÈ¼ìË÷ÁĞ
-			Èç¹ûÒª´¥·¢¸´ºÏË÷Òı£¬±ØĞë°üº¬ÓÅÏÈ¼ìË÷ÁĞÖĞµÄÔ­Ê¼Öµ
+			å¤åˆç´¢å¼•ç¬¬ä¸€åˆ—ä¸ºä¼˜å…ˆæ£€ç´¢åˆ—
+			å¦‚æœè¦è§¦å‘å¤åˆç´¢å¼•ï¼Œå¿…é¡»åŒ…å«ä¼˜å…ˆæ£€ç´¢åˆ—ä¸­çš„åŸå§‹å€¼
 	
-	pl/sql±à³ÌÓïÑÔ	¶ÔsqlÔ¤Ñ¹µÄÀ©Õ¹£¬Ê¹µÃsqlÓïÑÔ¾ßÓĞ¹ı³Ì»¯±à³ÌµÄÌØĞÔ
-		±ÈÒ»°ãµÄ¹ı³Ì»¯±à³ÌÓïÑÔ¸ü¼ÓÁé»î¸ßĞ§£¬Ö÷ÒªÓÃÓÚ±àĞ´´æ´¢¹ı³ÌºÍ´æ´¢º¯ÊıµÈ
+	pl/sqlç¼–ç¨‹è¯­è¨€	å¯¹sqlé¢„å‹çš„æ‰©å±•ï¼Œä½¿å¾—sqlè¯­è¨€å…·æœ‰è¿‡ç¨‹åŒ–ç¼–ç¨‹çš„ç‰¹æ€§
+		æ¯”ä¸€èˆ¬çš„è¿‡ç¨‹åŒ–ç¼–ç¨‹è¯­è¨€æ›´åŠ çµæ´»é«˜æ•ˆï¼Œä¸»è¦ç”¨äºç¼–å†™å­˜å‚¨è¿‡ç¨‹å’Œå­˜å‚¨å‡½æ•°ç­‰
 		
-		ÉùÃ÷·½·¨
+		å£°æ˜æ–¹æ³•
 			declare
 				i name(3) := 5;
 			begin
 			
 			end;
-			¸³Öµ
+			èµ‹å€¼
 				:=
 				select ename into name from emp where empno = 1;
-			Êä³öÓï¾ä
+			è¾“å‡ºè¯­å¥
 				dbms_output.put_line(name);
-			±äÁ¿
-				emp.ename%type	--ÒıÓÃĞÍ±äÁ¿
-				emp%rowtype		--¼ÇÂ¼ĞÍ±äÁ¿£¬´æ´¢Ò»Ìõ¼ÇÂ¼
-			oracleÖĞ×Ö·û´®ÓÃ||Á¬½Ó
+			å˜é‡
+				emp.ename%type	--å¼•ç”¨å‹å˜é‡
+				emp%rowtype		--è®°å½•å‹å˜é‡ï¼Œå­˜å‚¨ä¸€æ¡è®°å½•
+			oracleä¸­å­—ç¬¦ä¸²ç”¨||è¿æ¥
 			
-		if±í´ïÊ½
+		ifè¡¨è¾¾å¼
 			declare
 				i name(3) := &n;
 			begin
@@ -234,29 +234,29 @@ oracle
 				
 				end if
 			end;
-			&´ú±íÊäÈë
+			&ä»£è¡¨è¾“å…¥
 		
-		Ñ­»·
-			whileÑ­»·
-				while ±í´ïÊ½ loop
-					sqlÓï¾ä
+		å¾ªç¯
+			whileå¾ªç¯
+				while è¡¨è¾¾å¼ loop
+					sqlè¯­å¥
 				end loop
-			exitÑ­»·
+			exitå¾ªç¯
 				loop
-					exit when ±í´ïÊ½;
-					sqlÓï¾ä
+					exit when è¡¨è¾¾å¼;
+					sqlè¯­å¥
 				end loop;
-			forÑ­»·
+			forå¾ªç¯
 				for i in 1..10 loop
-					sqlÓï¾ä
+					sqlè¯­å¥
 				end loop;
-		ÓÎ±ê£º¿ÉÒÔ´æ·Å¶à¸ö¶ÔÏó£¬¶àĞĞ¼ÇÂ¼
+		æ¸¸æ ‡ï¼šå¯ä»¥å­˜æ”¾å¤šä¸ªå¯¹è±¡ï¼Œå¤šè¡Œè®°å½•
 			declare
 				cursor c1 is select * from emp;
 			begin
-				open c1;	--¿ÉÒÔ´ø²ÎÊı
+				open c1;	--å¯ä»¥å¸¦å‚æ•°
 					loop
-						fetch c1 into emprow;	--c1·ÅÈëemprowÖĞ£¬ÓÃÓÚsqlÓï¾ä
+						fetch c1 into emprow;	--c1æ”¾å…¥emprowä¸­ï¼Œç”¨äºsqlè¯­å¥
 						exit when c1%notfound;
 					end loop;
 				close c1;
@@ -267,44 +267,44 @@ oracle
 				is select empno from emp where deptno=eno;
 				en emp.empno%type
 			begin
-				open c2(10);	--¿ÉÒÔ´ø²ÎÊı
+				open c2(10);	--å¯ä»¥å¸¦å‚æ•°
 					loop
-						fetch c2 into en;	--c1·ÅÈëemprowÖĞ£¬ÓÃÓÚsqlÓï¾ä
+						fetch c2 into en;	--c1æ”¾å…¥emprowä¸­ï¼Œç”¨äºsqlè¯­å¥
 						exit when c2%notfound;
 						update emp set sal=sal+100 where empno=en;
 						commit;
 					end loop;
 				close c1;
 			end;
-		´æ´¢¹ı³Ì£ºÌáÇ°ÒÑ¾­±àÒëºÃµÄÒ»¶Îpl/sqlÓïÑÔ£¬
-			·ÅÖÃÔÚÊı¾İ¿â¶Ë¿ÉÒÔÖ±½Ó±»µ÷ÓÃ¡£
-			create [or replace] procedure ¹ı³ÌÃû³Æ(²ÎÊı ²ÎÊıÀàĞÍ)
-			AS		--µÈÍ¬ÓÚdeclare
+		å­˜å‚¨è¿‡ç¨‹ï¼šæå‰å·²ç»ç¼–è¯‘å¥½çš„ä¸€æ®µpl/sqlè¯­è¨€ï¼Œ
+			æ”¾ç½®åœ¨æ•°æ®åº“ç«¯å¯ä»¥ç›´æ¥è¢«è°ƒç”¨ã€‚
+			create [or replace] procedure è¿‡ç¨‹åç§°(å‚æ•° å‚æ•°ç±»å‹)
+			AS		--ç­‰åŒäºdeclare
 			
 			begin
-				sqlÓï¾ä
+				sqlè¯­å¥
 			end
 		
-		´æ´¢º¯Êı
-			create[or replace] function º¯ÊıÃû(²ÎÊı ²ÎÊıÀàĞÍ) return Êı¾İÀàĞÍ is
+		å­˜å‚¨å‡½æ•°
+			create[or replace] function å‡½æ•°å(å‚æ•° å‚æ•°ç±»å‹) return æ•°æ®ç±»å‹ is
 			
 			begin
 			
-				return ½á¹û±äÁ¿;
-			end º¯ÊıÃû;
-			´æ´¢º¯Êıµ÷ÓÃµÄÊ±ºò£¬·µ»ØÖµĞèÒª½ÓÊÕ
+				return ç»“æœå˜é‡;
+			end å‡½æ•°å;
+			å­˜å‚¨å‡½æ•°è°ƒç”¨çš„æ—¶å€™ï¼Œè¿”å›å€¼éœ€è¦æ¥æ”¶
 		
-		´¥·¢Æ÷	¾ÍÊÇÖÆ¶¨Ò»¸ö¹æÔò£¬ÔÚÎÒÃÇ×öÔöÉ¾¸Ä²Ù×÷Ê±£¬Âú×ã¹æÔòÊ±×Ô¶¯´¥·¢£¬ÎŞĞèµ÷ÓÃ
-			Óï¾ä¼¶´¥·¢Æ÷
+		è§¦å‘å™¨	å°±æ˜¯åˆ¶å®šä¸€ä¸ªè§„åˆ™ï¼Œåœ¨æˆ‘ä»¬åšå¢åˆ æ”¹æ“ä½œæ—¶ï¼Œæ»¡è¶³è§„åˆ™æ—¶è‡ªåŠ¨è§¦å‘ï¼Œæ— éœ€è°ƒç”¨
+			è¯­å¥çº§è§¦å‘å™¨
 				create or replace trigger t1
 				after
 				insert
 				on person
 				declare
 				begin
-					dbms_output('ĞÂÔ±¹¤ÈëÖ°');
+					dbms_output('æ–°å‘˜å·¥å…¥èŒ');
 				end;
-			ĞĞ¼¶´¥·¢Æ÷
+			è¡Œçº§è§¦å‘å™¨
 				create or replace trigger t2
 				before
 				update
@@ -313,23 +313,23 @@ oracle
 				declare
 				begin
 					if :old.sal>:new then
-						raise_application_error(-20001,'´íÎóÌáÊ¾ĞÅÏ¢');--[-20001µ½-20999Ö®¼ä]
+						raise_application_error(-20001,'é”™è¯¯æç¤ºä¿¡æ¯');--[-20001åˆ°-20999ä¹‹é—´]
 					end if;
 				end;
 	
-	javaµ÷ÓÃ´æ´¢º¯Êı
-		//×¢²áÇı¶¯
+	javaè°ƒç”¨å­˜å‚¨å‡½æ•°
+		//æ³¨å†Œé©±åŠ¨
 		Class.forName("oracle.jdbc.driver.OracleDriver");
-		//µÃµ½ConnectionÁ¬½Ó
+		//å¾—åˆ°Connectionè¿æ¥
 		Connection  conn = DriverManager.getConnection("jdbc:oracle:thin:@192.168.88.6:1521:orcl",root,root);
-		//µÃµ½Ô¤±àÒëµÄ¶ÔÏó
+		//å¾—åˆ°é¢„ç¼–è¯‘çš„å¯¹è±¡
 		CallableStatement cs = conn.prepareCall("{call procedure(?,?)}");
-		//¸ø²ÎÊı¸³Öµ
+		//ç»™å‚æ•°èµ‹å€¼
 		cs.setObject(1,7788);
 		cs.registerOutParameter(2,OracleTypes.NUMBER);
-		//Ö´ĞĞ²éÑ¯²Ù×÷
+		//æ‰§è¡ŒæŸ¥è¯¢æ“ä½œ
 		cs.execute();
 		System.out.println(cs.getObject(2));
-		//ÊÍ·Å×ÊÔ´
+		//é‡Šæ”¾èµ„æº
 		cs.close();
 		conn.close();

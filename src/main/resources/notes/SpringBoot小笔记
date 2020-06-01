@@ -1,16 +1,16 @@
-Ñ§Ï°Ä¿±ê
-	1.ÄÜ¹»Àí½âSpringµÄÓÅÈ±µã
-	2.Àí½âSpringBootµÄÌØµã
-	3.ÄÜ¹»Àí½âSpringBootµÄºËĞÄ¹¦ÄÜ
-	4.´î½¨»·¾³
-	5.Íê³ÉApplication.propertiesÅäÖÃÎÄ¼şµÄÅäÖÃ
-	6.Íê³Éapplication.ymlÅäÖÃÎÄ¼şµÄÅäÖÃ
-	7.Íê³ÉSpringBoot¼Ì³ĞMybatis
-	8.Íê³ÉSpringBoot¼Ì³Ğjunit
-	9.Íê³ÉSpringBoot¼Ì³ĞSpringDataJpa
+å­¦ä¹ ç›®æ ‡
+	1.èƒ½å¤Ÿç†è§£Springçš„ä¼˜ç¼ºç‚¹
+	2.ç†è§£SpringBootçš„ç‰¹ç‚¹
+	3.èƒ½å¤Ÿç†è§£SpringBootçš„æ ¸å¿ƒåŠŸèƒ½
+	4.æ­å»ºç¯å¢ƒ
+	5.å®ŒæˆApplication.propertiesé…ç½®æ–‡ä»¶çš„é…ç½®
+	6.å®Œæˆapplication.ymlé…ç½®æ–‡ä»¶çš„é…ç½®
+	7.å®ŒæˆSpringBootç»§æ‰¿Mybatis
+	8.å®ŒæˆSpringBootç»§æ‰¿junit
+	9.å®ŒæˆSpringBootç»§æ‰¿SpringDataJpa
 
 
-ÔÚpom.xmlÖĞĞ´ÈëÆğ²½ÒÀÀµ
+åœ¨pom.xmlä¸­å†™å…¥èµ·æ­¥ä¾èµ–
 <parent>
     <groupId>org.springframework.boot</groupId>
     <artifactId>spring-boot-starter-parent</artifactId>
@@ -24,11 +24,11 @@
     </dependency>
 </dependencies>
 
-ÉèÖÃÈÈ²¿Êğ
+è®¾ç½®çƒ­éƒ¨ç½²
 <dependency>
     <groupId>org.springframework.boot</groupId>
     <artifactId>spring-boot-devtools</artifactId>
 </dependency>
-	ÔÚsettingÖĞÉèÖÃ
+	åœ¨settingä¸­è®¾ç½®
 		compilier	Builder project automatically
-	¿ì½İ¼üshift+ctrl+alt+/	Ñ¡Ôñcompiler.automake.allow.when.app.running
+	å¿«æ·é”®shift+ctrl+alt+/	é€‰æ‹©compiler.automake.allow.when.app.running

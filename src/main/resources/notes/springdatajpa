@@ -1,64 +1,64 @@
 spring data jap
-	day1:ormË¼ÏëºÍhibernateÒÔ¼°jpaµÄ¸ÅÊöºÍjpdµÄ»ù±¾²Ù×÷
-	day2:springdatajpaµÄÔËÐÐÔ­ÀíÒÔ¼°²Ù×÷
-	day3:¶à±í²Ù×÷£¬¸´ÔÓ²éÑ¯
+	day1:ormæ€æƒ³å’Œhibernateä»¥åŠjpaçš„æ¦‚è¿°å’Œjpdçš„åŸºæœ¬æ“ä½œ
+	day2:springdatajpaçš„è¿è¡ŒåŽŸç†ä»¥åŠæ“ä½œ
+	day3:å¤šè¡¨æ“ä½œï¼Œå¤æ‚æŸ¥è¯¢
 
-µÚÒ»	ormË¼Ïë
-	Ö÷ÒªÄ¿µÄ£º²Ù×÷ÊµÌåÀà¾ÍÏàµ±ÓÚ²Ù×÷Êý¾Ý¿â±í
-	½¨Á¢Á½¸öÓ³Éä¹ØÏµ£º
-		ÊµÌåÀàºÍ±íµÄÓ³Éä¹ØÏµ
-		ÊµÌåÀàÖÐÊôÐÔºÍ±íÖÐ×Ö¶ÎµÄÓ³Éä¹ØÏµ
-	²»ÔÙÖØµã¹Ø×¢sqlÓï¾ä
+ç¬¬ä¸€	ormæ€æƒ³
+	ä¸»è¦ç›®çš„ï¼šæ“ä½œå®žä½“ç±»å°±ç›¸å½“äºŽæ“ä½œæ•°æ®åº“è¡¨
+	å»ºç«‹ä¸¤ä¸ªæ˜ å°„å…³ç³»ï¼š
+		å®žä½“ç±»å’Œè¡¨çš„æ˜ å°„å…³ç³»
+		å®žä½“ç±»ä¸­å±žæ€§å’Œè¡¨ä¸­å­—æ®µçš„æ˜ å°„å…³ç³»
+	ä¸å†é‡ç‚¹å…³æ³¨sqlè¯­å¥
 	
-	ÊµÏÖÁËormË¼ÏëµÄ¿ò¼Ü£ºmybatisºÍhibernate
+	å®žçŽ°äº†ormæ€æƒ³çš„æ¡†æž¶ï¼šmybatiså’Œhibernate
 	
-µÚ¶þ	hibernate¿ò¼Ü½éÉÜ
-	hibernateÊÇÒ»¸ö¿ªÔ´µÄ¶ÔÏó¹ØÏµÓ³Éä¿ò¼Ü
-		Ëü¶ÔJDBC½øÐÐÁË·Ç³£ÇáÁ¿¼¶µÄ¶ÔÏó·â×°
-		Ëü½«POJOÓëÊý¾Ý¿â±í½¨Á¢Ó³Éä¹ØÏµ£¬ÊÇÒ»¸öÈ«×Ô¶¯µÄorm¿ò¼Ü
+ç¬¬äºŒ	hibernateæ¡†æž¶ä»‹ç»
+	hibernateæ˜¯ä¸€ä¸ªå¼€æºçš„å¯¹è±¡å…³ç³»æ˜ å°„æ¡†æž¶
+		å®ƒå¯¹JDBCè¿›è¡Œäº†éžå¸¸è½»é‡çº§çš„å¯¹è±¡å°è£…
+		å®ƒå°†POJOä¸Žæ•°æ®åº“è¡¨å»ºç«‹æ˜ å°„å…³ç³»ï¼Œæ˜¯ä¸€ä¸ªå…¨è‡ªåŠ¨çš„ormæ¡†æž¶
 		
-µÚÈý	JPA¹æ·¶
-	jpa¹æ·¶£¬ÊµÏÖjpa¹æ·¶£¬ÄÚ²¿ÊÇÓÉ½Ó¿ÚºÍ³éÏóÀà×é³É
-µÚËÄ	jpaµÄ»ù±¾²Ù×÷
-	°¸Àý£ºÊÇ¿Í»§µÄÏà¹Ø²Ù×÷(ÔöÉ¾¸Ä²é)
-		¿Í»§£º¾ÍÊÇÒ»¼Ò¹«Ë¾
-	¿Í»§±í£º
-		i.´î½¨»·¾³µÄ¹ý³Ì
-			1.´´½¨maven¹¤³Ìµ¼Èë×ø±ê
-			2.ÐèÒªÅäÖÃjpaµÄºËÐÄÅäÖÃÎÄ¼þ
-				*Î»ÖÃ£ºÅäÖÃµ½ÀàÂ·¾¶ÏÂMETA-INFÎÄ¼þ¼ÐÏÂ
-				*ÃüÃû£ºpersistence.xml
+ç¬¬ä¸‰	JPAè§„èŒƒ
+	jpaè§„èŒƒï¼Œå®žçŽ°jpaè§„èŒƒï¼Œå†…éƒ¨æ˜¯ç”±æŽ¥å£å’ŒæŠ½è±¡ç±»ç»„æˆ
+ç¬¬å››	jpaçš„åŸºæœ¬æ“ä½œ
+	æ¡ˆä¾‹ï¼šæ˜¯å®¢æˆ·çš„ç›¸å…³æ“ä½œ(å¢žåˆ æ”¹æŸ¥)
+		å®¢æˆ·ï¼šå°±æ˜¯ä¸€å®¶å…¬å¸
+	å®¢æˆ·è¡¨ï¼š
+		i.æ­å»ºçŽ¯å¢ƒçš„è¿‡ç¨‹
+			1.åˆ›å»ºmavenå·¥ç¨‹å¯¼å…¥åæ ‡
+			2.éœ€è¦é…ç½®jpaçš„æ ¸å¿ƒé…ç½®æ–‡ä»¶
+				*ä½ç½®ï¼šé…ç½®åˆ°ç±»è·¯å¾„ä¸‹META-INFæ–‡ä»¶å¤¹ä¸‹
+				*å‘½åï¼špersistence.xml
 				<?xml version="1.0" encoding="UTF-8">
 				<persistence xmlns="http://java.xun.com/xml/ns/persistence" version="2.0">
 					<!--
-						ÅäÖÃpersistence-unit½Úµã
-						³Ö¾Ã»¯µ¥Ôª
-							name£º³Ö¾Ã»¯µ¥ÔªÃû³Æ
-							transaction-type£ºÊÂÎñ¹ÜÀíµÄ·½Ê½
-								JTA£º·Ö²¼Ê½ÊÂÎñ¹ÜÀí
-								RESOURCE_LOCAL£º±¾µØÊÂÎñ¹ÜÀí
+						é…ç½®persistence-unitèŠ‚ç‚¹
+						æŒä¹…åŒ–å•å…ƒ
+							nameï¼šæŒä¹…åŒ–å•å…ƒåç§°
+							transaction-typeï¼šäº‹åŠ¡ç®¡ç†çš„æ–¹å¼
+								JTAï¼šåˆ†å¸ƒå¼äº‹åŠ¡ç®¡ç†
+								RESOURCE_LOCALï¼šæœ¬åœ°äº‹åŠ¡ç®¡ç†
 					-->
 					<persistence-unit name="myjpa" transaction-type="RESOURCE_LOCAL"
-						<!--jpaµÄÊµÏÖ·½Ê½-->
+						<!--jpaçš„å®žçŽ°æ–¹å¼-->
 						<provider>org,hibernate.jpa.HibernatePersistenceProvider</provider>
 						
 						<properties>
-							<!--Êý¾Ý¿âÐÅÏ¢
-								ÓÃ»§Ãû		javax.persistence.jdbc.user
-								ÃÜÂë		javax.persistence.jdbc.password
-								Çý¶¯		javax.persistence.jdbc.driver
-								Êý¾Ý¿âµØÖ·	javax.persistence.jdbc.url
+							<!--æ•°æ®åº“ä¿¡æ¯
+								ç”¨æˆ·å		javax.persistence.jdbc.user
+								å¯†ç 		javax.persistence.jdbc.password
+								é©±åŠ¨		javax.persistence.jdbc.driver
+								æ•°æ®åº“åœ°å€	javax.persistence.jdbc.url
 							-->
 							<property name="javax.persistence.jdbc.user" value="root"></property>
 							<property name="javax.persistence.jdbc.password" value="root"></property>
 							<property name="javax.persistence.jdbc.driver" value="com.mysql.jdbc.Driver"></property>
 							<property name="javax.persistence.jdbc.url" value="jdbc:mysql:///jpa"></property>
-							<!--¿ÉÑ¡ÅäÖÃ£ºÅäÖÃjpaÊµÏÖ·ÅµÄÅäÖÃÐÅÏ¢
-								ÏÔÊ¾sql		hibernate.show_sql			false|true
-								×Ô¶¯´´½¨Êý¾Ý¿â±í	hibernate.hdm2ddl,auto
-									create	³ÌÐòÔËÐÐÊ±´´½¨Êý¾Ý¿â±í(Èç¹ûÓÐ±í£¬ÏÈÉ¾³ýÔÙ´´½¨)
-									update	³ÌÐòÔËÐÐÊ±´´½¨Êý¾Ý¿â±í(Èç¹ûÓÐ±í£¬²»´´½¨)
-									none	²»´´½¨±í
+							<!--å¯é€‰é…ç½®ï¼šé…ç½®jpaå®žçŽ°æ”¾çš„é…ç½®ä¿¡æ¯
+								æ˜¾ç¤ºsql		hibernate.show_sql			false|true
+								è‡ªåŠ¨åˆ›å»ºæ•°æ®åº“è¡¨	hibernate.hdm2ddl,auto
+									create	ç¨‹åºè¿è¡Œæ—¶åˆ›å»ºæ•°æ®åº“è¡¨(å¦‚æžœæœ‰è¡¨ï¼Œå…ˆåˆ é™¤å†åˆ›å»º)
+									update	ç¨‹åºè¿è¡Œæ—¶åˆ›å»ºæ•°æ®åº“è¡¨(å¦‚æžœæœ‰è¡¨ï¼Œä¸åˆ›å»º)
+									none	ä¸åˆ›å»ºè¡¨
 							-->
 							<property name="hibernate.show_sql" value="true"></property>
 							<property name="hibernate.hbm2ddl.auto" value="create"></property>
@@ -70,117 +70,117 @@ spring data jap
 					
 					
 				</persistence>
-			3.±àÐ´¿Í»§µÄÊµÌåÀà
-			4.ÅäÖÃÊµÌåÀàºÍ±í£¬ÀàÖÐÊôÐÔºÍ±íÖÐ×Ö¶ÎµÄÓ³Éä¹ØÏµ
-				Àà×¢½â
-					@Entity£ºÉùÃ÷ÊµÌåÀà
-					@Table£ºÅäÖÃÊµÌåÀàºÍ±íµÄÓ³Éä¹ØÏµ
-						name£ºÅäÖÃÊý¾Ý¿â±íµÄÃû×Ö
-				³ÉÔ±±äÁ¿×¢½â
+			3.ç¼–å†™å®¢æˆ·çš„å®žä½“ç±»
+			4.é…ç½®å®žä½“ç±»å’Œè¡¨ï¼Œç±»ä¸­å±žæ€§å’Œè¡¨ä¸­å­—æ®µçš„æ˜ å°„å…³ç³»
+				ç±»æ³¨è§£
+					@Entityï¼šå£°æ˜Žå®žä½“ç±»
+					@Tableï¼šé…ç½®å®žä½“ç±»å’Œè¡¨çš„æ˜ å°„å…³ç³»
+						nameï¼šé…ç½®æ•°æ®åº“è¡¨çš„åå­—
+				æˆå‘˜å˜é‡æ³¨è§£
 					@Id
-						ÉùÃ÷Ö÷¼ü
-					@GeneratedValue	Ö÷¼üÉú³É²ßÂÔ
+						å£°æ˜Žä¸»é”®
+					@GeneratedValue	ä¸»é”®ç”Ÿæˆç­–ç•¥
 						strategy
-							GenerationType.IDENTITY	Ö÷¼ü×ÔÔö ÐèÒªÖ§³Ö×ÔÔö	mysql
-							GenerationType.SEQUENCE	ÐòÁÐ	 ÐèÒªÖ§³ÖÐòÁÐ	oracle
-							GenerationType.Table	jpaÌá¹©µÄ»úÖÆ£¬Íê³ÉÖ÷¼ü×ÔÔö
-							GenerationType.AUTO		ÓÉ³ÌÐò×Ô¶¯Ñ¡ÔñÉú³É²ßÂÔ
+							GenerationType.IDENTITY	ä¸»é”®è‡ªå¢ž éœ€è¦æ”¯æŒè‡ªå¢ž	mysql
+							GenerationType.SEQUENCE	åºåˆ—	 éœ€è¦æ”¯æŒåºåˆ—	oracle
+							GenerationType.Table	jpaæä¾›çš„æœºåˆ¶ï¼Œå®Œæˆä¸»é”®è‡ªå¢ž
+							GenerationType.AUTO		ç”±ç¨‹åºè‡ªåŠ¨é€‰æ‹©ç”Ÿæˆç­–ç•¥
 							
-					@Column	ÅäÖÃÊôÐÔºÍ×Ö¶ÎµÄÓ³Éä¹ØÏµ
-						name£º¶ÔÓ¦µÄ×Ö¶ÎÃû
-			5.±£´æ¿Í»§µ½Êý¾Ý¿âÖÐ
-		ii.Íê³É»ù±¾CRUD°¸Àý
-			jpa²Ù×÷²½Öè
-				1.¼ÓÔØÅäÖÃÎÄ¼þ£¬´´½¨¹¤³§¶ÔÏó
+					@Column	é…ç½®å±žæ€§å’Œå­—æ®µçš„æ˜ å°„å…³ç³»
+						nameï¼šå¯¹åº”çš„å­—æ®µå
+			5.ä¿å­˜å®¢æˆ·åˆ°æ•°æ®åº“ä¸­
+		ii.å®ŒæˆåŸºæœ¬CRUDæ¡ˆä¾‹
+			jpaæ“ä½œæ­¥éª¤
+				1.åŠ è½½é…ç½®æ–‡ä»¶ï¼Œåˆ›å»ºå·¥åŽ‚å¯¹è±¡
 					EntityManagerFactory factory = Persistence.createEntityManageeFactory("myjpa");
-				2.Í¨¹ý¹¤³§»ñÈ¡ÊµÌå¹ÜÀíÆ÷
+				2.é€šè¿‡å·¥åŽ‚èŽ·å–å®žä½“ç®¡ç†å™¨
 					EntityManager em = factory.createEntityManage();
-				3.¿ªÆôÊÂÎñ
-					em.getTransaction tx = em.getTransactioin();//»ñÈ¡ÊÂÎñ¶ÔÏó
-					tx.begin();//¿ªÆôÊÂÎñ
-				4.Íê³ÉÔöÉ¾¸Ä²é¹¤×÷
-					//merge£º¸üÐÂ	´«Èë¶ÔÏóÓÃÓÚ¸üÐÂ£¬¿ÉÒÔÏÈ²éÑ¯¶ÔÏó£¬ºó¸üÐÂ
+				3.å¼€å¯äº‹åŠ¡
+					em.getTransaction tx = em.getTransactioin();//èŽ·å–äº‹åŠ¡å¯¹è±¡
+					tx.begin();//å¼€å¯äº‹åŠ¡
+				4.å®Œæˆå¢žåˆ æ”¹æŸ¥å·¥ä½œ
+					//mergeï¼šæ›´æ–°	ä¼ å…¥å¯¹è±¡ç”¨äºŽæ›´æ–°ï¼Œå¯ä»¥å…ˆæŸ¥è¯¢å¯¹è±¡ï¼ŒåŽæ›´æ–°
 					em.merge(object);
-					//remove£ºÉ¾³ý	¸ù¾Ýid²éÑ¯¶ÔÏó£¬ºó´«Èë¶ÔÏó
-					//find/getReference:¸ù¾Ýid²éÑ¯
-					//findÊÇÁ¢¼´¼ÓÔØ	getReferenceÊÇÑÓ³Ù¼ÓÔØ
+					//removeï¼šåˆ é™¤	æ ¹æ®idæŸ¥è¯¢å¯¹è±¡ï¼ŒåŽä¼ å…¥å¯¹è±¡
+					//find/getReference:æ ¹æ®idæŸ¥è¯¢
+					//findæ˜¯ç«‹å³åŠ è½½	getReferenceæ˜¯å»¶è¿ŸåŠ è½½
 					em.find(Object.class,1);
-					em.persist(object);//ObjectÊÇÒª±£´æµ½Êý¾Ý¿âµÄ¶ÔÏó
+					em.persist(object);//Objectæ˜¯è¦ä¿å­˜åˆ°æ•°æ®åº“çš„å¯¹è±¡
 					
-				5.Ìá½»»ò»Ø¹öÊÂÎñ
-					tx.commit();//Ìá½»ÊÂÎñ
-				6.ÊÍ·Å×ÊÔ´
+				5.æäº¤æˆ–å›žæ»šäº‹åŠ¡
+					tx.commit();//æäº¤äº‹åŠ¡
+				6.é‡Šæ”¾èµ„æº
 					em.close();
 					factory.close();
-		iii.jpql	java persistence query language	ÓÃÓÚ¸´ÔÓ²éÑ¯
-			ÌØÕ÷ÓëÔ­ÉúSQLÓï¾äÀàËÆ£¬²¢ÇÒÍêÈ«ÃæÏò¶ÔÏó£¬Í¨¹ýÀàÃûºÍÊôÐÔ·ÃÎÊ£¬¶ø²»ÊÇ±íÃûºÍ±íµÄÊôÐÔ
-			sql£º²éÑ¯µÄÊÇ±íºÍ±íÖÐµÄ×Ö¶Î
-			jpql£º²éÑ¯µÄÊÇÊµÌåÀàºÍÀàÖÐµÄÊôÐÔ
-				sqlºÍjpqlÓï·¨ÏàËÆ
+		iii.jpql	java persistence query language	ç”¨äºŽå¤æ‚æŸ¥è¯¢
+			ç‰¹å¾ä¸ŽåŽŸç”ŸSQLè¯­å¥ç±»ä¼¼ï¼Œå¹¶ä¸”å®Œå…¨é¢å‘å¯¹è±¡ï¼Œé€šè¿‡ç±»åå’Œå±žæ€§è®¿é—®ï¼Œè€Œä¸æ˜¯è¡¨åå’Œè¡¨çš„å±žæ€§
+			sqlï¼šæŸ¥è¯¢çš„æ˜¯è¡¨å’Œè¡¨ä¸­çš„å­—æ®µ
+			jpqlï¼šæŸ¥è¯¢çš„æ˜¯å®žä½“ç±»å’Œç±»ä¸­çš„å±žæ€§
+				sqlå’Œjpqlè¯­æ³•ç›¸ä¼¼
 			String jpql = "from cn.itcast.domain.Customer";
 			Query query = em.createQuery(jpql);
-			//·¢ËÍ²éÑ¯£¬²¢·â×°½á¹û¼¯
+			//å‘é€æŸ¥è¯¢ï¼Œå¹¶å°è£…ç»“æžœé›†
 			List list = query.getResultList();
-			1.²éÑ¯È«²¿
+			1.æŸ¥è¯¢å…¨éƒ¨
 				String jpql = "from cn.itcast.domain.Customer";
-			2.·ÖÒ³²éÑ¯
+			2.åˆ†é¡µæŸ¥è¯¢
 				String jpql = "from cn.itcast.domain.Customer";
 				Query query = em.createQuery(jpql);
-				query.setFirstResult(0);//ÉèÖÃÆðÊ¼Ë÷Òý
-				query.setMaxResult(5);//ÉèÖÃÃ¿Ò³ÌõÊý
+				query.setFirstResult(0);//è®¾ç½®èµ·å§‹ç´¢å¼•
+				query.setMaxResult(5);//è®¾ç½®æ¯é¡µæ¡æ•°
 				List list = query.getResultList();
-			3.Í³¼Æ²éÑ¯
+			3.ç»Ÿè®¡æŸ¥è¯¢
 				String jpql = "select count(custId)from cn.itcast.domain.Customer";
 				Object result = query.getSingleResult();
-			4.Ìõ¼þ²éÑ¯
+			4.æ¡ä»¶æŸ¥è¯¢
 				String jpql = "from cn.itcast.domain.Customer where custName like ?";
-				//µÚÒ»¸ö²ÎÊýÊÇÕ¼Î»·ûµÄË÷ÒýÊý£¬´Ó1¿ªÊ¼£¬µÚ¶þ¸ö²ÎÊýÊÇÖµ
-				query.setParameter(1£¬"");
+				//ç¬¬ä¸€ä¸ªå‚æ•°æ˜¯å ä½ç¬¦çš„ç´¢å¼•æ•°ï¼Œä»Ž1å¼€å§‹ï¼Œç¬¬äºŒä¸ªå‚æ•°æ˜¯å€¼
+				query.setParameter(1ï¼Œ"");
 				
-			5.ÅÅÐò
+			5.æŽ’åº
 			String jpql = "from cn.itcast.domain.Customer order by ... desc";
 			
-SpringDataJpa¸ÅÊö
-	spring»ùÓÚORM¿ò¼Ü¡¢JPA¹æ·¶µÄ»ù´¡ÉÏ·â×°µÄÒ»Ì×JPAÓ¦ÓÃ¿ò¼Ü
-	Ìá¹©ÁË°üÀ¨ÔöÉ¾¸Ä²éÔÚÄÚµÄ³£ÓÃ¹¦ÄÜ£¬Ò×ÓÚÀ©Õ¹
-SpringDataJpaÈëÃÅ²Ù×÷
-	i.´î½¨»·¾³µÄ¹ý³Ì
-		´´½¨¹¤³Ìµ¼Èë×ø±ê
-		ÅäÖÃspringµÄÅäÖÃÎÄ¼þ
-		±àÐ´ÊµÌåÀà£¬Ê¹ÓÃjpa×¢½âÅäÖÃÓ³Éä¹ØÏµ
-	ii.±àÐ´Ò»¸ö·ûºÏspringDataJpaµÄdao²ã½Ó¿Ú
-		Ö»ÐèÒª±àÐ´dao²ã½Ó¿Ú£¬²»ÐèÒª±àÐ´ÊµÏÖÀà
-			1.ÐèÒª¼Ì³ÐÁ½¸ö½Ó¿Ú(JpaRepository,JpaSpecificationExecutor)
-			2.ÐèÒªÌá¹©ÏàÓ¦µÄ·ºÐÍ
-		·½·¨
-			findOne(int id);//¸ù¾Ýid²éÑ¯
-			save(Object object);//Èç¹û´«µÝµÄ¶ÔÏó²»´æÔÚÖ÷¼üidÊôÐÔ£¬ÔòÖ´ÐÐ±£´æ£¬Èç¹ûÓÐÖ÷¼üid£¬ÔòÖ´ÐÐ¸üÐÂ
-			del(int id);//¸ù¾ÝidÉ¾³ý
+SpringDataJpaæ¦‚è¿°
+	springåŸºäºŽORMæ¡†æž¶ã€JPAè§„èŒƒçš„åŸºç¡€ä¸Šå°è£…çš„ä¸€å¥—JPAåº”ç”¨æ¡†æž¶
+	æä¾›äº†åŒ…æ‹¬å¢žåˆ æ”¹æŸ¥åœ¨å†…çš„å¸¸ç”¨åŠŸèƒ½ï¼Œæ˜“äºŽæ‰©å±•
+SpringDataJpaå…¥é—¨æ“ä½œ
+	i.æ­å»ºçŽ¯å¢ƒçš„è¿‡ç¨‹
+		åˆ›å»ºå·¥ç¨‹å¯¼å…¥åæ ‡
+		é…ç½®springçš„é…ç½®æ–‡ä»¶
+		ç¼–å†™å®žä½“ç±»ï¼Œä½¿ç”¨jpaæ³¨è§£é…ç½®æ˜ å°„å…³ç³»
+	ii.ç¼–å†™ä¸€ä¸ªç¬¦åˆspringDataJpaçš„daoå±‚æŽ¥å£
+		åªéœ€è¦ç¼–å†™daoå±‚æŽ¥å£ï¼Œä¸éœ€è¦ç¼–å†™å®žçŽ°ç±»
+			1.éœ€è¦ç»§æ‰¿ä¸¤ä¸ªæŽ¥å£(JpaRepository,JpaSpecificationExecutor)
+			2.éœ€è¦æä¾›ç›¸åº”çš„æ³›åž‹
+		æ–¹æ³•
+			findOne(int id);//æ ¹æ®idæŸ¥è¯¢
+			save(Object object);//å¦‚æžœä¼ é€’çš„å¯¹è±¡ä¸å­˜åœ¨ä¸»é”®idå±žæ€§ï¼Œåˆ™æ‰§è¡Œä¿å­˜ï¼Œå¦‚æžœæœ‰ä¸»é”®idï¼Œåˆ™æ‰§è¡Œæ›´æ–°
+			del(int id);//æ ¹æ®idåˆ é™¤
 			
 			
-SpringDataJpaµÄÔËÐÐ¹ý³ÌºÍÔ­ÀíÆÊÎö
-	1.Í¨¹ýJDKDynamicAOPProxyµÄinvoke·½·¨´´½¨ÁËÒ»¸ö¶¯Ì¬´úÀí¶ÔÏó
-	2.SimpleJpaRepositoryµ±ÖÐ·â×°ÁËJPAµÄ²Ù×÷(½èÖúJPAµÄapiÍê³ÉÊý¾Ý¿âµÄCRUD)
-	3.Í¨¹ýhibernateÍê³ÉÊý¾Ý¿â²Ù×÷(·â×°ÁËjdbc)
-¸´ÔÓ²éÑ¯
-	i½èÖú½Ó¿ÚÖÐµÄ¶¨ÒåºÃµÄ·½·¨Íê³É²éÑ¯
-		findOne(id):¸ù¾Ýid²éÑ¯
-		count():²éÑ¯È«²¿ÊýÁ¿
-		exists(id):²éÑ¯ÊÇ·ñ´æÔÚ
-	ii.jpqlµÄ²éÑ¯·½Ê½
-		ÌØµã£ºÓï·¨»ò¹Ø¼ü×ÖºÍsqlÓï¾äÀàËÆ
-			²éÑ¯µÄÊÇÀàºÍÀàÖÐµÄÊôÐÔ
-		ÐèÒª½«JPQLÓï¾äÅäÖÃµ½½Ó¿Ú·½·¨ÉÏ
-			1.ÌØÓÐµÄ²éÑ¯£ºÐèÒªÔÚdao½Ó¿ÚÉÏÅäÖÃ·½·¨
-			2.ÔÚÐÂÌí¼ÓµÄ·½·¨ÉÏ£¬Ê¹ÓÃ×¢½âµÄÐÎÊ½ÅäÖÃjpql²éÑ¯Óï¾ä
-			3.×¢½â£º@Query(value="jpql") ÓÃÓÚ²éÑ¯²Ù×÷
-				Èç¹ûÊÇ¸üÐÂ²Ù×÷£¬ÐèÒªÌí¼Ó@Modifying×¢½â
-					ÐèÒªÌí¼ÓÊÂÎñÖ§³Ö
-						@Transaction//Ìí¼ÓÊÂÎñÖ§³Ö
-						@Rollback(value="false")//²»×Ô¶¯»Ø¹ö
-		¶ÔÓÚ¶à¸öÕ¼Î»·û²ÎÊý
-			¸³ÖµµÄÊ±ºò£¬Ä¬ÈÏµÄÇé¿öÏÂ£¬Õ¼Î»·ûµÄÎ»ÖÃÐèÒªºÍ·½·¨²ÎÊýÖÐµÄÎ»ÖÃ±£³ÖÒ»ÖÂ
-		¿ÉÒÔÖ¸¶¨Õ¼Î»·û²ÎÊýµÄÎ»ÖÃ
-			£¿ºó¼ÓË÷ÒýµÄ·½Ê½£¬Ö¸¶¨Õ¼Î»·ûµÄÈ¡ÖµÀ´Ô´
+SpringDataJpaçš„è¿è¡Œè¿‡ç¨‹å’ŒåŽŸç†å‰–æž
+	1.é€šè¿‡JDKDynamicAOPProxyçš„invokeæ–¹æ³•åˆ›å»ºäº†ä¸€ä¸ªåŠ¨æ€ä»£ç†å¯¹è±¡
+	2.SimpleJpaRepositoryå½“ä¸­å°è£…äº†JPAçš„æ“ä½œ(å€ŸåŠ©JPAçš„apiå®Œæˆæ•°æ®åº“çš„CRUD)
+	3.é€šè¿‡hibernateå®Œæˆæ•°æ®åº“æ“ä½œ(å°è£…äº†jdbc)
+å¤æ‚æŸ¥è¯¢
+	iå€ŸåŠ©æŽ¥å£ä¸­çš„å®šä¹‰å¥½çš„æ–¹æ³•å®ŒæˆæŸ¥è¯¢
+		findOne(id):æ ¹æ®idæŸ¥è¯¢
+		count():æŸ¥è¯¢å…¨éƒ¨æ•°é‡
+		exists(id):æŸ¥è¯¢æ˜¯å¦å­˜åœ¨
+	ii.jpqlçš„æŸ¥è¯¢æ–¹å¼
+		ç‰¹ç‚¹ï¼šè¯­æ³•æˆ–å…³é”®å­—å’Œsqlè¯­å¥ç±»ä¼¼
+			æŸ¥è¯¢çš„æ˜¯ç±»å’Œç±»ä¸­çš„å±žæ€§
+		éœ€è¦å°†JPQLè¯­å¥é…ç½®åˆ°æŽ¥å£æ–¹æ³•ä¸Š
+			1.ç‰¹æœ‰çš„æŸ¥è¯¢ï¼šéœ€è¦åœ¨daoæŽ¥å£ä¸Šé…ç½®æ–¹æ³•
+			2.åœ¨æ–°æ·»åŠ çš„æ–¹æ³•ä¸Šï¼Œä½¿ç”¨æ³¨è§£çš„å½¢å¼é…ç½®jpqlæŸ¥è¯¢è¯­å¥
+			3.æ³¨è§£ï¼š@Query(value="jpql") ç”¨äºŽæŸ¥è¯¢æ“ä½œ
+				å¦‚æžœæ˜¯æ›´æ–°æ“ä½œï¼Œéœ€è¦æ·»åŠ @Modifyingæ³¨è§£
+					éœ€è¦æ·»åŠ äº‹åŠ¡æ”¯æŒ
+						@Transaction//æ·»åŠ äº‹åŠ¡æ”¯æŒ
+						@Rollback(value="false")//ä¸è‡ªåŠ¨å›žæ»š
+		å¯¹äºŽå¤šä¸ªå ä½ç¬¦å‚æ•°
+			èµ‹å€¼çš„æ—¶å€™ï¼Œé»˜è®¤çš„æƒ…å†µä¸‹ï¼Œå ä½ç¬¦çš„ä½ç½®éœ€è¦å’Œæ–¹æ³•å‚æ•°ä¸­çš„ä½ç½®ä¿æŒä¸€è‡´
+		å¯ä»¥æŒ‡å®šå ä½ç¬¦å‚æ•°çš„ä½ç½®
+			ï¼ŸåŽåŠ ç´¢å¼•çš„æ–¹å¼ï¼ŒæŒ‡å®šå ä½ç¬¦çš„å–å€¼æ¥æº
 		
 

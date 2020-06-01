@@ -1,50 +1,50 @@
 Dubbox
-	ÖÂÁ¦ÓÚÌá¹©¸ßĞÔÄÜºÍÍ¸Ã÷»¯µÄRPCÔ¶³Ì·şÎñµ÷ÓÃ·½°¸£¬ÒÔ¼°SOA·şÎñÖÎÀí·½°¸
-	¼òµ¥µØËµ£¬Dubbox¾ÍÊÇ¸ö·şÎñ¿ò¼Ü£¬Èç¹ûÃ»ÓĞ·Ö²¼Ê½µÄĞèÇó£¬ÆäÊµÊÇ²»ĞèÒªÓÃµÄ
-	Ö»ÓĞÔÚ·Ö²¼Ê½µÄÊ±ºò£¬²ÅÓĞDubboxÕâÑùµÄ·Ö²¼Ê½·şÎñ¿ò¼ÜµÄĞèÇó
-	±¾ÖÊÉÏÊÇ¸öÔ¶³Ì·şÎñµ÷ÓÃµÄ·Ö²¼Ê½¿ò¼Ü
+	è‡´åŠ›äºæä¾›é«˜æ€§èƒ½å’Œé€æ˜åŒ–çš„RPCè¿œç¨‹æœåŠ¡è°ƒç”¨æ–¹æ¡ˆï¼Œä»¥åŠSOAæœåŠ¡æ²»ç†æ–¹æ¡ˆ
+	ç®€å•åœ°è¯´ï¼ŒDubboxå°±æ˜¯ä¸ªæœåŠ¡æ¡†æ¶ï¼Œå¦‚æœæ²¡æœ‰åˆ†å¸ƒå¼çš„éœ€æ±‚ï¼Œå…¶å®æ˜¯ä¸éœ€è¦ç”¨çš„
+	åªæœ‰åœ¨åˆ†å¸ƒå¼çš„æ—¶å€™ï¼Œæ‰æœ‰Dubboxè¿™æ ·çš„åˆ†å¸ƒå¼æœåŠ¡æ¡†æ¶çš„éœ€æ±‚
+	æœ¬è´¨ä¸Šæ˜¯ä¸ªè¿œç¨‹æœåŠ¡è°ƒç”¨çš„åˆ†å¸ƒå¼æ¡†æ¶
 	
-	ÔÚĞéÄâ»úÉÏ°²×°jdk¡¢zookeeper¡£
-		ĞéÄâ»úIPµØÖ· 192.168.25.129
-	°²×°Ê¹ÓÃzookeeper
-		alt+p ½øÈësftp½çÃæ
+	åœ¨è™šæ‹Ÿæœºä¸Šå®‰è£…jdkã€zookeeperã€‚
+		è™šæ‹ŸæœºIPåœ°å€ 192.168.25.129
+	å®‰è£…ä½¿ç”¨zookeeper
+		alt+p è¿›å…¥sftpç•Œé¢
 			put d:/Shared zookeeper-3.4.6.tar.gz
-				´«ÈëĞéÄâ»ú
-		½âÑ¹Ëõ
+				ä¼ å…¥è™šæ‹Ÿæœº
+		è§£å‹ç¼©
 			tar -zxvf zookeeper-3.4.6.tar.gz
-		½øÈë½âÑ¹ÎÄ¼ş
+		è¿›å…¥è§£å‹æ–‡ä»¶
 			cd zookeeper-3.4.6
-		´´½¨ÎÄ¼ş¼Ğ
+		åˆ›å»ºæ–‡ä»¶å¤¹
 			mkdir data
-		½øÈëÅäÖÃÎÄ¼ş¼Ğ
+		è¿›å…¥é…ç½®æ–‡ä»¶å¤¹
 			cd conf
-		ĞŞ¸ÄÅäÖÃÎÄ¼şÃû³Æ
+		ä¿®æ”¹é…ç½®æ–‡ä»¶åç§°
 			mv zoo_sample.cfg zoo.cfg
-		±à¼­ÅäÖÃÎÄ¼ş
+		ç¼–è¾‘é…ç½®æ–‡ä»¶
 			vim zoo.cfg
-				i	½øÈë±à¼­Ä£Ê½
+				i	è¿›å…¥ç¼–è¾‘æ¨¡å¼
 				dataDir=/root/zookeeper-3.4.6/data
-				esc	ÍË³ö±à¼­Ä£Ê½
-				:wq	±£´æ
-		½øÈëbinÎÄ¼ş¼Ğ
+				esc	é€€å‡ºç¼–è¾‘æ¨¡å¼
+				:wq	ä¿å­˜
+		è¿›å…¥binæ–‡ä»¶å¤¹
 			cd ..
 			cd bin
-		Æô¶¯·şÎñ
+		å¯åŠ¨æœåŠ¡
 			./zkServer.sh start
-		Í£Ö¹·şÎñ
+		åœæ­¢æœåŠ¡
 			./zkServer.sh stop
-		²éÑ¯·şÎñ×´Ì¬
+		æŸ¥è¯¢æœåŠ¡çŠ¶æ€
 			./zkServer.sh status
 	
-	°²×°dubbox±¾µØ²Ö¿â
-		½«dubbox jar°ü·ÅÈëD:/Shared
-		Ö´ĞĞÃüÁî
+	å®‰è£…dubboxæœ¬åœ°ä»“åº“
+		å°†dubbox jaråŒ…æ”¾å…¥D:/Shared
+		æ‰§è¡Œå‘½ä»¤
 			mvn install:install-file -Dfile=d:\Shared\dubbo-2.8.4.jar -DgroupId=com.alibaba -DartifactId=dubbo -Dversion=2.8.4 -Dpackaging=jar
 	
-	ÅäÖÃÀëÏßÔ¼Êø
+	é…ç½®ç¦»çº¿çº¦æŸ
 		http://code.alibaba.com/schema/dubbo/dubbo.xsd
 
-	mavenÖĞÒıÈëdubboxÒÀÀµ
+	mavenä¸­å¼•å…¥dubboxä¾èµ–
 		<groupId>com.alibaba</groupId>
 		<artifactId>dubbo</artifactId>
 		<version>2.8.4</version>
@@ -61,25 +61,25 @@ Dubbox
 		<artifactId>javassist</artifactId>
 		<version>3.11.0.GA</version>
 		
-	·şÎñÌá¹©·½springÖĞÒıÈëdubbox
-		<dubbo:application name="¹¤³ÌÃû"/>
+	æœåŠ¡æä¾›æ–¹springä¸­å¼•å…¥dubbox
+		<dubbo:application name="å·¥ç¨‹å"/>
 		<dubbo:registry address="zookeeper://192.168.25.128:2181"/>
 		<dubbo:annotation package="cn.xunyi.demo.service"/>
 	
-	·şÎñÏû·Ñ·½
-		springÖĞÒıÈëdubbox
-			<dubbo:application name="¹¤³ÌÃû"/>
+	æœåŠ¡æ¶ˆè´¹æ–¹
+		springä¸­å¼•å…¥dubbox
+			<dubbo:application name="å·¥ç¨‹å"/>
 			<dubbo:registry address="zookeeper://192.168.25.128:2181"/>
 			<dubbo:annotation package="cn.xunyi.demo.controller"/>
-		×Ô¶¯×¢Èë
-			@Reference	dubbo°ü	Ô¶³ÌÒÀÀµ×¢Èë	È¡´ú@Autowired
+		è‡ªåŠ¨æ³¨å…¥
+			@Reference	dubboåŒ…	è¿œç¨‹ä¾èµ–æ³¨å…¥	å–ä»£@Autowired
 	
-	¹ÜÀíÖĞĞÄ
-		½«war°ü²¿Êğµ½ĞéÄâ»ú£¬tomcatÖĞ
-		Ö´ĞĞ
+	ç®¡ç†ä¸­å¿ƒ
+		å°†waråŒ…éƒ¨ç½²åˆ°è™šæ‹Ÿæœºï¼Œtomcatä¸­
+		æ‰§è¡Œ
 			./startup.sh
-		½øÈë¹ÜÀíÖĞĞÄÒ³Ãæ
-			IPµØÖ·:¶Ë¿Ú/dubbo-admin
+		è¿›å…¥ç®¡ç†ä¸­å¿ƒé¡µé¢
+			IPåœ°å€:ç«¯å£/dubbo-admin
 			
 
 	

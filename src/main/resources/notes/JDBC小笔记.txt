@@ -1,122 +1,122 @@
-JDBC»ù±¾¸ÅÄî
-	java DataBase Connectivity javaÓïÑÔ²Ù×÷Êı¾İ¿â
-		¹Ù·½¶¨ÒåµÄÒ»Ì×²Ù×÷ËùÓĞ¹ØÏµĞÍÊı¾İ¿âµÄ½è¿Ú£¬Êı¾İ¿â³§ÉÌÌá¹©ÊµÏÖÀà
-¿ìËÙÈëÃÅ
-	1.µ¼ÈëÇı¶¯jar°ü
-	2.×¢²áÇı¶¯
+JDBCåŸºæœ¬æ¦‚å¿µ
+	java DataBase Connectivity javaè¯­è¨€æ“ä½œæ•°æ®åº“
+		å®˜æ–¹å®šä¹‰çš„ä¸€å¥—æ“ä½œæ‰€æœ‰å…³ç³»å‹æ•°æ®åº“çš„å€Ÿå£ï¼Œæ•°æ®åº“å‚å•†æä¾›å®ç°ç±»
+å¿«é€Ÿå…¥é—¨
+	1.å¯¼å…¥é©±åŠ¨jaråŒ…
+	2.æ³¨å†Œé©±åŠ¨
 		Class.forName("com.mysql.jdbc.Driver");
-	3.»ñÈ¡Êı¾İ¿âÁ¬½Ó¶ÔÏóConnection
+	3.è·å–æ•°æ®åº“è¿æ¥å¯¹è±¡Connection
 		Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/mydb1", "root", "root");
-	4.¶¨Òåsql
+	4.å®šä¹‰sql
 		String sql = "update student set age = 27 where sid = 7";
-	5.»ñÈ¡Ö´ĞĞsqlÓï¾äµÄ¶ÔÏóStatement
+	5.è·å–æ‰§è¡Œsqlè¯­å¥çš„å¯¹è±¡Statement
 		Statement stmt = (Statement) conn.createStatement();
-	6.Ö´ĞĞsql£¬½ÓÊÜ·µ»Ø½á¹û
+	6.æ‰§è¡Œsqlï¼Œæ¥å—è¿”å›ç»“æœ
 		int count = stmt.executeUpdate(sql);
-	7.´¦Àí½á¹û
-	8.ÊÍ·Å×ÊÔ´
+	7.å¤„ç†ç»“æœ
+	8.é‡Šæ”¾èµ„æº
 
-Ïê½â¸÷¸ö¶ÔÏó
-	1.DriverManager:Çı¶¯¹ÜÀí¶ÔÏó
-		¹¦ÄÜ
-			1.×¢²áÇı¶¯
-				static void registerDriver(Driver driver):×¢²á¸ø¶¨µÄÇı¶¯³ÌĞò
-				mysql5Ö®ºó»á×Ô¶¯×¢²á£¬¿ÉÒÔÊ¡ÂÔ
-			2.»ñÈ¡Êı¾İ¿âÁ¬½Ó
+è¯¦è§£å„ä¸ªå¯¹è±¡
+	1.DriverManager:é©±åŠ¨ç®¡ç†å¯¹è±¡
+		åŠŸèƒ½
+			1.æ³¨å†Œé©±åŠ¨
+				static void registerDriver(Driver driver):æ³¨å†Œç»™å®šçš„é©±åŠ¨ç¨‹åº
+				mysql5ä¹‹åä¼šè‡ªåŠ¨æ³¨å†Œï¼Œå¯ä»¥çœç•¥
+			2.è·å–æ•°æ®åº“è¿æ¥
 				static Connection getConnection(String url,String user,String password)
-	2.Connection:Êı¾İ¿âÁ¬½Ó¶ÔÏó
-		1.»ñÈ¡Ö´ĞĞsqlµÄ¶ÔÏó
+	2.Connection:æ•°æ®åº“è¿æ¥å¯¹è±¡
+		1.è·å–æ‰§è¡Œsqlçš„å¯¹è±¡
 			Statement createStatement()
 			PreparedStatement prepareStatement(String sql)
-		2.¹ÜÀíÊÂÎñ
-			¿ªÆôÊÂÎñ:setAutoCommit(boolean autoCommit):ÉèÖÃÎªfalse£¬¼´¿ªÆôÊÂÎñ
-			Ìá½»ÊÂÎñ:commit()
-			»Ø¹öÊÂÎñ:rollback()
-	3.Statement:Ö´ĞĞsqlµÄ¶ÔÏó
-		Ö´ĞĞsql
-			boolean execute(String sql)¿ÉÒÔÖ´ĞĞÈÎÒâµÄsql
-			int executeUpdate(String sql)Ö´ĞĞDML()¡¢DDL(create,alter,drop)·µ»ØÓ°ÏìµÄĞĞÊı
-			ResultSet executeQuery(String sql)Ö´ĞĞDQL(select)Óï¾ä
-	4.ResultSet:½á¹û¼¯¶ÔÏó£¬·â×°²éÑ¯¶ÔÏó
-		next()¹â±êÏòÏÂÒÆ¶¯Ò»ĞĞ£¬·µ»Øfalse´ú±íµ±Ç°ĞĞÎŞÊı¾İ¡£
-		getXxx(²ÎÊı)»ñÈ¡ÏàÓ¦ÀàĞÍµÄÊı¾İ£¬ÈçgetInt()
-			²ÎÊıint,´ú±í±àºÅ£¬´Ó1¿ªÊ¼
-			²ÎÊıString£¬´ú±íÁĞµÄÃû³Æ
-		isFirst()ÅĞ¶ÏÊÇ·ñÊÇµÚÒ»ĞĞ
-		isLast()ÅĞ¶ÏÊÇ·ñÊÇ×îºóÒ»ĞĞ
-		last()ÒÆ¶¯µ½×îºóÒ»ĞĞ
-	5.PreparedStatement:Ö´ĞĞsqlµÄ¶ÔÏó¡£
-		Ô¤±àÒësql£¬±ÜÃâsql×¢ÈëÎÊÌâ
+		2.ç®¡ç†äº‹åŠ¡
+			å¼€å¯äº‹åŠ¡:setAutoCommit(boolean autoCommit):è®¾ç½®ä¸ºfalseï¼Œå³å¼€å¯äº‹åŠ¡
+			æäº¤äº‹åŠ¡:commit()
+			å›æ»šäº‹åŠ¡:rollback()
+	3.Statement:æ‰§è¡Œsqlçš„å¯¹è±¡
+		æ‰§è¡Œsql
+			boolean execute(String sql)å¯ä»¥æ‰§è¡Œä»»æ„çš„sql
+			int executeUpdate(String sql)æ‰§è¡ŒDML()ã€DDL(create,alter,drop)è¿”å›å½±å“çš„è¡Œæ•°
+			ResultSet executeQuery(String sql)æ‰§è¡ŒDQL(select)è¯­å¥
+	4.ResultSet:ç»“æœé›†å¯¹è±¡ï¼Œå°è£…æŸ¥è¯¢å¯¹è±¡
+		next()å…‰æ ‡å‘ä¸‹ç§»åŠ¨ä¸€è¡Œï¼Œè¿”å›falseä»£è¡¨å½“å‰è¡Œæ— æ•°æ®ã€‚
+		getXxx(å‚æ•°)è·å–ç›¸åº”ç±»å‹çš„æ•°æ®ï¼Œå¦‚getInt()
+			å‚æ•°int,ä»£è¡¨ç¼–å·ï¼Œä»1å¼€å§‹
+			å‚æ•°Stringï¼Œä»£è¡¨åˆ—çš„åç§°
+		isFirst()åˆ¤æ–­æ˜¯å¦æ˜¯ç¬¬ä¸€è¡Œ
+		isLast()åˆ¤æ–­æ˜¯å¦æ˜¯æœ€åä¸€è¡Œ
+		last()ç§»åŠ¨åˆ°æœ€åä¸€è¡Œ
+	5.PreparedStatement:æ‰§è¡Œsqlçš„å¯¹è±¡ã€‚
+		é¢„ç¼–è¯‘sqlï¼Œé¿å…sqlæ³¨å…¥é—®é¢˜
 			String sql = "select * from player where account = ? and password = ?";
 			PreparedStatement pstmt = (PreparedStatement) conn.prepareStatement(sql);
 			pstmt.setString(1, account);
 			pstmt.setString(2, password);
 			ResultSet rs = pstmt.executeQuery();
 
-JDBC¹ÜÀíÊÂÎñ
-	Ê¹ÓÃConnection¶ÔÏóÀ´¹ÜÀíÊÂÎñ
-		²Ù×÷£º
-		1.¿ªÆôÊÂÎñ
-			setAutoCommit(boolean autoCommit):false,¿ªÆôÊÂÎñ
-		2.Ìá½»ÊÂÎñ
+JDBCç®¡ç†äº‹åŠ¡
+	ä½¿ç”¨Connectionå¯¹è±¡æ¥ç®¡ç†äº‹åŠ¡
+		æ“ä½œï¼š
+		1.å¼€å¯äº‹åŠ¡
+			setAutoCommit(boolean autoCommit):false,å¼€å¯äº‹åŠ¡
+		2.æäº¤äº‹åŠ¡
 			commit()
-		3.»Ø¹öÊÂÎñ
+		3.å›æ»šäº‹åŠ¡
 			rollback()
 			
-Êı¾İ¿âÁ¬½Ó³Ø
-	¸ÅÄî£ºÈİÆ÷(¼¯ºÏ)£¬´æ·ÅÊı¾İ¿âÁ¬½ÓµÄÈİÆ÷
-		µ±ÏµÍ³³õÊ¼»¯ºÃºó£¬ÈİÆ÷±»´´½¨£¬ÈİÆ÷ÖĞ»áÉêÇëÒ»Ğ©Á¬½Ó¶ÔÏó
-		µ±ÓÃ»§À´ÎÒ·ÃÎÊÊı¾İ¿âÊ±£¬´ÓÈİÆ÷ÖĞ»ñÈ¡Á¬½Ó¶ÔÏó
-		·ÃÎÊ½áÊøºó£¬Á¬½Ó¶ÔÏó·µ»¹ÈİÆ÷
-	ºÃ´¦£º
-		1.½ÚÔ¼×ÊÔ´
-		2.ÓÃ»§·ÃÎÊ¸ßĞ§
-	ÊµÏÖ£º
-		1.±ê×¼½Ó¿Ú£ºDataSource	javax.sql°üÏÂµÄ
-			1.·½·¨£º
-				»ñÈ¡Á¬½Ó	getConnection()
-				·µ»¹Á¬½Ó	Èç¹ûÁ¬½Ó¶ÔÏóÊÇ´ÓÁ¬½Ó³ØÖĞ»ñÈ¡µÄ£¬ÄÇÃ´Á¬½Óºó£¬×Ô¶¯·µ»¹
-		2.Ò»°ãÎÒÃÇ²»È¥ÊµÏÖËü£¬ÓÉÊı¾İ¿â³§ÉÌÀ´ÊµÏÖ
-			1.C3P0£ºÊı¾İ¿âÁ¬½Ó³Ø¼¼Êõ
-				²½Öè
-					1.µ¼Èëjar°ü	c3p0-0.9.5.2.jar  mchange-commons-java-0.2.12.jar
-					2.¶¨ÒåÅäÖÃÎÄ¼ş£¬Ãû×Ö±ØĞëÊÇc3p0.properties »òÕß c3p0-config.xml
-					3.´´½¨ºËĞÄ¶ÔÏó Êı¾İ¿âÁ¬½Ó³Ø¶ÔÏó CombopooledDataSource
+æ•°æ®åº“è¿æ¥æ± 
+	æ¦‚å¿µï¼šå®¹å™¨(é›†åˆ)ï¼Œå­˜æ”¾æ•°æ®åº“è¿æ¥çš„å®¹å™¨
+		å½“ç³»ç»Ÿåˆå§‹åŒ–å¥½åï¼Œå®¹å™¨è¢«åˆ›å»ºï¼Œå®¹å™¨ä¸­ä¼šç”³è¯·ä¸€äº›è¿æ¥å¯¹è±¡
+		å½“ç”¨æˆ·æ¥æˆ‘è®¿é—®æ•°æ®åº“æ—¶ï¼Œä»å®¹å™¨ä¸­è·å–è¿æ¥å¯¹è±¡
+		è®¿é—®ç»“æŸåï¼Œè¿æ¥å¯¹è±¡è¿”è¿˜å®¹å™¨
+	å¥½å¤„ï¼š
+		1.èŠ‚çº¦èµ„æº
+		2.ç”¨æˆ·è®¿é—®é«˜æ•ˆ
+	å®ç°ï¼š
+		1.æ ‡å‡†æ¥å£ï¼šDataSource	javax.sqlåŒ…ä¸‹çš„
+			1.æ–¹æ³•ï¼š
+				è·å–è¿æ¥	getConnection()
+				è¿”è¿˜è¿æ¥	å¦‚æœè¿æ¥å¯¹è±¡æ˜¯ä»è¿æ¥æ± ä¸­è·å–çš„ï¼Œé‚£ä¹ˆè¿æ¥åï¼Œè‡ªåŠ¨è¿”è¿˜
+		2.ä¸€èˆ¬æˆ‘ä»¬ä¸å»å®ç°å®ƒï¼Œç”±æ•°æ®åº“å‚å•†æ¥å®ç°
+			1.C3P0ï¼šæ•°æ®åº“è¿æ¥æ± æŠ€æœ¯
+				æ­¥éª¤
+					1.å¯¼å…¥jaråŒ…	c3p0-0.9.5.2.jar  mchange-commons-java-0.2.12.jar
+					2.å®šä¹‰é…ç½®æ–‡ä»¶ï¼Œåå­—å¿…é¡»æ˜¯c3p0.properties æˆ–è€… c3p0-config.xml
+					3.åˆ›å»ºæ ¸å¿ƒå¯¹è±¡ æ•°æ®åº“è¿æ¥æ± å¯¹è±¡ CombopooledDataSource
 						DataSource ds = new ComboPooledDataSource();
 						Connection conn = ds.getConnection();
-					4.´´½¨DataSource¶ÔÏóÊ±£¬¿ÉÒÔÓÃ
+					4.åˆ›å»ºDataSourceå¯¹è±¡æ—¶ï¼Œå¯ä»¥ç”¨
 						DataSource ds = new ComboPooledDataSource(String name);
-						Ê¹ÓÃÌØÊâµÄÅäÖÃ²ÎÊı£¬¶ø²»ÊÇÓÃÄ¬ÈÏ²ÎÊı//Ò»°ã²»ĞèÒª
-			2.Druid£ºÊı¾İ¿âÁ¬½Ó³ØÊµÏÖ¼¼Êõ£¬ÓÉ°¢Àï°Í°ÍÌá¹©
-				1.µ¼Èëjar°ü	druid-1.0.9.jar
-				2.¶¨ÒåÅäÖÃÎÄ¼ş
-					properties¸ñÊ½µÄÈÎÒâÃû³ÆÎÄ¼ş
-				3.»ñÈ¡Êı¾İ¿âÁ¬½Ó³Ø¶ÔÏó£ºÍ¨¹ı¹¤³§À´»ñÈ¡	DruidDataSourceFactory
-				4.»ñÈ¡Á¬½Ó£ºgetConnection
+						ä½¿ç”¨ç‰¹æ®Šçš„é…ç½®å‚æ•°ï¼Œè€Œä¸æ˜¯ç”¨é»˜è®¤å‚æ•°//ä¸€èˆ¬ä¸éœ€è¦
+			2.Druidï¼šæ•°æ®åº“è¿æ¥æ± å®ç°æŠ€æœ¯ï¼Œç”±é˜¿é‡Œå·´å·´æä¾›
+				1.å¯¼å…¥jaråŒ…	druid-1.0.9.jar
+				2.å®šä¹‰é…ç½®æ–‡ä»¶
+					propertiesæ ¼å¼çš„ä»»æ„åç§°æ–‡ä»¶
+				3.è·å–æ•°æ®åº“è¿æ¥æ± å¯¹è±¡ï¼šé€šè¿‡å·¥å‚æ¥è·å–	DruidDataSourceFactory
+				4.è·å–è¿æ¥ï¼šgetConnection
 					Properties pro = new Properties();
 					pro.load(DruidDemo.class.getClassLoader().getResourceAsStream("Druid.properties));
 					DataSource ds = DruidDataSourceFactory.createDataSource(pro);
 					Connection conn = ds.getConnection();
 
 Spring JDBC
-	Spring¿ò¼Ü¶ÔJDBCµÄ¼òµ¥·â×°¡£Ìá¹©ÁËÒ»¸öJDBCTemplate¶ÔÏó¼ò»¯JDBCµÄ¿ª·¢
-	²½Öè
-		1.µ¼Èëjar°ü
-		2.´´½¨jdbcTemplate¶ÔÏó£¬ÒÀÀµÓÚÊı¾İÔ´DataSource
+	Springæ¡†æ¶å¯¹JDBCçš„ç®€å•å°è£…ã€‚æä¾›äº†ä¸€ä¸ªJDBCTemplateå¯¹è±¡ç®€åŒ–JDBCçš„å¼€å‘
+	æ­¥éª¤
+		1.å¯¼å…¥jaråŒ…
+		2.åˆ›å»ºjdbcTemplateå¯¹è±¡ï¼Œä¾èµ–äºæ•°æ®æºDataSource
 			JdbcTemplate Template = new JdbcTemplate(ds);
-		3.µ÷ÓÃJdbcTemplateµÄ·½·¨À´Íê³ÉCRUDµÄ²Ù×÷
-			update(sql,...):Ö´ĞĞDMLÓï¾ä¡£ÔöÉ¾¸ÄÓï¾ä
-				...ÎªsqlÓï¾äÖĞµÄ?£¬¼¸¸öÎÊºÅÌî¼¸¸ö²ÎÊı£¬Ò»Ò»¶ÔÓ¦
-			queryForMap():²éÑ¯½á¹û½«½á¹û¼¯·â×°Îªmap¶ÔÏó
-				½á¹û¼¯³¤¶ÈÖ»ÄÜÎª1.ÁĞÃûÎªkey£¬ÖµÎªvalue
-			queryForList():²éÑ¯½á¹û½«½á¹û¼¯·â×°Îªlist¶ÔÏó
-				½«Ã¿Ò»Ìõ¼ÇÂ¼·â×°Îªmap£¬ÔÙ·â×°½ølist
+		3.è°ƒç”¨JdbcTemplateçš„æ–¹æ³•æ¥å®ŒæˆCRUDçš„æ“ä½œ
+			update(sql,...):æ‰§è¡ŒDMLè¯­å¥ã€‚å¢åˆ æ”¹è¯­å¥
+				...ä¸ºsqlè¯­å¥ä¸­çš„?ï¼Œå‡ ä¸ªé—®å·å¡«å‡ ä¸ªå‚æ•°ï¼Œä¸€ä¸€å¯¹åº”
+			queryForMap():æŸ¥è¯¢ç»“æœå°†ç»“æœé›†å°è£…ä¸ºmapå¯¹è±¡
+				ç»“æœé›†é•¿åº¦åªèƒ½ä¸º1.åˆ—åä¸ºkeyï¼Œå€¼ä¸ºvalue
+			queryForList():æŸ¥è¯¢ç»“æœå°†ç»“æœé›†å°è£…ä¸ºlistå¯¹è±¡
+				å°†æ¯ä¸€æ¡è®°å½•å°è£…ä¸ºmapï¼Œå†å°è£…è¿›list
 			query(sql,new RowMapper<T>(){
 				@Override
 				public T mapRow(ResultSet rs,int i)throws SQLException{
 					
 				}
-			}):²éÑ¯½á¹û£¬½«½á¹û·â×°ÎªJavaBean¶ÔÏó
-			query(sql,new BeamPropertyRowMapper<T>(T.class));Ê¹ÓÃÄ¬ÈÏµÄÊµÏÖÀà·µ»ØList
-			queryForObject():²éÑ¯½á¹û£¬½«½á¹û·â×°Îª¶ÔÏó
-				Ò»°ãÓÃÓÚ¾ÛºÏº¯Êı
+			}):æŸ¥è¯¢ç»“æœï¼Œå°†ç»“æœå°è£…ä¸ºJavaBeanå¯¹è±¡
+			query(sql,new BeamPropertyRowMapper<T>(T.class));ä½¿ç”¨é»˜è®¤çš„å®ç°ç±»è¿”å›List
+			queryForObject():æŸ¥è¯¢ç»“æœï¼Œå°†ç»“æœå°è£…ä¸ºå¯¹è±¡
+				ä¸€èˆ¬ç”¨äºèšåˆå‡½æ•°

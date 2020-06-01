@@ -1,15 +1,12 @@
 package com.xunyi_ko.mynotes.mytools;
 
-import java.io.BufferedOutputStream;
+import org.junit.Test;
+
 import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
 import java.io.IOException;
+import java.nio.file.Files;
 import java.util.Arrays;
 import java.util.List;
-
-import org.junit.Test;
 
 public class TidyPic {
     private final static String FROM = "D:\\BaiduNetdisk\\童画孩子";
@@ -25,8 +22,6 @@ public class TidyPic {
 	/**
 	 * 复制文件到新的位置
 	 * @param readDirect 读取文件的地址
-	 * @param from 原文件地址
-	 * @param to 新文件地址
 	 * @return
 	 */
 	public static void restore(File readDirect) {
@@ -76,21 +71,26 @@ public class TidyPic {
         writeFile.append("\\");
         File pic = new File(writeFile + course + FILE_EXT);
         if (!pic.exists()) {
-            try (
-                FileInputStream fis = new FileInputStream(file);
-                BufferedOutputStream fos = new BufferedOutputStream(new FileOutputStream(pic))
-            ){
-                byte[] chs = new byte[1024];
-                int len = 0;
-                while ((len = fis.read(chs)) != -1) {
-                    fos.write(chs, 0, len);
-                }
-                System.out.println(writeFile + course + FILE_EXT);
-            } catch (FileNotFoundException e) {
-                e.printStackTrace();
+            try {
+                Files.copy(file.toPath(), pic.toPath());
             } catch (IOException e) {
-                e.printStackTrace();
+                System.out.println(file + " copy failed");
             }
+//            try (
+//                FileInputStream fis = new FileInputStream(file);
+//                BufferedOutputStream fos = new BufferedOutputStream(new FileOutputStream(pic))
+//            ){
+//                byte[] chs = new byte[1024];
+//                int len = 0;
+//                while ((len = fis.read(chs)) != -1) {
+//                    fos.write(chs, 0, len);
+//                }
+//                System.out.println(writeFile + course + FILE_EXT);
+//            } catch (FileNotFoundException e) {
+//                e.printStackTrace();
+//            } catch (IOException e) {
+//                e.printStackTrace();
+//            }
         }
 	}
 	

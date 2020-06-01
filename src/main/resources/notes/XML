@@ -1,24 +1,24 @@
 XML
-	���Extensible Markup Language ����չ�������
-		����չ����ǩ�����Զ����
-		���ܣ�
-			�洢����
-				1.�����ļ�
-				2.�������д���
-		xml��html������
-			1.xml��ǩ���Զ���ģ�html��ǩ��Ԥ�����
-			2.xml�﷨�ϸ�html�﷨����
-			3.xml�Ǵ洢���ݵģ�html��չʾ���ݵ�
-	�﷨��
-		�����﷨��
-			1.xml�ĵ��ĺ�׺�� .xml
-			2.xml��һ�б��붨��Ϊ�ĵ�����
-				�磺<?xml version='1.0'?>
-			3.xml�ĵ������ҽ���һ������ǩ
-			4.����ֵ����������������
-			5.��ǩ������ȷ�ر�
-			6.xml��ǩ�������ִ�Сд
-		�������ţ�
+	概念：Extensible Markup Language 可扩展标记语言
+		可扩展：标签都是自定义的
+		功能：
+			存储数据
+				1.配置文件
+				2.在网络中传输
+		xml与html的区别
+			1.xml标签是自定义的，html标签是预定义的
+			2.xml语法严格，html语法宽松
+			3.xml是存储数据的，html是展示数据的
+	语法：
+		基本语法：
+			1.xml文档的后缀名 .xml
+			2.xml第一行必须定义为文档声明
+				如：<?xml version='1.0'?>
+			3.xml文档中有且仅有一个根标签
+			4.属性值必须用引号引起来
+			5.标签必须正确关闭
+			6.xml标签名称区分大小写
+		快速入门：
 			<?xml version='1.0'?>
 			<users>
 				<user id='1'>
@@ -32,124 +32,124 @@ XML
 					<gender>male</gender>
 				</user>
 			</users>
-		��ɲ��֣�
-			1.�ĵ�����
-				1.��ʽ��<?xml �����б�?>
-				2.�����б���
-					version���汾��
-						�����С�һ����1.0
-					encoding�����뷽ʽ����֪�������浱ǰ�ĵ�ʹ�õ��ַ�����Ĭ��ΪISO-8859
-					standalone���Ƿ����
-						ȡֵ
-							yes�������������ļ�
-							no�����������ļ�
-			2.ָ��
-			3.��ǩ����ǩ�����Զ����
-				��������
-					1.���ƿ��԰�����ĸ�������Լ��������ַ�
-					2.���Ʋ��������ֻ�����ſ�ʼ
-					3.���Ʋ�����xml(��XML��Xml�ȵ�)��ʼ
-					4.���Ʋ��ܰ����ո�
-			4.����
-				idֵΨһ
-			5.�ı�
-				CDATA�����ڸ������е����ݻᱻԭ��չʾ������Ҫת��
-					��ʽ��<![CDATA[����]]>
-	����
-		Լ������ʹ�õĿ�ܹ涨��xml�ĵ�����д����
-			��Ϊ��ܵ�ʹ���ߣ�
-				1.�ܹ���xml������Լ���ĵ�
-				2.�ܹ��򵥵Ķ���Լ���ĵ�
-			����
-				1.DTD��һ�ּ򵥵�Լ������
-					ȱ�ݣ��޷�Լ������
-					����dtd�ĵ���xml�ĵ���
-						�ڲ�dtd����Լ����������xml�ĵ���
-							<!DOCTYPE ����ǩ��[
-								Լ������
+		组成部分：
+			1.文档声明
+				1.格式：<?xml 属性列表?>
+				2.属性列表：
+					version：版本号
+						必须有。一般是1.0
+					encoding：编码方式。告知解析引擎当前文档使用的字符集。默认为ISO-8859
+					standalone：是否独立
+						取值
+							yes：不依赖其他文件
+							no：依赖其他文件
+			2.指令
+			3.标签：标签名称自定义的
+				命名规则
+					1.名称可以包含字母、数字以及其他的字符
+					2.名称不能以数字或标点符号开始
+					3.名称不能以xml(或XML、Xml等等)开始
+					4.名称不能包含空格
+			4.属性
+				id值唯一
+			5.文本
+				CDATA区：在该区域中的数据会被原样展示，不需要转义
+					格式；<![CDATA[数据]]>
+	解析
+		约束：由使用的框架规定的xml文档的书写规则
+			作为框架的使用者：
+				1.能够在xml中引入约束文档
+				2.能够简单的读懂约束文档
+			分类
+				1.DTD：一种简单的约束技术
+					缺陷：无法约束内容
+					引入dtd文档到xml文档中
+						内部dtd：将约束规则定义在xml文档中
+							<!DOCTYPE 根标签名[
+								约束内容
 							]>
-						�ⲿdtd����Լ�����������ⲿdtd�ļ���
-							���أ�<!DOCTYPE ����ǩ�� SYSTEM "dtd�ļ���λ��">
-							���磺<!DOCTYPE ����ǩ�� PUBLIC "dtd�ļ�������" "dtd�ļ���λ��URL">
-				2.Schema��һ�ָ��ӵ�Լ������
-					���룺
-						1.��дxml�ĵ��ĸ�Ԫ��
-						2.����xsiǰ׺	xmlns��xsi="http://www.w3.org/2001/XMLSchema-instance"
-						3.����xsd�ļ������ռ�	xsi��schemaLocation="http://www.itcast.cn/xml	student.xsd"
-						4.Ϊÿһ��xsdԼ������һ��ǰ׺����Ϊ��ʶ	xmlns="http://www.itcast.cn/xml"
-			����������xml�ĵ������ĵ��е����ݶ�ȡ���ڴ���
-				����xml�ĵ�
-					1.���������ĵ��е����ݶ�ȡ���ڴ���
-					2.д�룺���ڴ��е����ݱ��浽xml�ĵ��С��־û��Ĵ洢
-				����xml�ķ�ʽ
-					1.DOM������������ĵ�һ���Լ��ؽ��ڴ棬���ڴ����γ�һ��dom��
-						�ŵ㣺�������㣬���Զ��ĵ�����CRUD�����в���
-						ȱ�㣺ռ�ڴ�
-					2.SAX�����в����������¼�������
-						�ŵ㣺��ռ�ڴ�
-						ȱ�㣺ֻ�ܶ�ȡ��������ɾ��
-				xml������������
-					1.JAXP��sun��˾�ṩ�Ľ�������֧��dom��sax
-					2.DOM4J��һ��ǳ�����Ľ�����
-					3.jsoup����java��HTML����������ֱ�ӽ���ĳ��URL��ַ��HTML�ı����ݡ��ṩ��һ�׷ǳ�ʡ����API
-							��ͨ��DOM��CSS�Լ�������jQuery�Ĳ���������ȡ���Ͳ�������
-					4.PULL��Android����ϵͳ���õĽ�������sax��ʽ
+						外部dtd：将约束规则定义在外部dtd文件中
+							本地：<!DOCTYPE 根标签名 SYSTEM "dtd文件的位置">
+							网络：<!DOCTYPE 根标签名 PUBLIC "dtd文件的名字" "dtd文件的位置URL">
+				2.Schema：一种复杂的约束技术
+					引入：
+						1.填写xml文档的根元素
+						2.引入xsi前缀	xmlns：xsi="http://www.w3.org/2001/XMLSchema-instance"
+						3.引入xsd文件命名空间	xsi：schemaLocation="http://www.itcast.cn/xml	student.xsd"
+						4.为每一个xsd约束声明一个前缀，作为标识	xmlns="http://www.itcast.cn/xml"
+			解析：操作xml文档，将文档中的数据读取到内存中
+				操作xml文档
+					1.解析：将文档中的数据读取到内存中
+					2.写入：将内存中的数据保存到xml文档中。持久化的存储
+				解析xml的方式
+					1.DOM：将标记语言文档一次性加载进内存，在内存中形成一颗dom树
+						优点：操作方便，可以对文档进行CRUD的所有操作
+						缺点：占内存
+					2.SAX：逐行操作，基于事件驱动的
+						优点：不占内存
+						缺点：只能读取，不能增删改
+				xml常见解析器：
+					1.JAXP：sun公司提供的解析器，支持dom和sax
+					2.DOM4J：一款非常优秀的解析器
+					3.jsoup：是java的HTML解析器，可直接解析某个URL地址、HTML文本内容。提供了一套非常省力的API
+							可通过DOM、CSS以及类似于jQuery的操作方法来取出和操作数据
+					4.PULL：Android操作系统内置的解析器，sax方式
 				jsoup
-					��������
-						���裺
-							1.����jar��
-							2.��ȡDocument����
+					快速入门
+						步骤：
+							1.导入jar包
+							2.获取Document对象
 								String path=JsoupDemo1.class.getClassLoader().getResource("student.xml").getPath();
 								Document document = Jsoup.parse(new File(path));
-							3.��ȡ��Ӧ�ı�ǩ(Element����)
+							3.获取对应的标签(Element对象)
 								Elements elements = document.getElementsByTag("name");
-								Element element = elements.get(0);//��ȡ��һ������
-							4.��ȡ����
+								Element element = elements.get(0);//获取第一个对象
+							4.获取数据
 								String name=element.text();
-					�����ʹ��
-						Jsoup�������࣬���Խ���html��xml�ĵ�������Document
+					对象的使用
+						Jsoup：工具类，可以解析html或xml文档，返回Document
 							parse()
-								parse(File in,String charsetName)��
-								parse(String html)��htmlΪ�ĵ�����
-								parse(URL url,int timeoutMillis)��ͨ������·����ȡָ����html��xml���ĵ�����
-						Document���ĵ����󡣴����ڴ��е�dom��
-							��ȡElement����
-								getElementsByTag(String tagName)�����ݱ�ǩ����ȡԪ�ض��󼯺�
-								getElementsByAttribute(String key)�������������ƻ�ȡԪ�ض��󼯺�
-								getElementsByAttributeValue(String key,String value)�����ݶ����������������ֵ��ȡԪ�ض��󼯺�
-								getElementById(String id)������id����ֵ��ȡԪ�ض���
-						Elements��Ԫ��Element����ļ���
-						Element��Ԫ�ض���
-							1.��ȡ��Ԫ�ض���
-								getElementsByTag(String tagName)�����ݱ�ǩ����ȡԪ�ض��󼯺�
-								getElementsByAttribute(String key)�������������ƻ�ȡԪ�ض��󼯺�
-								getElementsByAttributeValue(String key,String value)�����ݶ����������������ֵ��ȡԪ�ض��󼯺�
-								getElementById(String id)������id����ֵ��ȡԪ�ض���
-							2.��ȡ����ֵ
-								String attr(String key)�������������ƻ�ȡ����ֵ
-							3.��ȡ�ı�����
-								String text()����ȡ�ı�����
-								String html()����ȡ��ǩ�����������(�����ӱ�ǩ�ı�ǩ���ı�����)
-						Node���ڵ����
-							��Document �� Element �ĸ���
-					��ݲ�ѯ��ʽ
-						1.selector��ѡ����
-							1.ʹ�÷�����Elements select(String cssQuery)
-								�﷨���ο�Selector���ж�����﷨
-									cssQueryΪcss��ѡ�������ַ���
-									��ǩ��		#idֵ		.classֵ
-									��ǩ��[������=����ֵ] �ȵ�
-						2.XPath��XPath��ΪXML·�����ԣ���һ������ȷ��XML(��׼ͨ�ñ�����Ե��Ӽ�)�ĵ���ĳ����λ�õ�����
-							1.ʹ��Jsoup��XPath��Ҫ���⵼��jar��
-							2.����document���󣬴���JXDocument����
+								parse(File in,String charsetName)：
+								parse(String html)：html为文档内容
+								parse(URL url,int timeoutMillis)：通过网络路径获取指定的html或xml的文档对象
+						Document：文档对象。代表内存中的dom树
+							获取Element对象
+								getElementsByTag(String tagName)：根据标签名获取元素对象集合
+								getElementsByAttribute(String key)：根据属性名称获取元素对象集合
+								getElementsByAttributeValue(String key,String value)：根据对象的属性名和属性值获取元素对象集合
+								getElementById(String id)：根据id属性值获取元素对象
+						Elements：元素Element对象的集合
+						Element：元素对象
+							1.获取子元素对象
+								getElementsByTag(String tagName)：根据标签名获取元素对象集合
+								getElementsByAttribute(String key)：根据属性名称获取元素对象集合
+								getElementsByAttributeValue(String key,String value)：根据对象的属性名和属性值获取元素对象集合
+								getElementById(String id)：根据id属性值获取元素对象
+							2.获取属性值
+								String attr(String key)：根据属性名称获取属性值
+							3.获取文本内容
+								String text()：获取文本内容
+								String html()：获取标签体的所有内容(包括子标签的标签和文本内容)
+						Node：节点对象
+							是Document 和 Element 的父类
+					快捷查询方式
+						1.selector：选择器
+							1.使用方法：Elements select(String cssQuery)
+								语法：参考Selector类中定义的语法
+									cssQuery为css中选择器的字符串
+									标签名		#id值		.class值
+									标签名[属性名=属性值] 等等
+						2.XPath：XPath即为XML路径语言，是一种用来确定XML(标准通用标记语言的子集)文档中某部分位置的语言
+							1.使用Jsoup的XPath需要额外导入jar包
+							2.根据document对象，创建JXDocument对象
 								JXDocument jxDocument = new JXDocument(document)
-							3.����xpath�﷨��ѯ
-								1.��ѯĳ��ǩ��������
-									List<JXNode> jxNodes = jxDocument.selN("//��ǩ��");
-								2.��ѯ����ĳ��ǩ�£�ĳ�ӱ�ǩ������
-									List<JXNode> jxNodes = jxDocument.selN("//��ǩ��/�ֱ�ǩ��")
-								3.��ѯ����ĳ��ǩ�£�����ĳ���Ե��ӱ�ǩ������
-									List<JXNode> jxNodes = jxDocument.selN("//��ǩ��/�ֱ�ǩ��[@������]")
-								4.��������ֵȷ��
-									List<JXNode> jxNodes = jxDocument.selN("//��ǩ��/�ֱ�ǩ��[@������='����ֵ']")
-							�������ݲ�ѯw3cschool�ο��ֲᡣʹ��xpath���﷨��ɲ�ѯ
+							3.集合xpath语法查询
+								1.查询某标签所有内容
+									List<JXNode> jxNodes = jxDocument.selN("//标签名");
+								2.查询所有某标签下，某子标签的内容
+									List<JXNode> jxNodes = jxDocument.selN("//标签名/字标签名")
+								3.查询所有某标签下，带个某属性的子标签的内容
+									List<JXNode> jxNodes = jxDocument.selN("//标签名/字标签名[@属性名]")
+								4.并且属性值确定
+									List<JXNode> jxNodes = jxDocument.selN("//标签名/字标签名[@属性名='属性值']")
+							具体内容查询w3cschool参考手册。使用xpath的语法完成查询

@@ -1,17 +1,17 @@
 Filter&Listener
-Filter£º¹ýÂËÆ÷
-	1.¸ÅÄî
-		µ±·ÃÎÊ·þÎñÆ÷µÄ×ÊÔ´Ê±£¬¹ýÂËÆ÷¿ÉÒÔ½«ÇëÇóÀ¹ÏÂ£¬Íê³ÉÒ»Ð©ÌØÊâµÄ¹¦ÄÜ
-		¹ýÂËÆ÷µÄ×÷ÓÃ£º
-			Ò»°ãÓÃÓÚÍê³ÉÍ¨ÓÃµÄ²Ù×÷¡£Èç£ºµÇÂ½ÑéÖ¤¡¢Í³Ò»±àÂë´¦Àí¡¢Ãô¸Ð×Ö·û¹ýÂË
-	2.¿ìËÙÈëÃÅ£º
-		1.²½Öè
-			1.¶¨ÒåÒ»¸öÀà£¬ÊµÏÖFilter½Ó¿Ú
-			2.ÊµÏÖ·½·¨
-			3.ÉèÖÃ@WebFilter("")ÉèÖÃÀ¹½ØµÄÂ·¾¶(ÅäÖÃÀ¹½ØÂ·¾¶)
-				doFilter·½·¨ÖÐ£¬Èç¹ûµ÷ÓÃfilterChain.doFilter(servletRequest,servletResponse)·½·¨¿ÉÒÔ·ÅÐÐ
-	3.¹ýÂËÆ÷Ï¸½Ú
-		1.web.xmlÅäÖÃ
+Filterï¼šè¿‡æ»¤å™¨
+	1.æ¦‚å¿µ
+		å½“è®¿é—®æœåŠ¡å™¨çš„èµ„æºæ—¶ï¼Œè¿‡æ»¤å™¨å¯ä»¥å°†è¯·æ±‚æ‹¦ä¸‹ï¼Œå®Œæˆä¸€äº›ç‰¹æ®Šçš„åŠŸèƒ½
+		è¿‡æ»¤å™¨çš„ä½œç”¨ï¼š
+			ä¸€èˆ¬ç”¨äºŽå®Œæˆé€šç”¨çš„æ“ä½œã€‚å¦‚ï¼šç™»é™†éªŒè¯ã€ç»Ÿä¸€ç¼–ç å¤„ç†ã€æ•æ„Ÿå­—ç¬¦è¿‡æ»¤
+	2.å¿«é€Ÿå…¥é—¨ï¼š
+		1.æ­¥éª¤
+			1.å®šä¹‰ä¸€ä¸ªç±»ï¼Œå®žçŽ°FilteræŽ¥å£
+			2.å®žçŽ°æ–¹æ³•
+			3.è®¾ç½®@WebFilter("")è®¾ç½®æ‹¦æˆªçš„è·¯å¾„(é…ç½®æ‹¦æˆªè·¯å¾„)
+				doFilteræ–¹æ³•ä¸­ï¼Œå¦‚æžœè°ƒç”¨filterChain.doFilter(servletRequest,servletResponse)æ–¹æ³•å¯ä»¥æ”¾è¡Œ
+	3.è¿‡æ»¤å™¨ç»†èŠ‚
+		1.web.xmlé…ç½®
 			<filter>
 				<filter-name>demo1</filter-name>
 				<filter-class>cn.itcast.web.filter.FilterDemo1</filter-class>
@@ -20,86 +20,86 @@ Filter£º¹ýÂËÆ÷
 				<filter-name>demo1</filter-name>
 				<url-pattern>/*</url-pattern>
 			</filter-mapping>
-		2.¹ýÂËÆ÷Ö´ÐÐÁ÷³Ì
+		2.è¿‡æ»¤å™¨æ‰§è¡Œæµç¨‹
 			
-		3.¹ýÂËÆ÷ÉúÃüÖÜÆÚ·½·¨
-			·þÎñÆ÷Æô¶¯ºó£¬»á´´½¨Filter¶ÔÏó£¬È»ºóµ÷ÓÃinit·½·¨
-			·þÎñÆ÷Õý³£¹Ø±Õºó»áµ÷ÓÃdestroy·½·¨
-			doFilterÔÚÃ¿´ÎÀ¹½ØÇëÇóºó»áµ÷ÓÃ
-		4.¹ýÂËÆ÷ÅäÖÃÏêÇé
-			1.À¹½ØÂ·¾¶ÅäÖÃ£º
-				1.¾ßÌå×ÊÔ´Â·¾¶£º/index.jsp	Ö»ÓÐ·ÃÎÊindex.jspÊ±£¬¹ýÂËÆ÷²Å»á±»Ö´ÐÐ
-				2.À¹½ØÄ¿Â¼£º/user/*		·ÃÎÊ/userÄ¿Â¼ÏÂµÄ×ÊÔ´Ê±£¬Ö´ÐÐ¹ýÂËÆ÷
-				3.ºó×ºÃûÀ¹½Ø£º*.jsp		·ÃÎÊËùÓÐºó×ºÃûÎªjspÊ±£¬Ö´ÐÐ¹ýÂËÆ÷
-				4.À¹½ØËùÓÐ×ÊÔ´£º/*		À¹½ØËùÓÐ×ÊÔ´
-			2.À¹½Ø·½Ê½ÅäÖÃ£º×ÊÔ´±»·ÃÎÊµÄ·½Ê½
-				×¢½âÅäÖÃ£º
-					ÉèÖÃdispatcherTypesÊôÐÔ
-						1.REQUEST£ºÄ¬ÈÏÖµ£¬ä¯ÀÀÆ÷Ö±½ÓÇëÇó×ÊÔ´
-						2.FORWARD£º×ª·¢·ÃÎÊ×ÊÔ´
-						3.INCLUDE£º°üº¬·ÃÎÊ×ÊÔ´
-						4.ERROR£º´íÎóÌø×ª×ÊÔ´
-						5.ASYNC£ºÒì²½·ÃÎÊ×ÊÔ´
-				web.xml·½Ê½ÅäÖÃ
-					ÉèÖÃ<dispatcherType></dispatcherType>±êÇ©¡£ÊôÐÔÊÇÒÔÉÏÎåÖÖ
-		5.¹ýÂËÆ÷Á´£º¿ÉÒÔÓÐ¶à¸ö¹ýÂËÆ÷Í¬Ê±´æÔÚ¡£
-			¹ýÂËÆ÷µÄË³Ðò
-				1.×¢½âÅäÖÃµÄ¹ýÂËÆ÷£º°´ÕÕÀàÃûµÄ×Ö·û´®±È½Ï¹æÔò£¬ÖµÐ¡µÄÏÈÖ´ÐÐ
-				2.web.xmlÅäÖÃµÄ¹ýÂËÆ÷£º<filter-mapping>±êÇ©ÔÚÉÏµÄÏÈÖ´ÐÐ
+		3.è¿‡æ»¤å™¨ç”Ÿå‘½å‘¨æœŸæ–¹æ³•
+			æœåŠ¡å™¨å¯åŠ¨åŽï¼Œä¼šåˆ›å»ºFilterå¯¹è±¡ï¼Œç„¶åŽè°ƒç”¨initæ–¹æ³•
+			æœåŠ¡å™¨æ­£å¸¸å…³é—­åŽä¼šè°ƒç”¨destroyæ–¹æ³•
+			doFilteråœ¨æ¯æ¬¡æ‹¦æˆªè¯·æ±‚åŽä¼šè°ƒç”¨
+		4.è¿‡æ»¤å™¨é…ç½®è¯¦æƒ…
+			1.æ‹¦æˆªè·¯å¾„é…ç½®ï¼š
+				1.å…·ä½“èµ„æºè·¯å¾„ï¼š/index.jsp	åªæœ‰è®¿é—®index.jspæ—¶ï¼Œè¿‡æ»¤å™¨æ‰ä¼šè¢«æ‰§è¡Œ
+				2.æ‹¦æˆªç›®å½•ï¼š/user/*		è®¿é—®/userç›®å½•ä¸‹çš„èµ„æºæ—¶ï¼Œæ‰§è¡Œè¿‡æ»¤å™¨
+				3.åŽç¼€åæ‹¦æˆªï¼š*.jsp		è®¿é—®æ‰€æœ‰åŽç¼€åä¸ºjspæ—¶ï¼Œæ‰§è¡Œè¿‡æ»¤å™¨
+				4.æ‹¦æˆªæ‰€æœ‰èµ„æºï¼š/*		æ‹¦æˆªæ‰€æœ‰èµ„æº
+			2.æ‹¦æˆªæ–¹å¼é…ç½®ï¼šèµ„æºè¢«è®¿é—®çš„æ–¹å¼
+				æ³¨è§£é…ç½®ï¼š
+					è®¾ç½®dispatcherTypeså±žæ€§
+						1.REQUESTï¼šé»˜è®¤å€¼ï¼Œæµè§ˆå™¨ç›´æŽ¥è¯·æ±‚èµ„æº
+						2.FORWARDï¼šè½¬å‘è®¿é—®èµ„æº
+						3.INCLUDEï¼šåŒ…å«è®¿é—®èµ„æº
+						4.ERRORï¼šé”™è¯¯è·³è½¬èµ„æº
+						5.ASYNCï¼šå¼‚æ­¥è®¿é—®èµ„æº
+				web.xmlæ–¹å¼é…ç½®
+					è®¾ç½®<dispatcherType></dispatcherType>æ ‡ç­¾ã€‚å±žæ€§æ˜¯ä»¥ä¸Šäº”ç§
+		5.è¿‡æ»¤å™¨é“¾ï¼šå¯ä»¥æœ‰å¤šä¸ªè¿‡æ»¤å™¨åŒæ—¶å­˜åœ¨ã€‚
+			è¿‡æ»¤å™¨çš„é¡ºåº
+				1.æ³¨è§£é…ç½®çš„è¿‡æ»¤å™¨ï¼šæŒ‰ç…§ç±»åçš„å­—ç¬¦ä¸²æ¯”è¾ƒè§„åˆ™ï¼Œå€¼å°çš„å…ˆæ‰§è¡Œ
+				2.web.xmlé…ç½®çš„è¿‡æ»¤å™¨ï¼š<filter-mapping>æ ‡ç­¾åœ¨ä¸Šçš„å…ˆæ‰§è¡Œ
 					
-	4.°¸Àý£º
-		1.µÇÂ½ÑéÖ¤°¸Àý
-		2.Ãô¸Ð´Ê¹ýÂË
-			ÐèÇó£º
-				¶ÔÂ¼ÈëµÄÊý¾Ý½øÐÐÃô¸Ð´Ê»ã¹ýÂË£¬Èç¹ûÊÇ£¬Ìæ»»Îª***
-			·ÖÎö£º
-				1.¶Ôrequest¶ÔÏó½øÐÐÔöÇ¿
-			ÔöÇ¿¶ÔÏóµÄ¹¦ÄÜ
-				Éè¼ÆÄ£Ê½£ºÒ»Ð©Í¨ÓÃµÄ½â¾ö¹Ì¶¨ÎÊÌâµÄ·½·¨
-				1.×°ÊÎÄ£Ê½
-				2.´úÀíÄ£Ê½
-					¸ÅÄî£º
-						1.ÕæÊµ¶ÔÏó£º±»´úÀíµÄ¶ÔÏó
-						2.´úÀí¶ÔÏó£º
-						3.´úÀíÄ£Ê½£º´úÀí¶ÔÏó´úÀíÕæÊµ¶ÔÏó£¬´ïµ½ÔöÇ¿ÕæÊµ¶ÔÏó¹¦ÄÜµÄÄ¿µÄ
-					ÊµÏÖ·½Ê½£º
-						1.¾²Ì¬´úÀí£ºÓÐÒ»¸öÀàÎÄ¼þÃèÊö´úÀíÄ£Ê½
-						2.¶¯Ì¬´úÀí£ºÔÚÄÚ´æÖÐÐÎ³É´úÀíÀà
-							ÊµÏÖ²½Öè£º
-								1.´úÀí¶ÔÏóºÍÕæÊµ¶ÔÏóÊµÏÖÏàÍ¬µÄ½Ó¿Ú
-								2.»ñÈ¡´úÀí¶ÔÏó
-									²ÎÊý£º
+	4.æ¡ˆä¾‹ï¼š
+		1.ç™»é™†éªŒè¯æ¡ˆä¾‹
+		2.æ•æ„Ÿè¯è¿‡æ»¤
+			éœ€æ±‚ï¼š
+				å¯¹å½•å…¥çš„æ•°æ®è¿›è¡Œæ•æ„Ÿè¯æ±‡è¿‡æ»¤ï¼Œå¦‚æžœæ˜¯ï¼Œæ›¿æ¢ä¸º***
+			åˆ†æžï¼š
+				1.å¯¹requestå¯¹è±¡è¿›è¡Œå¢žå¼º
+			å¢žå¼ºå¯¹è±¡çš„åŠŸèƒ½
+				è®¾è®¡æ¨¡å¼ï¼šä¸€äº›é€šç”¨çš„è§£å†³å›ºå®šé—®é¢˜çš„æ–¹æ³•
+				1.è£…é¥°æ¨¡å¼
+				2.ä»£ç†æ¨¡å¼
+					æ¦‚å¿µï¼š
+						1.çœŸå®žå¯¹è±¡ï¼šè¢«ä»£ç†çš„å¯¹è±¡
+						2.ä»£ç†å¯¹è±¡ï¼š
+						3.ä»£ç†æ¨¡å¼ï¼šä»£ç†å¯¹è±¡ä»£ç†çœŸå®žå¯¹è±¡ï¼Œè¾¾åˆ°å¢žå¼ºçœŸå®žå¯¹è±¡åŠŸèƒ½çš„ç›®çš„
+					å®žçŽ°æ–¹å¼ï¼š
+						1.é™æ€ä»£ç†ï¼šæœ‰ä¸€ä¸ªç±»æ–‡ä»¶æè¿°ä»£ç†æ¨¡å¼
+						2.åŠ¨æ€ä»£ç†ï¼šåœ¨å†…å­˜ä¸­å½¢æˆä»£ç†ç±»
+							å®žçŽ°æ­¥éª¤ï¼š
+								1.ä»£ç†å¯¹è±¡å’ŒçœŸå®žå¯¹è±¡å®žçŽ°ç›¸åŒçš„æŽ¥å£
+								2.èŽ·å–ä»£ç†å¯¹è±¡
+									å‚æ•°ï¼š
 										1.ClassLoader
-										2.½Ó¿Ú
-										3.´¦ÀíÆ÷InvocationHandler
-									´úÀí¶ÔÏó = Proxy.newProxyInstance(demo.getClass().getClassLoader(), demo.getClass().getInterfaces(),new InvocationHandler(){
+										2.æŽ¥å£
+										3.å¤„ç†å™¨InvocationHandler
+									ä»£ç†å¯¹è±¡ = Proxy.newProxyInstance(demo.getClass().getClassLoader(), demo.getClass().getInterfaces(),new InvocationHandler(){
 										public Object invoke(Object proxy,Method method,Object[] args) throws Throwable{
-											//´úÂëÂß¼­±àÐ´µÄ·½·¨¡£´úÀí¶ÔÏóµ÷ÓÃµÄËùÓÐ·½·¨¶¼»á´¥·¢¸Ã·½·¨Ö´ÐÐ
+											//ä»£ç é€»è¾‘ç¼–å†™çš„æ–¹æ³•ã€‚ä»£ç†å¯¹è±¡è°ƒç”¨çš„æ‰€æœ‰æ–¹æ³•éƒ½ä¼šè§¦å‘è¯¥æ–¹æ³•æ‰§è¡Œ
 											return null;
-											//²ÎÊý£º
-											//1.proxy¡£´úÀí¶ÔÏó¡£Ò»°ã²»ÓÃ
-											//2.method¡£´úÀí¶ÔÏóµ÷ÓÃµÄ·½·¨£¬±»·â×°ÎªµÄ¶ÔÏó
-											//3.args¡£´úÀí¶Ô°ºµ÷ÓÃ·½·¨Ê±£¬Êµ¼Ê´«µÝµÄ²ÎÊý
+											//å‚æ•°ï¼š
+											//1.proxyã€‚ä»£ç†å¯¹è±¡ã€‚ä¸€èˆ¬ä¸ç”¨
+											//2.methodã€‚ä»£ç†å¯¹è±¡è°ƒç”¨çš„æ–¹æ³•ï¼Œè¢«å°è£…ä¸ºçš„å¯¹è±¡
+											//3.argsã€‚ä»£ç†å¯¹æ˜‚è°ƒç”¨æ–¹æ³•æ—¶ï¼Œå®žé™…ä¼ é€’çš„å‚æ•°
 										}
 									})
-								3.Ê¹ÓÃ´úÀí¶ÔÏóµ÷ÓÃ·½·¨
-								4.ÔöÇ¿·½·¨
-							ÔöÇ¿·½Ê½£º
-								1.ÔöÇ¿²ÎÊýÁÐ±í
-								2.ÔöÇ¿·µ»ØÖµ
-								3.ÔöÇ¿Ö´ÐÐ¹ý³Ì
+								3.ä½¿ç”¨ä»£ç†å¯¹è±¡è°ƒç”¨æ–¹æ³•
+								4.å¢žå¼ºæ–¹æ³•
+							å¢žå¼ºæ–¹å¼ï¼š
+								1.å¢žå¼ºå‚æ•°åˆ—è¡¨
+								2.å¢žå¼ºè¿”å›žå€¼
+								3.å¢žå¼ºæ‰§è¡Œè¿‡ç¨‹
 						
 		
-Listener£º¼àÌýÆ÷
-	¸ÅÄî£ºwebµÄÈý´ó×é¼þÖ®Ò»
-		ÊÂ¼þ¼àÌý»úÖÆ
-			ÊÂ¼þ£ºÒ»¼þÊÂÇé
-			ÊÂ¼þÔ´£ºÊ±¼ä·¢ÉúµÄµØ·½
-			¼àÌýÆ÷£ºÒ»¸ö¶ÔÏó
-			×¢²á¼àÌý£º½«ÊÂ¼þ¡¢ÊÂ¼þÔ´¡¢¼àÌýÆ÷°ó¶¨ÔÚÒ»Æð¡£µ±ÊÂ¼þÔ´ÉÏ·¢ÉúÄ³¸öÊÂ¼þºó£¬Ö´ÐÐ¼àÌýÆ÷´úÂë
-	ServletContextListener£º¼àÌýServletContext¶ÔÏóµÄ´´½¨ºÍÏú»Ù
-		void contextDestroyed(ServletContextEvent sce)£ºServletContext¶ÔÏó±»Ïú»ÙÖ®Ç°»áµ÷ÓÃ¸Ã·½·¨
-		void contextInitialized(ServletContextEvent sce)£ºServletContext¶ÔÏó´´½¨ºó»áµ÷ÓÃ¸Ã·½·¨
+Listenerï¼šç›‘å¬å™¨
+	æ¦‚å¿µï¼šwebçš„ä¸‰å¤§ç»„ä»¶ä¹‹ä¸€
+		äº‹ä»¶ç›‘å¬æœºåˆ¶
+			äº‹ä»¶ï¼šä¸€ä»¶äº‹æƒ…
+			äº‹ä»¶æºï¼šæ—¶é—´å‘ç”Ÿçš„åœ°æ–¹
+			ç›‘å¬å™¨ï¼šä¸€ä¸ªå¯¹è±¡
+			æ³¨å†Œç›‘å¬ï¼šå°†äº‹ä»¶ã€äº‹ä»¶æºã€ç›‘å¬å™¨ç»‘å®šåœ¨ä¸€èµ·ã€‚å½“äº‹ä»¶æºä¸Šå‘ç”ŸæŸä¸ªäº‹ä»¶åŽï¼Œæ‰§è¡Œç›‘å¬å™¨ä»£ç 
+	ServletContextListenerï¼šç›‘å¬ServletContextå¯¹è±¡çš„åˆ›å»ºå’Œé”€æ¯
+		void contextDestroyed(ServletContextEvent sce)ï¼šServletContextå¯¹è±¡è¢«é”€æ¯ä¹‹å‰ä¼šè°ƒç”¨è¯¥æ–¹æ³•
+		void contextInitialized(ServletContextEvent sce)ï¼šServletContextå¯¹è±¡åˆ›å»ºåŽä¼šè°ƒç”¨è¯¥æ–¹æ³•
 	<listener>
 		<listener-class>cn.itcast.web.listener.ContextLoaderListerner</listener-class>
 	</listener>

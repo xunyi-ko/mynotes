@@ -1,36 +1,36 @@
 Mybatis
 
-	mybatisÈëÃÅ
-		mybatis¸ÅÊö
-			mybatisÊÇÒ»¸ö³Ö¾Ã²ã¿ò¼Ü(²Ù×÷Êı¾İ¿â)
-			·â×°ÁËjdbc²Ù×÷µÄÏ¸½Ú£¬Ê¹µÃ¿ª·¢ÕßÖ»ĞèÒª¹Ø×¢sqlÓï¾ä±¾Éí¡£
-			Ê¹ÓÃÁËORMË¼ÏëÊµÏÖ½á¹û¼¯µÄ·â×°
-			ORM£º
-				Object Relational Mapping ¶ÔÏó¹ØÏµÓ³Éä
-					¾ÍÊÇ°ÑÊı¾İ¿â±íºÍÊµÌåÀà¼°ÊµÌåÀàµÄÊôĞÔ¶ÔÓ¦ÆğÀ´
-					ÈÃÎÒÃÇ¿ÉÒÔ²Ù×÷ÊµÌåÀà¾ÍÊµÏÖ²Ù×÷Êı¾İ¿â±í¡£
-			ÎÒÃÇĞèÒª×öµ½
-				ÊµÌåÀàÖĞµÄÊôĞÔºÍÊı¾İ¿â±íµÄ×Ö¶ÎÃû±£³ÖÒ»ÖÂ
-		mybatisµÄ»·¾³´î½¨
-			xml·½Ê½
-				1.´´½¨maven¹¤³Ì²¢µ¼Èë×ø±ê
-				2.´´½¨ÊµÌåÀàºÍdaoµÄ½Ó¿Ú
-				3.´´½¨mybatisµÄÖ÷ÅäÖÃÎÄ¼ş
+	mybatiså…¥é—¨
+		mybatisæ¦‚è¿°
+			mybatisæ˜¯ä¸€ä¸ªæŒä¹…å±‚æ¡†æ¶(æ“ä½œæ•°æ®åº“)
+			å°è£…äº†jdbcæ“ä½œçš„ç»†èŠ‚ï¼Œä½¿å¾—å¼€å‘è€…åªéœ€è¦å…³æ³¨sqlè¯­å¥æœ¬èº«ã€‚
+			ä½¿ç”¨äº†ORMæ€æƒ³å®ç°ç»“æœé›†çš„å°è£…
+			ORMï¼š
+				Object Relational Mapping å¯¹è±¡å…³ç³»æ˜ å°„
+					å°±æ˜¯æŠŠæ•°æ®åº“è¡¨å’Œå®ä½“ç±»åŠå®ä½“ç±»çš„å±æ€§å¯¹åº”èµ·æ¥
+					è®©æˆ‘ä»¬å¯ä»¥æ“ä½œå®ä½“ç±»å°±å®ç°æ“ä½œæ•°æ®åº“è¡¨ã€‚
+			æˆ‘ä»¬éœ€è¦åšåˆ°
+				å®ä½“ç±»ä¸­çš„å±æ€§å’Œæ•°æ®åº“è¡¨çš„å­—æ®µåä¿æŒä¸€è‡´
+		mybatisçš„ç¯å¢ƒæ­å»º
+			xmlæ–¹å¼
+				1.åˆ›å»ºmavenå·¥ç¨‹å¹¶å¯¼å…¥åæ ‡
+				2.åˆ›å»ºå®ä½“ç±»å’Œdaoçš„æ¥å£
+				3.åˆ›å»ºmybatisçš„ä¸»é…ç½®æ–‡ä»¶
 					mybatissql.xml
 						<?xml version="1.0" encoding="UTF-8"?>
 						<!DOCTYPE configuration
 								PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
 								"http://mybatis.org/dtd/mybatis-3-config.dtd">
 						<configuration>
-							<!-- ÅäÖÃ»·¾³-->
+							<!-- é…ç½®ç¯å¢ƒ-->
 							<environments default="mysql">
-								<!-- ÅäÖÃMySQLµÄ»·¾³-->
+								<!-- é…ç½®MySQLçš„ç¯å¢ƒ-->
 								<environment id="mysql">
-									<!-- ÅäÖÃÊÂÎñµÄÀàĞÍ-->
+									<!-- é…ç½®äº‹åŠ¡çš„ç±»å‹-->
 									<transactionManager type="JDBC"></transactionManager>
-									<!-- ÅäÖÃÊı¾İÔ´-->
+									<!-- é…ç½®æ•°æ®æº-->
 									<dataSource type="POOLED">
-										<!-- ÅäÖÃÁ¬½ÓÊı¾İ¿âµÄËÄ¸ö»ù±¾ĞÅÏ¢-->
+										<!-- é…ç½®è¿æ¥æ•°æ®åº“çš„å››ä¸ªåŸºæœ¬ä¿¡æ¯-->
 										<property name="driver" value="com.mysql.jdbc.Driver"/>
 										<property name="url" value="jdbc:mysql://localhost:3306/mybatisdb"/>
 										<property name="username" value="root"/>
@@ -39,12 +39,12 @@ Mybatis
 
 								</environment>
 							</environments>
-							<!-- Ö¸¶¨Ó³ÉäÅäÖÃÎÄ¼şµÄÎ»ÖÃ£¬Ó³ÉäÅäÖÃÎÄ¼şÊÇÖ¸Ã¿¸ödao¶ÀÁ¢µÄÅäÖÃÎÄ¼ş-->
+							<!-- æŒ‡å®šæ˜ å°„é…ç½®æ–‡ä»¶çš„ä½ç½®ï¼Œæ˜ å°„é…ç½®æ–‡ä»¶æ˜¯æŒ‡æ¯ä¸ªdaoç‹¬ç«‹çš„é…ç½®æ–‡ä»¶-->
 							<mappers>
 								<mapper resource="cn/xunyi/dao/UserDao.xml"></mapper>
 							</mappers>
 						</configuration>
-				4.´´½¨Ó³ÉäÅäÖÃÎÄ¼ş
+				4.åˆ›å»ºæ˜ å°„é…ç½®æ–‡ä»¶
 					UserDao.xml
 						<?xml version="1.0" encoding="UTF-8"?>
 						<!DOCTYPE mapper
@@ -55,28 +55,28 @@ Mybatis
 								select * from user
 							</select>
 						</mapper>
-				×¢ÒâÊÂÏî
-					1.mybatisµÄÓ³ÉäÅäÖÃÎÄ¼şÎ»ÖÃ±ØĞëºÍdao½Ó¿ÚµÄ°ü½á¹¹ÏàÍ¬
-					2.Ó³ÉäÎÄ¼şµÄmapper±êÇ©namespaceÊôĞÔµÄÈ¡Öµ±ØĞëÊÇdao½Ó¿ÚµÄÈ«ÏŞ¶¨ÀàÃû
-					3.Ó³ÉäÅäÖÃÎÄ¼şµÄ²Ù×÷ÅäÖÃ£¬idÊôĞÔµÄÈ¡Öµ±ØĞëÊÇdao½Ó¿ÚµÄ·½·¨Ãû
-						resultTypeÊôĞÔ±íÊ¾´ÓÊı¾İ¿â²éÑ¯µ½µÄÖµ·â×°µ½ÄÄ¸öÀàÀï
-						paramterTypeÊôĞÔ´ú±í·½·¨»ñÈ¡µÄ²ÎÊıµÄÀàĞÍ£¬
-			×¢½â·½Ê½
-				Ö÷ÅäÖÃÎÄ¼ş
+				æ³¨æ„äº‹é¡¹
+					1.mybatisçš„æ˜ å°„é…ç½®æ–‡ä»¶ä½ç½®å¿…é¡»å’Œdaoæ¥å£çš„åŒ…ç»“æ„ç›¸åŒ
+					2.æ˜ å°„æ–‡ä»¶çš„mapperæ ‡ç­¾namespaceå±æ€§çš„å–å€¼å¿…é¡»æ˜¯daoæ¥å£çš„å…¨é™å®šç±»å
+					3.æ˜ å°„é…ç½®æ–‡ä»¶çš„æ“ä½œé…ç½®ï¼Œidå±æ€§çš„å–å€¼å¿…é¡»æ˜¯daoæ¥å£çš„æ–¹æ³•å
+						resultTypeå±æ€§è¡¨ç¤ºä»æ•°æ®åº“æŸ¥è¯¢åˆ°çš„å€¼å°è£…åˆ°å“ªä¸ªç±»é‡Œ
+						paramterTypeå±æ€§ä»£è¡¨æ–¹æ³•è·å–çš„å‚æ•°çš„ç±»å‹ï¼Œ
+			æ³¨è§£æ–¹å¼
+				ä¸»é…ç½®æ–‡ä»¶
 					<?xml version="1.0" encoding="UTF-8"?>
 						<!DOCTYPE configuration
 								PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
 								"http://mybatis.org/dtd/mybatis-3-config.dtd">
 						<configuration>
-							<!-- ÅäÖÃ»·¾³-->
+							<!-- é…ç½®ç¯å¢ƒ-->
 							<environments default="mysql">
-								<!-- ÅäÖÃMySQLµÄ»·¾³-->
+								<!-- é…ç½®MySQLçš„ç¯å¢ƒ-->
 								<environment id="mysql">
-									<!-- ÅäÖÃÊÂÎñµÄÀàĞÍ-->
+									<!-- é…ç½®äº‹åŠ¡çš„ç±»å‹-->
 									<transactionManager type="JDBC"></transactionManager>
-									<!-- ÅäÖÃÊı¾İÔ´-->
+									<!-- é…ç½®æ•°æ®æº-->
 									<dataSource type="POOLED">
-										<!-- ÅäÖÃÁ¬½ÓÊı¾İ¿âµÄËÄ¸ö»ù±¾ĞÅÏ¢-->
+										<!-- é…ç½®è¿æ¥æ•°æ®åº“çš„å››ä¸ªåŸºæœ¬ä¿¡æ¯-->
 										<property name="driver" value="com.mysql.jdbc.Driver"/>
 										<property name="url" value="jdbc:mysql://localhost:3306/mybatisdb"/>
 										<property name="username" value="root"/>
@@ -84,14 +84,14 @@ Mybatis
 									</dataSource>
 								</environment>
 							</environments>
-							<!-- Ö¸¶¨Ó³ÉäÅäÖÃÎÄ¼şµÄÎ»ÖÃ£¬Ó³ÉäÅäÖÃÎÄ¼şÊÇÖ¸Ã¿¸ödao¶ÀÁ¢µÄÅäÖÃÎÄ¼ş-->
+							<!-- æŒ‡å®šæ˜ å°„é…ç½®æ–‡ä»¶çš„ä½ç½®ï¼Œæ˜ å°„é…ç½®æ–‡ä»¶æ˜¯æŒ‡æ¯ä¸ªdaoç‹¬ç«‹çš„é…ç½®æ–‡ä»¶-->
 							<mappers>
 								<mapper class="cn.xunyi.dao.UserDao"></mapper>
 							</mappers>
 						</configuration>
-				daoÎÄ¼ş·½·¨ÉÏÌí¼Ó×¢½â
-					@Select("sqlÓï¾ä")
-		mybatisÈëÃÅ°¸Àı
+				daoæ–‡ä»¶æ–¹æ³•ä¸Šæ·»åŠ æ³¨è§£
+					@Select("sqlè¯­å¥")
+		mybatiså…¥é—¨æ¡ˆä¾‹
 			package cn.xunyi;
 			
 			import cn.xunyi.dao.UserDao;
@@ -106,151 +106,151 @@ Mybatis
 			import java.util.List;
 
 			public class MybatisTest {
-				//ÈëÃÅ°¸Àı
+				//å…¥é—¨æ¡ˆä¾‹
 				public static void main(String[] args) throws IOException {
-					//1.¶ÁÈ¡ÅäÖÃÎÄ¼ş
+					//1.è¯»å–é…ç½®æ–‡ä»¶
 					InputStream in = Resources.getResourceAsStream("mybatissql.xml");
-					//2.´´½¨SqlSessionFactory¹¤³§
+					//2.åˆ›å»ºSqlSessionFactoryå·¥å‚
 					SqlSessionFactoryBuilder builder = new SqlSessionFactoryBuilder();
 					SqlSessionFactory factory = builder.build(in);
-					//3.Ê¹ÓÃ¹¤³§Éú²úSqlSession¶ÔÏó
+					//3.ä½¿ç”¨å·¥å‚ç”Ÿäº§SqlSessionå¯¹è±¡
 					SqlSession sqlSession = factory.openSession();
-					//4.Ê¹ÓÃSqlSession¶ÔÏó´´½¨Dao´úÀí¶ÔÏó
+					//4.ä½¿ç”¨SqlSessionå¯¹è±¡åˆ›å»ºDaoä»£ç†å¯¹è±¡
 					UserDao mapper = sqlSession.getMapper(UserDao.class);
-					//5.Ê¹ÓÃ´úÀí¶ÔÏóÖ´ĞĞ·½·¨
+					//5.ä½¿ç”¨ä»£ç†å¯¹è±¡æ‰§è¡Œæ–¹æ³•
 					List<User> all = mapper.findAll();
 					for(User user:all){
 						System.out.println(user);
 					}
-					//6.ÊÍ·Å×ÊÔ´
+					//6.é‡Šæ”¾èµ„æº
 					sqlSession.close();
 					in.close();
 				}
 			}
-		×Ô¶¨ÒåMybatisµÄ·ÖÎö
-			mybatisÔÚÊ¹ÓÃ´úÀídaoµÄ·½Ê½ÊµÏÖCRUDÊ±×öÁËÊ²Ã´ÊÂ£¿
-				1.´´½¨´úÀí¶ÔÏó
-				2.´úÀí¶ÔÏóµ÷ÓÃselectList·½·¨
-		×Ô¶¨Òåmybatis¿ò¼Ü(ÁË½âmybatisÖĞÖ´ĞĞÏ¸½Ú)
-			ÊµÏÖmybatis²éÑ¯ËùÓĞµÄ¹¦ÄÜ£¬È¥³ımybatisÒÀÀµ¡£
+		è‡ªå®šä¹‰Mybatisçš„åˆ†æ
+			mybatisåœ¨ä½¿ç”¨ä»£ç†daoçš„æ–¹å¼å®ç°CRUDæ—¶åšäº†ä»€ä¹ˆäº‹ï¼Ÿ
+				1.åˆ›å»ºä»£ç†å¯¹è±¡
+				2.ä»£ç†å¯¹è±¡è°ƒç”¨selectListæ–¹æ³•
+		è‡ªå®šä¹‰mybatisæ¡†æ¶(äº†è§£mybatisä¸­æ‰§è¡Œç»†èŠ‚)
+			å®ç°mybatisæŸ¥è¯¢æ‰€æœ‰çš„åŠŸèƒ½ï¼Œå»é™¤mybatisä¾èµ–ã€‚
 			
 			
 			
-	mybatis»ù±¾Ê¹ÓÃ
-		µ¥±íCRUD²Ù×÷
-			Í¨¹ıÅäÖÃÎÄ¼şµÄ·½Ê½
-				//²éÑ¯ËùÓĞ
+	mybatisåŸºæœ¬ä½¿ç”¨
+		å•è¡¨CRUDæ“ä½œ
+			é€šè¿‡é…ç½®æ–‡ä»¶çš„æ–¹å¼
+				//æŸ¥è¯¢æ‰€æœ‰
 				<select id="findAll" resultType="cn.xunyi.domain.User">
 					select * from user;
 				</select>
-				//²åÈëÒ»ÌõÊı¾İ
+				//æ’å…¥ä¸€æ¡æ•°æ®
 				<insert id="saveUser" parameterType="cn.xunyi.domain.User">
-					insert into user(username,address,sex,birthday)values(#{username},#{address},#{sex},#{birthday})//²ÎÊıÃû±£³ÖÒ»ÖÂ
+					insert into user(username,address,sex,birthday)values(#{username},#{address},#{sex},#{birthday})//å‚æ•°åä¿æŒä¸€è‡´
 				</insert>
-				//¸üĞÂÒ»ÌõÊı¾İ
+				//æ›´æ–°ä¸€æ¡æ•°æ®
 				<update id="updateUser" parameterType="cn.xunyi.domain.User">
 					update user set username=#{username},address=#{address},sex=#{sex},birthday=#{birthday}
 				</update>
-				//É¾³ıÒ»ÌõÊı¾İ
+				//åˆ é™¤ä¸€æ¡æ•°æ®
 				<delete id="deleteUser" parameterType="int">
-					delete from user where id=#{uid}//ÕâÀïµÄuid¾ÍÊÇÒ»¸öÕ¼Î»·û£¬¿ÉÒÔÊÇÈÎÒâ×Ö·û
+					delete from user where id=#{uid}//è¿™é‡Œçš„uidå°±æ˜¯ä¸€ä¸ªå ä½ç¬¦ï¼Œå¯ä»¥æ˜¯ä»»æ„å­—ç¬¦
 				</delete>
-				//¸ù¾İ²ÎÊı½øĞĞÄ£ºı²éÑ¯
+				//æ ¹æ®å‚æ•°è¿›è¡Œæ¨¡ç³ŠæŸ¥è¯¢
 				<select id="findUserByName" parameterType="String" resultType="cn.xunyi.domain.User">
-					//select * from user where username like #{name}//ÕâÖÖ·½Ê½£¬²ÎÊıÁ½¶Ë±ØĞë´øÓĞ%
-					select * from user where username like '%${value}%' 	//ÕâÖÖ·½Ê½±ØĞëÓÃ
+					//select * from user where username like #{name}//è¿™ç§æ–¹å¼ï¼Œå‚æ•°ä¸¤ç«¯å¿…é¡»å¸¦æœ‰%
+					select * from user where username like '%${value}%' 	//è¿™ç§æ–¹å¼å¿…é¡»ç”¨
 				</select>
-				//²åÈë²Ù×÷Ç¶Èë²éÑ¯²Ù×÷
+				//æ’å…¥æ“ä½œåµŒå…¥æŸ¥è¯¢æ“ä½œ
 				<insert id="saveUser" parameterType="cn.xunyi.domain.User">
-					//keyProperty¶ÔÓ¦ÊµÌåÀàÖĞµÄÊôĞÔÃû³Æ
+					//keyPropertyå¯¹åº”å®ä½“ç±»ä¸­çš„å±æ€§åç§°
 					<selectKey keyProperty="id" keyColumn="id" resultType="int" order="AFTER">
 						select last_insert_id()
 					</selectKey>
 					insert into user(username,address,sex,birthday)values(#{username},#{address},#{sex},#{birthday})
 				</insert>
-		mybatisµÄ²ÎÊıºÍ·µ»ØÖµ
-			Èç¹ûÊµÌåÀàµÄÊôĞÔÃû³ÆºÍÊı¾İ¿âµÄÁĞÃû²»Í¬
-			»áµ¼ÖÂ²éÑ¯Êı¾İµÈÊ§°Ü
-			½â¾ö°ì·¨£º
-				1.Æğ±ğÃû
-					Èç£ºselect id as userid from user
-						½«Êı¾İ¿âµÄÁĞÃûÆğ±ğÃûÎªÀàµÄÊôĞÔÃû
-				2.Ìí¼ÓÅäÖÃ
+		mybatisçš„å‚æ•°å’Œè¿”å›å€¼
+			å¦‚æœå®ä½“ç±»çš„å±æ€§åç§°å’Œæ•°æ®åº“çš„åˆ—åä¸åŒ
+			ä¼šå¯¼è‡´æŸ¥è¯¢æ•°æ®ç­‰å¤±è´¥
+			è§£å†³åŠæ³•ï¼š
+				1.èµ·åˆ«å
+					å¦‚ï¼šselect id as userid from user
+						å°†æ•°æ®åº“çš„åˆ—åèµ·åˆ«åä¸ºç±»çš„å±æ€§å
+				2.æ·»åŠ é…ç½®
 					<resultMap id="userMap" type="cn.xunyi.domain.User">
-						//Ö÷¼ü×Ö¶Î¶ÔÓ¦
+						//ä¸»é”®å­—æ®µå¯¹åº”
 						<id property="userid" column="id"></id>
-						//·ÇÖ÷¼ü×Ö¶Î
+						//éä¸»é”®å­—æ®µ
 						<result property="userName" column="username"></result>
 						<result property="userAddress" column="address"></result>
 						<result property="userSex" column="sex"></result>
 						<result property="userBirthday" column="birthday"></result>
 					</resultMap>
-					//ÏëÊ¹ÓÃÕâ¸öÅäÖÃÄÚÈİ£¬ĞèÒªÔÚ²éÑ¯µÈÅäÖÃÄÚÈİµÄÊôĞÔÖĞ£¬Ìí¼ÓresultMap=ÒÔÉÏµÄresultMapµÄidÖµ
-		mybatisµÄdao±àĞ´
-		mybatisÅäÖÃµÄÏ¸½Ú
-			¼¸¸ö±êÇ©µÄÊ¹ÓÃ
-				properties±êÇ©
-					ÉèÖÃproperty£¬ÅäÖÃÄÚÈİÊ±¿ÉÒÔÒıÓÃ£¬
-					¿ÉÒÔÒıÈëÍâ²¿ÎÄ¼ş£¬Ê¹ÓÃresourceÊôĞÔ
-					ÒıÓÃ·½Ê½
-						<property name="driver" value="${driver}"></property>//value´óÀ¨ºÅÖĞµÄÄÚÈİÎª¼üÃû
-				typeAliases±êÇ©
-					ÓÃÓÚ¸ødomainÖĞÀàÈ¡±ğÃû.È¡±ğÃûºó²»Çø·Ö´óĞ¡Ğ´
-					Èç
+					//æƒ³ä½¿ç”¨è¿™ä¸ªé…ç½®å†…å®¹ï¼Œéœ€è¦åœ¨æŸ¥è¯¢ç­‰é…ç½®å†…å®¹çš„å±æ€§ä¸­ï¼Œæ·»åŠ resultMap=ä»¥ä¸Šçš„resultMapçš„idå€¼
+		mybatisçš„daoç¼–å†™
+		mybatisé…ç½®çš„ç»†èŠ‚
+			å‡ ä¸ªæ ‡ç­¾çš„ä½¿ç”¨
+				propertiesæ ‡ç­¾
+					è®¾ç½®propertyï¼Œé…ç½®å†…å®¹æ—¶å¯ä»¥å¼•ç”¨ï¼Œ
+					å¯ä»¥å¼•å…¥å¤–éƒ¨æ–‡ä»¶ï¼Œä½¿ç”¨resourceå±æ€§
+					å¼•ç”¨æ–¹å¼
+						<property name="driver" value="${driver}"></property>//valueå¤§æ‹¬å·ä¸­çš„å†…å®¹ä¸ºé”®å
+				typeAliasesæ ‡ç­¾
+					ç”¨äºç»™domainä¸­ç±»å–åˆ«å.å–åˆ«ååä¸åŒºåˆ†å¤§å°å†™
+					å¦‚
 						<typeAliases>
 							<typeAliase type="cn.xunyi.dmain.User" alias="user"></typeAliase>
-							»ò
-							//»á½«°üÖĞËùÓĞµÄÀàÈ¡±ğÃû¡£²»ÓÃÔÙ¼ÓÉÏ´ó¶ÎµÄ°üÃû¡£²»ÔÙÇø·Ö´óĞ¡Ğ´
+							æˆ–
+							//ä¼šå°†åŒ…ä¸­æ‰€æœ‰çš„ç±»å–åˆ«åã€‚ä¸ç”¨å†åŠ ä¸Šå¤§æ®µçš„åŒ…åã€‚ä¸å†åŒºåˆ†å¤§å°å†™
 							<package name="cn.xunyi.domain">
 						</typeAliases>
-				mappers±êÇ©
+				mappersæ ‡ç­¾
 		
-		OGNL±í´ïÊ½£ºObject Graphic Navigation Language
-			ËüÊÇÍ¨¹ı¶ÔÏóµÄÈ¡Öµ·½·¨À´»ñÈ¡Êı¾İ£¬ÔÚĞ´·¨ÉÏ°ÑgetÊ¡ÂÔÁË
-			±ÈÈç£º»ñÈ¡ÓÃ»§µÄÃû³Æ
-				ÀàÖĞµÄĞ´·¨£ºuser.getUsername();
-				OGNL±í´ïÊ½Ğ´·¨£ºuser.username
-	mybatisµÄÉîÈëºÍ¶à±í
-		mybatisµÄÁ¬½Ó³Ø
-			1.Á¬½Ó³Ø£º
-				ÔÚÊµ¼Ê¿ª·¢ÖĞ¶¼»áÊ¹ÓÃÁ¬½Ó³Ø
-				ÒòÎªËü¿ÉÒÔ¼õÉÙÎÒÃÇ»ñÈ¡Á¬½ÓËùÏûºÄµÄÊ±¼ä
-			2.mybatisÖĞµÄÁ¬½Ó³Ø
-				mybatisÁ¬½Ó³ØÌá¹©ÁË3ÖĞ·½Ê½µÄÅäÖÃ£º
-					ÅäÖÃµÄÎ»ÖÃ£ºÖ÷ÅäÖÃÎÄ¼şÖĞDataSource±êÇ©µÄtypeÊôĞÔ
-					ÅäÖÃµÄÈ¡Öµ£º
-						POOLED	²ÉÓÃ´«Í³µÄjavax.sql.DataSource¹æ·¶µÄÁ¬½Ó³Ø
-						UNPOOLED	²ÉÓÃ´«Í³µÄ»ñÈ¡Á¬½ÓµÄ·½Ê½£¬ËäÈ»Ò²ÊµÏÖÁËDataSource£¬µ«Ã»ÓĞ²ÉÓÃ³ØµÄË¼Ïë
-						JNDI	²ÉÓÃ·şÎñÆ÷Ìá¹©µÄJNDI¼¼ÊõÊµÏÖ£¬»ñÈ¡DataSource¶ÔÏó
-							²»Í¬·şÎñÆ÷»ñµÃµÄDataSourceÊÇ²»Í¬µÄ
-							×¢Òâ£ºÈç¹û²»ÊÇweb»òÕßmavenµÄwar¹¤³Ì£¬ÊÇ²»ÄÜÊ¹ÓÃµÄ
-								tomcat»ñµÃµÄÊÇDBcp
-		mybatisµÄÊÂÎñ¿ØÖÆ¼°Éè¼ÆµÄ·½·¨
+		OGNLè¡¨è¾¾å¼ï¼šObject Graphic Navigation Language
+			å®ƒæ˜¯é€šè¿‡å¯¹è±¡çš„å–å€¼æ–¹æ³•æ¥è·å–æ•°æ®ï¼Œåœ¨å†™æ³•ä¸ŠæŠŠgetçœç•¥äº†
+			æ¯”å¦‚ï¼šè·å–ç”¨æˆ·çš„åç§°
+				ç±»ä¸­çš„å†™æ³•ï¼šuser.getUsername();
+				OGNLè¡¨è¾¾å¼å†™æ³•ï¼šuser.username
+	mybatisçš„æ·±å…¥å’Œå¤šè¡¨
+		mybatisçš„è¿æ¥æ± 
+			1.è¿æ¥æ± ï¼š
+				åœ¨å®é™…å¼€å‘ä¸­éƒ½ä¼šä½¿ç”¨è¿æ¥æ± 
+				å› ä¸ºå®ƒå¯ä»¥å‡å°‘æˆ‘ä»¬è·å–è¿æ¥æ‰€æ¶ˆè€—çš„æ—¶é—´
+			2.mybatisä¸­çš„è¿æ¥æ± 
+				mybatisè¿æ¥æ± æä¾›äº†3ä¸­æ–¹å¼çš„é…ç½®ï¼š
+					é…ç½®çš„ä½ç½®ï¼šä¸»é…ç½®æ–‡ä»¶ä¸­DataSourceæ ‡ç­¾çš„typeå±æ€§
+					é…ç½®çš„å–å€¼ï¼š
+						POOLED	é‡‡ç”¨ä¼ ç»Ÿçš„javax.sql.DataSourceè§„èŒƒçš„è¿æ¥æ± 
+						UNPOOLED	é‡‡ç”¨ä¼ ç»Ÿçš„è·å–è¿æ¥çš„æ–¹å¼ï¼Œè™½ç„¶ä¹Ÿå®ç°äº†DataSourceï¼Œä½†æ²¡æœ‰é‡‡ç”¨æ± çš„æ€æƒ³
+						JNDI	é‡‡ç”¨æœåŠ¡å™¨æä¾›çš„JNDIæŠ€æœ¯å®ç°ï¼Œè·å–DataSourceå¯¹è±¡
+							ä¸åŒæœåŠ¡å™¨è·å¾—çš„DataSourceæ˜¯ä¸åŒçš„
+							æ³¨æ„ï¼šå¦‚æœä¸æ˜¯webæˆ–è€…mavençš„warå·¥ç¨‹ï¼Œæ˜¯ä¸èƒ½ä½¿ç”¨çš„
+								tomcatè·å¾—çš„æ˜¯DBcp
+		mybatisçš„äº‹åŠ¡æ§åˆ¶åŠè®¾è®¡çš„æ–¹æ³•
 			SqlSession sqlSession=factory.openSession(true)
-			ÔòÉèÖÃÁËÊÂÎñ×Ô¶¯Ìá½»
-		mybatis»ùÓÚXMLÅäÖÃµÄ¶¯Ì¬SQLÓï¾äÊ¹ÓÃ
-			if±êÇ©
+			åˆ™è®¾ç½®äº†äº‹åŠ¡è‡ªåŠ¨æäº¤
+		mybatisåŸºäºXMLé…ç½®çš„åŠ¨æ€SQLè¯­å¥ä½¿ç”¨
+			ifæ ‡ç­¾
 				<select id="findUserByCondition" resultType="User">
 					select * from user where 1=1
 					<if test="username!=null">
 						and username=#{username}
 					</if>
 				</select>
-			where±êÇ©
-				°ü¹üif±êÇ©£¬¿ÉÒÔÈ¥µôwhere 1=1 Õâ²¿·Ö¡£
-			foreach±êÇ©
+			whereæ ‡ç­¾
+				åŒ…è£¹ifæ ‡ç­¾ï¼Œå¯ä»¥å»æ‰where 1=1 è¿™éƒ¨åˆ†ã€‚
+			foreachæ ‡ç­¾
 				<foreach collection="ids" open="and id in(" close")" item="item" separator=",">
 					#{item}
 				</foreach>
-			sql±êÇ©	³éÈ¡ÖØ¸´µÄsqlÓï¾ä
+			sqlæ ‡ç­¾	æŠ½å–é‡å¤çš„sqlè¯­å¥
 				<sql id="defaultUser">
 					select * from user
 				</sql>
-				ÔÚÆäËûµ÷ÓÃÕâ¶ÎsqlÓï¾äµÄµØ·½Ê¹ÓÃ
+				åœ¨å…¶ä»–è°ƒç”¨è¿™æ®µsqlè¯­å¥çš„åœ°æ–¹ä½¿ç”¨
 				<include refid="defaultUser"></include>
-		mybatisµÄ¶à±í²éÑ¯
+		mybatisçš„å¤šè¡¨æŸ¥è¯¢
 			
-			//association×÷ÎªÒ»¶ÔÒ»²éÑ¯Ê±Ê¹ÓÃ
+			//associationä½œä¸ºä¸€å¯¹ä¸€æŸ¥è¯¢æ—¶ä½¿ç”¨
 			<resultMap>
 				<result property="money" column="money"></result>
 				<association property="user" column="uid" javaType="user">
@@ -259,9 +259,9 @@ Mybatis
 					<result property="" column=""></result>
 				</association>
 			</resultMap>
-			<!--½«User¶ÔÏó×÷Îª²éÑ¯ÄÚÈİµÄ-->
+			<!--å°†Userå¯¹è±¡ä½œä¸ºæŸ¥è¯¢å†…å®¹çš„-->
 			
-			//collection×÷ÎªÒ»¶Ô¶àÊ±Ê¹ÓÃ
+			//collectionä½œä¸ºä¸€å¯¹å¤šæ—¶ä½¿ç”¨
 			<resultMap id="userAccountMap" type="User">
 				<id property="id" column="id"></id>
 				<result property="username" column="username"></result>
@@ -277,19 +277,19 @@ Mybatis
 			<select id="findAll" resultMap="userAccountMap">
 				select * from user u left join account a on u.id = a.uid
 			</select>
-	mybatisµÄ»º´æºÍ×¢½â¿ª·¢
-		mybatisÖĞµÄ¼ÓÔØÊ±»ú(²éÑ¯µÄÊ±»ú)
-			ÑÓ³Ù¼ÓÔØ
-				ÔÚÕæÕıÊ¹ÓÃÊı¾İÊ±²Å·¢Æğ²éÑ¯£¬²»Ê¹ÓÃÊ±²»²éÑ¯
-			Á¢¼´²éÑ¯
-				Ö»Òªµ÷ÓÃ·½·¨ÂíÉÏ·¢Æğ²éÑ¯
-			ÒªÊµÏÖÑÓ³Ù¼ÓÔØ£¬ĞèÒªÔÚconfigurationÅäÖÃlazyLoadingEnabledÎªfalse
+	mybatisçš„ç¼“å­˜å’Œæ³¨è§£å¼€å‘
+		mybatisä¸­çš„åŠ è½½æ—¶æœº(æŸ¥è¯¢çš„æ—¶æœº)
+			å»¶è¿ŸåŠ è½½
+				åœ¨çœŸæ­£ä½¿ç”¨æ•°æ®æ—¶æ‰å‘èµ·æŸ¥è¯¢ï¼Œä¸ä½¿ç”¨æ—¶ä¸æŸ¥è¯¢
+			ç«‹å³æŸ¥è¯¢
+				åªè¦è°ƒç”¨æ–¹æ³•é©¬ä¸Šå‘èµ·æŸ¥è¯¢
+			è¦å®ç°å»¶è¿ŸåŠ è½½ï¼Œéœ€è¦åœ¨configurationé…ç½®lazyLoadingEnabledä¸ºfalse
 				<settings>
 					<setting name="lazyLoadingEnabled" value="true"/>
 					<setting name="aggressiveLazyLoading" value="false"/>
 				</settings>
 			
-			ÑÓ³Ù¼ÓÔØ
+			å»¶è¿ŸåŠ è½½
 				AccountDao.xml
 				<resultMap id="accountUserMap" type="account">
 					<id property="id" column="id"></id>
@@ -304,35 +304,35 @@ Mybatis
 				<select id="findById" parameterType="int" resultType="User">
 					select * from user where id=#{uid}
 				</select>
-		mybatisÖĞµÄ»º´æ
-			Ê²Ã´ÊÇ»º´æ
-				´æÔÚÓÚÄÚ´æÖĞµÄÁÙÊ±Êı¾İ
-			ÎªÊ²Ã´Ê¹ÓÃ»º´æ
-				¼õÉÙºÍÊı¾İ¿âµÄ½»»¥´ÖÊè£¬Ìá¸ßÖ´ĞĞĞ§ÂÊ
-			Ê²Ã´ÑùµÄÊı¾İÄÜÊ¹ÓÃ»º´æ
-				ÊÊÓÃÓÚ»º´æ£º
-					¾­³£²éÑ¯£¬²»¾­³£¸Ä±äµÄ£¬²¢ÇÒÊéµÄÕıÈ·Óë·ñ¶Ô×îÖÕ½á¹ûÓ°Ïì²»´óµÄ
-			MybatisÖĞµÄÒ»¼¶»º´æºÍ¶ş¼¶»º´æ
-				Ò»¼¶»º´æ£º
-					ËüÖ¸µÄÊÇMybatisÖĞSqlSession¶ÔÏóµÄ»º´æ
-					µ±ÎÒÃÇÖ´ĞĞ²éÑ¯Ö®ºó£¬²éÑ¯µÄ½á¹û»áÍ¬Ê±´æÈëµ½SQLSessionÎªÎÒÃÇÌá¹©µÄÒ»¿éÇøÓòÖĞ
-					¸ÃÇøÓòµÄ½á¹¹ÊÇÒ»¸öMap£¬µ±ÎÒÃÇÔÙ´Î²éÑ¯Í¬ÑùµÄÊı¾İ£¬mybatis»áÏÈÈ¥SqlSessionÖĞ²éÑ¯ÊÇ·ñ´æÔÚ
-					µ±SqlSession¶ÔÏóÏûÊ§Ê±£¬MybatisµÄÒ»¼¶»º´æÒ²¾ÍÏûÊ§ÁË
-				¶ş¼¶»º´æ
-					ËüÖ¸µÄÊÇMybatisÖĞSqlSessionFactory¶ÔÏóµÄ»º´æ
-					ÓÉÍ¬Ò»¸öSQLSessionFactory¶ÔÏó´´½¨µÄSqlSession¹²ÏíÆä»º´æ
-					Ê¹ÓÃ²½Öè
-						1.ÈÃMybatis¿ò¼ÜÖ§³Ö¶ş¼¶»º´æ(ÔÚÖ÷ÅäÖÃÎÄ¼şÖĞÅäÖÃ)
+		mybatisä¸­çš„ç¼“å­˜
+			ä»€ä¹ˆæ˜¯ç¼“å­˜
+				å­˜åœ¨äºå†…å­˜ä¸­çš„ä¸´æ—¶æ•°æ®
+			ä¸ºä»€ä¹ˆä½¿ç”¨ç¼“å­˜
+				å‡å°‘å’Œæ•°æ®åº“çš„äº¤äº’ç²—ç–ï¼Œæé«˜æ‰§è¡Œæ•ˆç‡
+			ä»€ä¹ˆæ ·çš„æ•°æ®èƒ½ä½¿ç”¨ç¼“å­˜
+				é€‚ç”¨äºç¼“å­˜ï¼š
+					ç»å¸¸æŸ¥è¯¢ï¼Œä¸ç»å¸¸æ”¹å˜çš„ï¼Œå¹¶ä¸”ä¹¦çš„æ­£ç¡®ä¸å¦å¯¹æœ€ç»ˆç»“æœå½±å“ä¸å¤§çš„
+			Mybatisä¸­çš„ä¸€çº§ç¼“å­˜å’ŒäºŒçº§ç¼“å­˜
+				ä¸€çº§ç¼“å­˜ï¼š
+					å®ƒæŒ‡çš„æ˜¯Mybatisä¸­SqlSessionå¯¹è±¡çš„ç¼“å­˜
+					å½“æˆ‘ä»¬æ‰§è¡ŒæŸ¥è¯¢ä¹‹åï¼ŒæŸ¥è¯¢çš„ç»“æœä¼šåŒæ—¶å­˜å…¥åˆ°SQLSessionä¸ºæˆ‘ä»¬æä¾›çš„ä¸€å—åŒºåŸŸä¸­
+					è¯¥åŒºåŸŸçš„ç»“æ„æ˜¯ä¸€ä¸ªMapï¼Œå½“æˆ‘ä»¬å†æ¬¡æŸ¥è¯¢åŒæ ·çš„æ•°æ®ï¼Œmybatisä¼šå…ˆå»SqlSessionä¸­æŸ¥è¯¢æ˜¯å¦å­˜åœ¨
+					å½“SqlSessionå¯¹è±¡æ¶ˆå¤±æ—¶ï¼ŒMybatisçš„ä¸€çº§ç¼“å­˜ä¹Ÿå°±æ¶ˆå¤±äº†
+				äºŒçº§ç¼“å­˜
+					å®ƒæŒ‡çš„æ˜¯Mybatisä¸­SqlSessionFactoryå¯¹è±¡çš„ç¼“å­˜
+					ç”±åŒä¸€ä¸ªSQLSessionFactoryå¯¹è±¡åˆ›å»ºçš„SqlSessionå…±äº«å…¶ç¼“å­˜
+					ä½¿ç”¨æ­¥éª¤
+						1.è®©Mybatisæ¡†æ¶æ”¯æŒäºŒçº§ç¼“å­˜(åœ¨ä¸»é…ç½®æ–‡ä»¶ä¸­é…ç½®)
 							<setting name="cacheEnabled" value"true"/>
-						2.ÈÃµ±Ç°µÄÓ³ÉäÎÄ¼şÖ§³Ö¶ş¼¶»º´æ(ÔÚµ±Ç°Ó³ÉäÎÄ¼şµÄÅäÖÃÎÄ¼şÖĞÅäÖÃ)
+						2.è®©å½“å‰çš„æ˜ å°„æ–‡ä»¶æ”¯æŒäºŒçº§ç¼“å­˜(åœ¨å½“å‰æ˜ å°„æ–‡ä»¶çš„é…ç½®æ–‡ä»¶ä¸­é…ç½®)
 							<mapper>
 								<cache/>
 							</mapper>
-						3.ÈÃµ±Ç°µÄ²Ù×÷Ö§³Ö¶ş¼¶»º´æ(ÔÚselect±êÇ©ÖĞÅäÖÃ)
+						3.è®©å½“å‰çš„æ“ä½œæ”¯æŒäºŒçº§ç¼“å­˜(åœ¨selectæ ‡ç­¾ä¸­é…ç½®)
 							<select useCache="true">
-					¶ş¼¶»º´æ´æ´¢µÄÊÇÊı¾İ¶ø²»ÊÇ¶ÔÏó
-		mybatisµÄ×¢½â¿ª·¢
-			»·¾³´î½¨
-			µ¥±íCRUD
-			¶à±í²éÑ¯²Ù×÷
-			»º´æµÄÅäÖÃ
+					äºŒçº§ç¼“å­˜å­˜å‚¨çš„æ˜¯æ•°æ®è€Œä¸æ˜¯å¯¹è±¡
+		mybatisçš„æ³¨è§£å¼€å‘
+			ç¯å¢ƒæ­å»º
+			å•è¡¨CRUD
+			å¤šè¡¨æŸ¥è¯¢æ“ä½œ
+			ç¼“å­˜çš„é…ç½®

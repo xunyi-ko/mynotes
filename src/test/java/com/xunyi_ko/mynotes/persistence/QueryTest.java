@@ -5,17 +5,13 @@ import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
-import org.junit.jupiter.api.Test;
+import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.context.SpringBootTest.WebEnvironment;
 import org.springframework.test.context.junit4.SpringRunner;
 
 import com.xunyi_ko.mynotes.data.SysUserData;
-import com.xunyi_ko.mynotes.persistence.QueryFilterImpl;
-import com.xunyi_ko.mynotes.persistence.RelationalOperator;
-import com.xunyi_ko.mynotes.persistence.SimpleQuery;
-import com.xunyi_ko.mynotes.persistence.SimpleQueryImpl;
 
 @SpringBootTest(webEnvironment = WebEnvironment.RANDOM_PORT)
 @RunWith(SpringRunner.class)

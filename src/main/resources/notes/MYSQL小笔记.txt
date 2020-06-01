@@ -1,113 +1,113 @@
-MYSQLµÄSQLÓï¾ä
-	SQL£ºStructure Query Language ½á¹¹»¯²éÑ¯ÓïÑÔ
-		¶¨ÒåÁË²Ù×÷ËùÓÐ¹ØÏµÐÍÊý¾Ý¿âµÄ¹æÔò¡£Ã¿ÖÖÊý¾Ý¿É²Ù×÷µÄ·½Ê½´æÔÚ²»Ò»ÑùµÄµØ·½
-	DDL£ºÊý¾Ý¶¨ÒåÓïÑÔ£º¶¨ÒåÊý¾Ý¿â£¬Êý¾Ý±íËüÃÇµÄ½á¹¹£º
-		create(´´½¨)
-		drop(É¾³ý)
-		alter(ÐÞ¸Ä)
-	DML£ºÊý¾Ý²Ù×ÝÓïÑÔ£ºÖ÷ÒªÓÃÓÚ²Ù×÷Êý¾Ý
-		insert(²åÈë)
-		update(ÐÞ¸Ä)
-		delete(É¾³ý)
-	DCL£ºÊý¾Ý¿ØÖÆÓïÑÔ£º¶¨Òå·ÃÎÊÈ¨ÏÞ£¬È¡Ïû·ÃÎÊÈ¨ÏÞ£¬°²È«ÉèÖÃ
+MYSQLçš„SQLè¯­å¥
+	SQLï¼šStructure Query Language ç»“æž„åŒ–æŸ¥è¯¢è¯­è¨€
+		å®šä¹‰äº†æ“ä½œæ‰€æœ‰å…³ç³»åž‹æ•°æ®åº“çš„è§„åˆ™ã€‚æ¯ç§æ•°æ®å¯æ“ä½œçš„æ–¹å¼å­˜åœ¨ä¸ä¸€æ ·çš„åœ°æ–¹
+	DDLï¼šæ•°æ®å®šä¹‰è¯­è¨€ï¼šå®šä¹‰æ•°æ®åº“ï¼Œæ•°æ®è¡¨å®ƒä»¬çš„ç»“æž„ï¼š
+		create(åˆ›å»º)
+		drop(åˆ é™¤)
+		alter(ä¿®æ”¹)
+	DMLï¼šæ•°æ®æ“çºµè¯­è¨€ï¼šä¸»è¦ç”¨äºŽæ“ä½œæ•°æ®
+		insert(æ’å…¥)
+		update(ä¿®æ”¹)
+		delete(åˆ é™¤)
+	DCLï¼šæ•°æ®æŽ§åˆ¶è¯­è¨€ï¼šå®šä¹‰è®¿é—®æƒé™ï¼Œå–æ¶ˆè®¿é—®æƒé™ï¼Œå®‰å…¨è®¾ç½®
 		grant
-	DQL£ºÊý¾Ý²éÑ¯ÓïÑÔ£º
-		select(²éÑ¯)
-		from ×Ó¾ä where ×Ó¾ä
+	DQLï¼šæ•°æ®æŸ¥è¯¢è¯­è¨€ï¼š
+		select(æŸ¥è¯¢)
+		from å­å¥ where å­å¥
 
-µÇÂ½
-	1.mysql -uroot -pÃÜÂë
-	2.mysql -hip -uroot -pÃÜÂë
-	3.mysql --host=ip --u=root --password=ÃÜÂë
-ÍË³ö
+ç™»é™†
+	1.mysql -uroot -på¯†ç 
+	2.mysql -hip -uroot -på¯†ç 
+	3.mysql --host=ip --u=root --password=å¯†ç 
+é€€å‡º
 	1.exit
 	2.quit
 
-×¢ÒâÊÂÏî
-	databasesÖÐ£¬information_schema/performance_schema/mysql²»ÄÜ¶¯
+æ³¨æ„äº‹é¡¹
+	databasesä¸­ï¼Œinformation_schema/performance_schema/mysqlä¸èƒ½åŠ¨
 
-Êý¾Ý¿âÓï¾ä
-	´´½¨Êý¾Ý¿â
-		create database dbname;´´½¨Ò»¸öÊý¾Ý¿â
+æ•°æ®åº“è¯­å¥
+	åˆ›å»ºæ•°æ®åº“
+		create database dbname;åˆ›å»ºä¸€ä¸ªæ•°æ®åº“
 		create datebase character set utf8 collate utf8_bin;
-			´´½¨Ò»¸ö²ÉÓÃutf8×Ö·û¼¯¡¢utf8_binÐ£¶Ô¹æÔòµÄÊý¾Ý¿â
-	²é¿´Óï¾ä
-		show databases;	²é¿´ËùÓÐÊý¾Ý¿â
-		show create dbname;	¿ÉÒÔ²é¿´Êý¾Ý¿âµÄ´´½¨Óï¾ä
-	ÐÞ¸Ä
+			åˆ›å»ºä¸€ä¸ªé‡‡ç”¨utf8å­—ç¬¦é›†ã€utf8_binæ ¡å¯¹è§„åˆ™çš„æ•°æ®åº“
+	æŸ¥çœ‹è¯­å¥
+		show databases;	æŸ¥çœ‹æ‰€æœ‰æ•°æ®åº“
+		show create dbname;	å¯ä»¥æŸ¥çœ‹æ•°æ®åº“çš„åˆ›å»ºè¯­å¥
+	ä¿®æ”¹
 		alter datebase dbname character set utf8;
-			½«Êý¾Ý¿â²ÉÓÃµÄ×Ö·û¼¯ÐÞ¸ÄÎªutf8
-	É¾³ýÊý¾Ý¿â
+			å°†æ•°æ®åº“é‡‡ç”¨çš„å­—ç¬¦é›†ä¿®æ”¹ä¸ºutf8
+	åˆ é™¤æ•°æ®åº“
 		drop database dbname;
-	ÇÐ»»Êý¾Ý¿â
-		use dbname;		×ªµ½dbnameÊý¾Ý¿â
-	²é¿´µ±Ç°Êý¾Ý¿â
+	åˆ‡æ¢æ•°æ®åº“
+		use dbname;		è½¬åˆ°dbnameæ•°æ®åº“
+	æŸ¥çœ‹å½“å‰æ•°æ®åº“
 		select database();
 
-±íÓï¾ä
-	´´½¨±í
+è¡¨è¯­å¥
+	åˆ›å»ºè¡¨
 		create table tname(
-			ÁÐÃû  ÁÐÀàÐÍ  Ô¼Êø£¬
-			ÁÐÃû  ÁÐÀàÐÍ  Ô¼Êø
+			åˆ—å  åˆ—ç±»åž‹  çº¦æŸï¼Œ
+			åˆ—å  åˆ—ç±»åž‹  çº¦æŸ
 			);
 
-	ÁÐµÄÀàÐÍ
+	åˆ—çš„ç±»åž‹
 	java		sql
 	int			int
-	char/string	char/varchar	varcharºóÐ¡À¨ºÅÄÚ´ú±í×î´ó³¤¶È
-	double		double	Ð¡ÊýÀàÐÍ£¬¼ÓÐ¡À¨ºÅ£¬Á½¸öÊý×ÖÓÃ¶ººÅ¸ô¿ª£¬´ú±íÊý¾ÝÎ»ÊýºÍÐ¡ÊýÎ»Êý(5,2)
+	char/string	char/varchar	varcharåŽå°æ‹¬å·å†…ä»£è¡¨æœ€å¤§é•¿åº¦
+	double		double	å°æ•°ç±»åž‹ï¼ŒåŠ å°æ‹¬å·ï¼Œä¸¤ä¸ªæ•°å­—ç”¨é€—å·éš”å¼€ï¼Œä»£è¡¨æ•°æ®ä½æ•°å’Œå°æ•°ä½æ•°(5,2)
 	float		float
 	boolean		boolean
 	date		date
 				time
-				datetime	Ä¬ÈÏÎªnull
-				timestamp	Ä¬ÈÏÎªµ±Ç°Ê±¼ä
-				text		Ö÷ÒªÓÃÓÚ´æ·ÅÎÄ±¾
-				blob		´æ·Å¶þ½øÖÆ
-	ÁÐµÄÔ¼Êø
-		Ö÷¼üÔ¼Êø£ºprimary key
-		Î¨Ò»Ô¼Êø£ºunique
-		·Ç¿ÕÔ¼Êø£ºnot null
-		Íâ¼üÔ¼Êø£ºforeign key
+				datetime	é»˜è®¤ä¸ºnull
+				timestamp	é»˜è®¤ä¸ºå½“å‰æ—¶é—´
+				text		ä¸»è¦ç”¨äºŽå­˜æ”¾æ–‡æœ¬
+				blob		å­˜æ”¾äºŒè¿›åˆ¶
+	åˆ—çš„çº¦æŸ
+		ä¸»é”®çº¦æŸï¼šprimary key
+		å”¯ä¸€çº¦æŸï¼šunique
+		éžç©ºçº¦æŸï¼šnot null
+		å¤–é”®çº¦æŸï¼šforeign key
 		
-		·Ç¿ÕÔ¼Êø
-			1.´´½¨±íÊ±Ìí¼ÓÔ¼Êø
-			2.ÐÞ¸ÄÁÐÊ±£¬Ìí¼ÓÔ¼Êø
+		éžç©ºçº¦æŸ
+			1.åˆ›å»ºè¡¨æ—¶æ·»åŠ çº¦æŸ
+			2.ä¿®æ”¹åˆ—æ—¶ï¼Œæ·»åŠ çº¦æŸ
 				ALTER TABLE student modify name VARCHAR(32) not null;
-			3.ÐÞ¸Ä±íÊ±£¬É¾³ýÔ¼Êø
+			3.ä¿®æ”¹è¡¨æ—¶ï¼Œåˆ é™¤çº¦æŸ
 				ALTER TABLE student modify name VARCHAR(32);
-		Î¨Ò»Ô¼Êø
-			1.´´½¨±íÊ±Ìí¼ÓÔ¼Êø
-			2.ALTER TABLE student DROP INDEX phone_number //É¾³ýÎ¨Ò»Ô¼Êø
+		å”¯ä¸€çº¦æŸ
+			1.åˆ›å»ºè¡¨æ—¶æ·»åŠ çº¦æŸ
+			2.ALTER TABLE student DROP INDEX phone_number //åˆ é™¤å”¯ä¸€çº¦æŸ
 			3.ALTER TABLE student MODIFY phone_number VARCHAR(32) unique;
-		Ö÷¼üÔ¼Êø
-			1.´´½¨±íÊ±Ìí¼ÓÔ¼Êø
-			2.É¾³ýÖ÷¼ü
+		ä¸»é”®çº¦æŸ
+			1.åˆ›å»ºè¡¨æ—¶æ·»åŠ çº¦æŸ
+			2.åˆ é™¤ä¸»é”®
 				ALTER TABLE student DROP PRIMARY KEY;
-			3.´´½¨Íê±íºó£¬Ìí¼ÓÖ÷¼ü
+			3.åˆ›å»ºå®Œè¡¨åŽï¼Œæ·»åŠ ä¸»é”®
 				ALTER TABLE student MODIFY id INT PRIMARY KEY;
-			×Ô¶¯Ôö³¤
-				1.´´½¨±íÊ±Ìí¼Ó×Ô¶¯Ôö³¤
+			è‡ªåŠ¨å¢žé•¿
+				1.åˆ›å»ºè¡¨æ—¶æ·»åŠ è‡ªåŠ¨å¢žé•¿
 					CREATE TABLE student(
 						id INT PRIMARY KEY AUTO_INCREMENT,
 						NAME VARCHAR(32)
 					);
-				2.É¾³ý×Ô¶¯Ôö³¤
+				2.åˆ é™¤è‡ªåŠ¨å¢žé•¿
 					ALTER TABLE student MODIFY id INT PRIMARY KEY;
-				3.É¾³ý×Ô¶¯Ôö³¤
+				3.åˆ é™¤è‡ªåŠ¨å¢žé•¿
 					ALTER TABLE student MODIFY id INT PRIMARY KEY AUTO_INCREMENT;
-		Íâ¼üÔ¼Êø
-			´´½¨±íÊ±Ìí¼Ó
-				¸ñÊ½
-					constraint Íâ¼üÃû³Æ foreign key (ÁÐÃû) reference Ö÷±íÃû(ÁÐÃû)
-			É¾³ýÍâ¼ü
-				ALTER TABLE ±íÃû drop foreign Íâ¼üÃû
-			Ìí¼ÓÍâ¼ü
-				ALTER TABLE ±íÃû ADD constraint Íâ¼üÃû³Æ foreign key (ÁÐÃû) reference Ö÷±íÃû(ÁÐÃû)
-			ÉèÖÃ¼¶Áª
-				¼¶Áª¸üÐÂ	constraint Íâ¼üÃû³Æ foreign key (ÁÐÃû) reference Ö÷±íÃû(ÁÐÃû) on update cascade
-				¼¶ÁªÉ¾³ý	constraint Íâ¼üÃû³Æ foreign key (ÁÐÃû) reference Ö÷±íÃû(ÁÐÃû) on delete cascade
-	´´½¨±íµÄÀý×Ó
+		å¤–é”®çº¦æŸ
+			åˆ›å»ºè¡¨æ—¶æ·»åŠ 
+				æ ¼å¼
+					constraint å¤–é”®åç§° foreign key (åˆ—å) reference ä¸»è¡¨å(åˆ—å)
+			åˆ é™¤å¤–é”®
+				ALTER TABLE è¡¨å drop foreign å¤–é”®å
+			æ·»åŠ å¤–é”®
+				ALTER TABLE è¡¨å ADD constraint å¤–é”®åç§° foreign key (åˆ—å) reference ä¸»è¡¨å(åˆ—å)
+			è®¾ç½®çº§è”
+				çº§è”æ›´æ–°	constraint å¤–é”®åç§° foreign key (åˆ—å) reference ä¸»è¡¨å(åˆ—å) on update cascade
+				çº§è”åˆ é™¤	constraint å¤–é”®åç§° foreign key (åˆ—å) reference ä¸»è¡¨å(åˆ—å) on delete cascade
+	åˆ›å»ºè¡¨çš„ä¾‹å­
 		create table student(
 			sid int primary key,
 			sname varchar(31),
@@ -115,103 +115,103 @@ MYSQLµÄSQLÓï¾ä
 			age int
 			);
 	
-	²é¿´±í
-		show tables;	²é¿´µ±Ç°Êý¾Ý¿âÏÂµÄËùÓÐ±í
-		show create table tname;	²é¿´±íµÄ´´½¨¹ý³Ì
-		desc student;	²é¿´±íµÄ½á¹¹
-	ÐÞ¸Ä±í
-		Ìí¼ÓÁÐ
-			alter table tname add ÁÐÃû ÁÐµÄÀàÐÍ Ô¼Êø
+	æŸ¥çœ‹è¡¨
+		show tables;	æŸ¥çœ‹å½“å‰æ•°æ®åº“ä¸‹çš„æ‰€æœ‰è¡¨
+		show create table tname;	æŸ¥çœ‹è¡¨çš„åˆ›å»ºè¿‡ç¨‹
+		desc student;	æŸ¥çœ‹è¡¨çš„ç»“æž„
+	ä¿®æ”¹è¡¨
+		æ·»åŠ åˆ—
+			alter table tname add åˆ—å åˆ—çš„ç±»åž‹ çº¦æŸ
 			alter table student add chengji int not null;
-		ÐÞ¸ÄÁÐ
+		ä¿®æ”¹åˆ—
 			alter table student modify sex varchar(2);
-				½«sexÁÐµÄÁÐµÄÀàÐÍ¸ÄÎªvarchar(2)(³¤¶ÈÎª2µÄ×Ö·û´®)
-		ÐÞ¸ÄÁÐÃû
+				å°†sexåˆ—çš„åˆ—çš„ç±»åž‹æ”¹ä¸ºvarchar(2)(é•¿åº¦ä¸º2çš„å­—ç¬¦ä¸²)
+		ä¿®æ”¹åˆ—å
 			alter table student change sex gender varchar(2);
-				½«ÁÐÃûÓÉsex¸ÄÎªgender
-		É¾³ýÁÐ
+				å°†åˆ—åç”±sexæ”¹ä¸ºgender
+		åˆ é™¤åˆ—
 			alter table student drop chengji;
-		ÐÞ¸Ä±íÃû
+		ä¿®æ”¹è¡¨å
 			rename table student to teacher;
 			alter table student rename to teacher;
-		ÐÞ¸Ä±íµÄ×Ö·û¼¯
+		ä¿®æ”¹è¡¨çš„å­—ç¬¦é›†
 			alter table teacher character set gbk;
-				½«±íµÄ×Ö·û¼¯¸ÄÎªgbk
-		É¾³ý±í
+				å°†è¡¨çš„å­—ç¬¦é›†æ”¹ä¸ºgbk
+		åˆ é™¤è¡¨
 			drop table teacher;
-	±íÖÐÊý¾ÝµÄ²Ù×÷
-		²åÈëÊý¾Ý
-			insert into tname(ÁÐÃû1£¬ÁÐÃû2£¬ÁÐÃû3...)values(Öµ1£¬Öµ2£¬Öµ3...) 
-				Èç¹û²åÈëÈ«ÁÐÊý¾Ý£¬ÁÐÃû¿ÉÒÔÊ¡ÂÔ
-			insert into tname values(Öµ1£¬Öµ2£¬Öµ3...)£¬(...);
-				¿ÉÒÔÔÚÒ»ÌõÓï¾äÖÐ²åÈë¶àÌõÊý¾Ý
-		É¾³ýÊý¾Ý
+	è¡¨ä¸­æ•°æ®çš„æ“ä½œ
+		æ’å…¥æ•°æ®
+			insert into tname(åˆ—å1ï¼Œåˆ—å2ï¼Œåˆ—å3...)values(å€¼1ï¼Œå€¼2ï¼Œå€¼3...) 
+				å¦‚æžœæ’å…¥å…¨åˆ—æ•°æ®ï¼Œåˆ—åå¯ä»¥çœç•¥
+			insert into tname values(å€¼1ï¼Œå€¼2ï¼Œå€¼3...)ï¼Œ(...);
+				å¯ä»¥åœ¨ä¸€æ¡è¯­å¥ä¸­æ’å…¥å¤šæ¡æ•°æ®
+		åˆ é™¤æ•°æ®
 			DML delete from tname where ...
-			DDL truncate table tname;É¾³ý±íºóÔÙ´´½¨¿Õ±í
-		ÐÞ¸ÄÊý¾Ý
-			update tname set ÁÐÃû1=Öµ1£¬ÁÐÃû2=Öµ2 where ...
-		²éÑ¯Êý¾Ý
-			select [distinct]×Ö¶ÎÁÐ±í from tname where ...
-				whereºó¸úÌõ¼þ
-			distinct :È¥³ýÍêÈ«ÖØ¸´µÄÓï¾ä(ÏÔÊ¾µÄÊý¾ÝÖÐ)
-			*ºÅ´ú±íËùÓÐ×Ö¶ÎÁÐ±í
-			¾ÙÀý
-				SELECT NAME,math,english,math+IFNULL(english,0) AS ×Ü·Ö FROM student;
-					´Óstudent±íÖÐ²éÑ¯NAME,math,englishÈýÁÐµÄÄÚÈÝ£¬
-					²¢Ìí¼ÓÒ»ÁÐÊýÑ§³É¼¨ÓëÓ¢Óï³É¼¨Ö®ºÍ¡£Èç¹ûÓ¢Óï³É¼¨Îªnull£¬ÔòÓÃ0´úÌæ¡£
-					²¢½«math+IFNULL(english,0)ÁÐÁÐÃû¸ÄÎª×Ü·Ö¡£AS¿ÉÒÔÊ¡ÂÔ
-			ÔËËã·ûºÅ
+			DDL truncate table tname;åˆ é™¤è¡¨åŽå†åˆ›å»ºç©ºè¡¨
+		ä¿®æ”¹æ•°æ®
+			update tname set åˆ—å1=å€¼1ï¼Œåˆ—å2=å€¼2 where ...
+		æŸ¥è¯¢æ•°æ®
+			select [distinct]å­—æ®µåˆ—è¡¨ from tname where ...
+				whereåŽè·Ÿæ¡ä»¶
+			distinct :åŽ»é™¤å®Œå…¨é‡å¤çš„è¯­å¥(æ˜¾ç¤ºçš„æ•°æ®ä¸­)
+			*å·ä»£è¡¨æ‰€æœ‰å­—æ®µåˆ—è¡¨
+			ä¸¾ä¾‹
+				SELECT NAME,math,english,math+IFNULL(english,0) AS æ€»åˆ† FROM student;
+					ä»Žstudentè¡¨ä¸­æŸ¥è¯¢NAME,math,englishä¸‰åˆ—çš„å†…å®¹ï¼Œ
+					å¹¶æ·»åŠ ä¸€åˆ—æ•°å­¦æˆç»©ä¸Žè‹±è¯­æˆç»©ä¹‹å’Œã€‚å¦‚æžœè‹±è¯­æˆç»©ä¸ºnullï¼Œåˆ™ç”¨0ä»£æ›¿ã€‚
+					å¹¶å°†math+IFNULL(english,0)åˆ—åˆ—åæ”¹ä¸ºæ€»åˆ†ã€‚ASå¯ä»¥çœç•¥
+			è¿ç®—ç¬¦å·
 				>,<,>=,<=,!=,=
 				&&,||,!,and,or,not
 				is null,is not null
-				like	select * from student where name like ""//_´ú±íÒ»¸ö×Ö·û£¬%´ú±íÒ»¸ö»ò¶à¸ö×Ö·û
-			ÅÅÐò²éÑ¯
-				order by ×Ó¾ä	¼ÓÔÚwhereÇ°
-					×Ó¾ä	ÅÅÐò×Ö¶Î ÅÅÐò·½Ê½,ÅÅÐò×Ö¶Î ÅÅÐò·½Ê½
-				ASCÎªÉýÐò£¬DESCÎª½µÐò
-					Ä¬ÈÏÎªÉýÐò
-			¾ÛºÏº¯Êý£º½«Ò»ÁÐÊý¾Ý×÷ÎªÒ»¸öÕûÌå£¬½øÐÐ×ÝÏòµÄ¼ÆËã£¬ÅÅ³ýnull
-				1.count£º¼ÆËã¸öÊý
-				2.max£º¼ÆËã×î´óÖµ
-				3.min£º¼ÆËã×îÐ¡Öµ
-				4.sum£º¼ÆËãºÍ
-				5.avg£º¼ÆËãÆ½¾ùÖµ
-				¾ÙÀý
+				like	select * from student where name like ""//_ä»£è¡¨ä¸€ä¸ªå­—ç¬¦ï¼Œ%ä»£è¡¨ä¸€ä¸ªæˆ–å¤šä¸ªå­—ç¬¦
+			æŽ’åºæŸ¥è¯¢
+				order by å­å¥	åŠ åœ¨whereå‰
+					å­å¥	æŽ’åºå­—æ®µ æŽ’åºæ–¹å¼,æŽ’åºå­—æ®µ æŽ’åºæ–¹å¼
+				ASCä¸ºå‡åºï¼ŒDESCä¸ºé™åº
+					é»˜è®¤ä¸ºå‡åº
+			èšåˆå‡½æ•°ï¼šå°†ä¸€åˆ—æ•°æ®ä½œä¸ºä¸€ä¸ªæ•´ä½“ï¼Œè¿›è¡Œçºµå‘çš„è®¡ç®—ï¼ŒæŽ’é™¤null
+				1.countï¼šè®¡ç®—ä¸ªæ•°
+				2.maxï¼šè®¡ç®—æœ€å¤§å€¼
+				3.minï¼šè®¡ç®—æœ€å°å€¼
+				4.sumï¼šè®¡ç®—å’Œ
+				5.avgï¼šè®¡ç®—å¹³å‡å€¼
+				ä¸¾ä¾‹
 					select max(math) from student;
-			·Ö×é²éÑ¯
-				¾ÙÀý
+			åˆ†ç»„æŸ¥è¯¢
+				ä¸¾ä¾‹
 					select sex,max(math),avg(math) from student group by sex;
-						select from¼äÖ»ÄÜÓÐ·Ö×é×Ö¶Î»òÕß¾ÛºÏº¯Êý¡£
-						·Ö×éÇ°¿ÉÒÔ¶ÔÊý¾Ý½øÐÐÉ¸Ñ¡
-			·ÖÒ³²éÑ¯
+						select fromé—´åªèƒ½æœ‰åˆ†ç»„å­—æ®µæˆ–è€…èšåˆå‡½æ•°ã€‚
+						åˆ†ç»„å‰å¯ä»¥å¯¹æ•°æ®è¿›è¡Œç­›é€‰
+			åˆ†é¡µæŸ¥è¯¢
 				select * from student limit 0,3;
-				Ç°Ò»¸öÊýÊÇÖ¸Ë÷Òý£¬ºóÒ»¸öÊýÖ¸Ã¿Ò»Ò³ÏÔÊ¾µÄÌõÊý
+				å‰ä¸€ä¸ªæ•°æ˜¯æŒ‡ç´¢å¼•ï¼ŒåŽä¸€ä¸ªæ•°æŒ‡æ¯ä¸€é¡µæ˜¾ç¤ºçš„æ¡æ•°
 
-·¶Ê½
-	µÚÒ»·¶Ê½£ºÃ¿Ò»ÁÐ¶¼ÊÇ²»¿É²ð·ÖµÄÔ­×ÓÐÔµÄÊôÐÔ
-	µÚ¶þ·¶Ê½£ºÔÚ1NFµÄ»ù´¡ÉÏ£¬·ÇÂëÊôÐÔ±ØÐëÍêÈ«ÒÀÀµÓÚºòÑ¡Âë£¨ÔÚ1NF»ù´¡ÉÏÏû³ý·ÇÖ÷ÊôÐÔ¶ÔÖ÷ÂëµÄ²¿·Öº¯ÊýÒÀÀµ£©
-	µÚÈý·¶Ê½£ºÔÚ2NF»ù´¡ÉÏ£¬ÈÎºÎ·ÇÖ÷ÊôÐÔ²»ÒÀÀµÓÚÆäËü·ÇÖ÷ÊôÐÔ£¨ÔÚ2NF»ù´¡ÉÏÏû³ý´«µÝÒÀÀµ£©
+èŒƒå¼
+	ç¬¬ä¸€èŒƒå¼ï¼šæ¯ä¸€åˆ—éƒ½æ˜¯ä¸å¯æ‹†åˆ†çš„åŽŸå­æ€§çš„å±žæ€§
+	ç¬¬äºŒèŒƒå¼ï¼šåœ¨1NFçš„åŸºç¡€ä¸Šï¼Œéžç å±žæ€§å¿…é¡»å®Œå…¨ä¾èµ–äºŽå€™é€‰ç ï¼ˆåœ¨1NFåŸºç¡€ä¸Šæ¶ˆé™¤éžä¸»å±žæ€§å¯¹ä¸»ç çš„éƒ¨åˆ†å‡½æ•°ä¾èµ–ï¼‰
+	ç¬¬ä¸‰èŒƒå¼ï¼šåœ¨2NFåŸºç¡€ä¸Šï¼Œä»»ä½•éžä¸»å±žæ€§ä¸ä¾èµ–äºŽå…¶å®ƒéžä¸»å±žæ€§ï¼ˆåœ¨2NFåŸºç¡€ä¸Šæ¶ˆé™¤ä¼ é€’ä¾èµ–ï¼‰
 
-Êý¾Ý¿â±¸·ÝºÍ»¹Ô­
-	ÃüÁîÐÐ·½Ê½£º
-		±¸·Ý£ºmysqldump -uÓÃ»§Ãû -pÃÜÂë > Â·¾¶
-		»¹Ô­£º1.µÇÂ½Êý¾Ý¿â	2.´´½¨Êý¾Ý¿â	3.Ê¹ÓÃÊý¾Ý¿â	4.Ö´ÐÐÎÄ¼þ source ÎÄ¼þÂ·¾¶
+æ•°æ®åº“å¤‡ä»½å’Œè¿˜åŽŸ
+	å‘½ä»¤è¡Œæ–¹å¼ï¼š
+		å¤‡ä»½ï¼šmysqldump -uç”¨æˆ·å -på¯†ç  > è·¯å¾„
+		è¿˜åŽŸï¼š1.ç™»é™†æ•°æ®åº“	2.åˆ›å»ºæ•°æ®åº“	3.ä½¿ç”¨æ•°æ®åº“	4.æ‰§è¡Œæ–‡ä»¶ source æ–‡ä»¶è·¯å¾„
 		
-¶à±í²éÑ¯
-	ÄÚÁ¬½Ó
-		ÒþÊ½£ºÓÃwhereÉ¸Ñ¡
-		ÏÔÊ½£ºselect ×Ö¶ÎÁÐ±í from ±í1 [inner] join ±í2 on Ìõ¼þ;
-	ÍâÁ¬½Ó
-		ÍâÁ¬½Ó
-			×óÍâÁ¬½Ó£º
-				select ×Ö¶ÎÁÐ±í from ±í1 left join ±í2 on Ìõ¼þ
-			ÓÒÍâÁ¬½Ó£º
-				ÀàËÆ£¬left¸Ä³Éright
-	×Ó²éÑ¯£º²éÑ¯ÖÐÇ¶Ì×²éÑ¯
-		¾ÙÀý£ºselect * from emp where emp."salary" = (select max(salary) from emp);
-		×Ó²éÑ¯ÊÇµ¥ÐÐµ¥ÁÐÊ±£¬¿ÉÒÔ×÷ÎªÊý¾Ý½øÒ»²½²éÑ¯
-		¶àÐÐµ¥ÁÐ£¬¿ÉÒÔÓÃin¹Ø¼ü×Ö£¬½øÒ»²½²éÑ¯
-		¶àÐÐ¶àÁÐ£¬¿ÉÒÔ×÷ÎªÐéÄâ±í£¬½øÐÐ²éÑ¯
+å¤šè¡¨æŸ¥è¯¢
+	å†…è¿žæŽ¥
+		éšå¼ï¼šç”¨whereç­›é€‰
+		æ˜¾å¼ï¼šselect å­—æ®µåˆ—è¡¨ from è¡¨1 [inner] join è¡¨2 on æ¡ä»¶;
+	å¤–è¿žæŽ¥
+		å¤–è¿žæŽ¥
+			å·¦å¤–è¿žæŽ¥ï¼š
+				select å­—æ®µåˆ—è¡¨ from è¡¨1 left join è¡¨2 on æ¡ä»¶
+			å³å¤–è¿žæŽ¥ï¼š
+				ç±»ä¼¼ï¼Œleftæ”¹æˆright
+	å­æŸ¥è¯¢ï¼šæŸ¥è¯¢ä¸­åµŒå¥—æŸ¥è¯¢
+		ä¸¾ä¾‹ï¼šselect * from emp where emp."salary" = (select max(salary) from emp);
+		å­æŸ¥è¯¢æ˜¯å•è¡Œå•åˆ—æ—¶ï¼Œå¯ä»¥ä½œä¸ºæ•°æ®è¿›ä¸€æ­¥æŸ¥è¯¢
+		å¤šè¡Œå•åˆ—ï¼Œå¯ä»¥ç”¨inå…³é”®å­—ï¼Œè¿›ä¸€æ­¥æŸ¥è¯¢
+		å¤šè¡Œå¤šåˆ—ï¼Œå¯ä»¥ä½œä¸ºè™šæ‹Ÿè¡¨ï¼Œè¿›è¡ŒæŸ¥è¯¢
 		select
 			t1.name,
 			t1.mgr,
@@ -220,68 +220,68 @@ MYSQLµÄSQLÓï¾ä
 		from emp1 t1
 		left join emp t2
 		on t1.mgr = t2.id;
-			emp±í×Ô¹ØÁª£¬ÓÃÈ¡±ðÃûµÄ·½Ê½
-			×óÍâÁ¬½Ó£¬²éÑ¯°üÀ¨nullÊý¾Ý
+			empè¡¨è‡ªå…³è”ï¼Œç”¨å–åˆ«åçš„æ–¹å¼
+			å·¦å¤–è¿žæŽ¥ï¼ŒæŸ¥è¯¢åŒ…æ‹¬nullæ•°æ®
 
-ÊÂÎñ
-	1.ÊÂÎñµÄ»ù±¾½éÉÜ
-		1.¸ÅÄî£»Èç¹ûÒ»¸ö°üº¬¶à¸ö²½ÖèµÄÒµÎñ²Ù×÷£¬±»ÊÂÎñ¹ÜÀí£¬ÄÇÃ´ÕâÐ©²Ù×÷ÒªÃ´Í¬Ê±³É¹¦£¬ÒªÃ´Í¬Ê±Ê§°Ü
-		2.²Ù×÷£º1.¿ªÆôÊÂÎñstart transaction£»2.»Ø¹örollback£»3.Ìá½»commit
-		MySQL DMLÓï¾äÄ¬ÈÏ×Ô¶¯Ìá½»
-		¿ÉÒÔÉèÖÃ@@autocommit£¬1Îª×Ô¶¯Ìá½»£¬0ÎªÊÖ¶¯Ìá½»
-	2.ÊÂÎñµÄËÄ´óÌØÕ÷
-		1.Ô­×ÓÐÔ(²»¿É·Ö¸îµÄ×îÐ¡²Ù×÷µ¥Î»)
-		2.³Ö¾ÃÐÔ£ºÊÂÎñÌá½»»òÕß»Ø¹öºó£¬Êý¾Ý¿â»á³Ö¾Ã»¯µÄ±£´æÊý¾Ý
-		3.¸ôÀëÐÔ£º¶à¸öÊÂÎñÖ®¼ä£¬Ïà»¥¶ÀÁ¢
-		4.Ò»ÖÂÐÔ£ºÊÂÎñ²Ù×÷Ç°ºóÊý¾Ý×ÜÁ¿²»±ä
-	3.ÊÂÎñµÄ¸ôÀë¼¶±ð(ÁË½â)
-		¸ÅÄî£º¶à¸öÊÂÎñÖ®¼ä¸ôÀë£¬Ïà»¥¶ÀÁ¢¡£µ«ÊÇÈç¹û¶à¸öÊÂÎñ²Ù×÷Í¬Ò»ÅúÊý¾Ý£¬Ôò»áÒý·¢ÎÊÌâ£¬ÐèÒªÉèÖÃ²»Í¬µÄ¸ôÀë¼¶±ð
-		´æÔÚÎÊÌâ
-			1.Ôà¶Á£ºÒ»¸öÊÂÎñ¶Áµ½ÁËÁíÒ»¸öÊÂÎñÖÐÃ»ÓÐÌá½»µÄÊý¾Ý
-			2.²»¿ÉÖØ¸´¶Á£ºÔÚÍ¬Ò»¸öÊÂÎñÖÐ£¬Á½´Î¶ÁÈ¡µÄÊý¾Ý²»Ò»Ñù
-			3.»Ã¶Á£ºÒ»¸öÊÂÎñ²Ù×÷Êý¾Ý±íÖÐËùÓÐ¼ÇÂ¼£¬ÁíÒ»¸öÊÂÎñÌí¼ÓÁËÒ»ÌõÊý¾Ý£¬ÔòµÚÒ»¸öÊÂÎñ²éÑ¯²»µ½×Ô¼ºµÄÐÞ¸Ä
-		¸ôÀë¼¶±ð
-			1.read uncommitted£º¶ÁÎ´Ìá½»
-				¿ÉÄÜ²úÉúÎÊÌâ£ºÔà¶Á¡¢²»¿ÉÖØ¸´¶Á¡¢»Ã¶Á
-			2.read committed£º¶ÁÒÑÌá½»
-				¿ÉÄÜ²úÉúÎÊÌâ£º²»¿ÉÖØ¸´¶Á¡¢»Ã¶Á
-			3.repeatable read£º¿ÉÖØ¸´¶Á
-				¿ÉÄÜ²úÉúÎÊÌâ£º»Ã¶Á
-			4.serializable£º´®ÐÐ»¯
-				¿ÉÒÔ½â¾öËùÓÐÎÊÌâ
-			°²È«ÐÔÔ½¸ß£¬Ð§ÂÊÔ½µÍ
-			Êý¾Ý¿â²éÑ¯¸ôÀë¼¶±ð£ºselect @@tx_isolation;
-			Êý¾Ý¿âÉèÖÃ¸ôÀë¼¶±ð£ºset global transaction isolation level ¼¶±ð×Ö·û´®;
+äº‹åŠ¡
+	1.äº‹åŠ¡çš„åŸºæœ¬ä»‹ç»
+		1.æ¦‚å¿µï¼›å¦‚æžœä¸€ä¸ªåŒ…å«å¤šä¸ªæ­¥éª¤çš„ä¸šåŠ¡æ“ä½œï¼Œè¢«äº‹åŠ¡ç®¡ç†ï¼Œé‚£ä¹ˆè¿™äº›æ“ä½œè¦ä¹ˆåŒæ—¶æˆåŠŸï¼Œè¦ä¹ˆåŒæ—¶å¤±è´¥
+		2.æ“ä½œï¼š1.å¼€å¯äº‹åŠ¡start transactionï¼›2.å›žæ»šrollbackï¼›3.æäº¤commit
+		MySQL DMLè¯­å¥é»˜è®¤è‡ªåŠ¨æäº¤
+		å¯ä»¥è®¾ç½®@@autocommitï¼Œ1ä¸ºè‡ªåŠ¨æäº¤ï¼Œ0ä¸ºæ‰‹åŠ¨æäº¤
+	2.äº‹åŠ¡çš„å››å¤§ç‰¹å¾
+		1.åŽŸå­æ€§(ä¸å¯åˆ†å‰²çš„æœ€å°æ“ä½œå•ä½)
+		2.æŒä¹…æ€§ï¼šäº‹åŠ¡æäº¤æˆ–è€…å›žæ»šåŽï¼Œæ•°æ®åº“ä¼šæŒä¹…åŒ–çš„ä¿å­˜æ•°æ®
+		3.éš”ç¦»æ€§ï¼šå¤šä¸ªäº‹åŠ¡ä¹‹é—´ï¼Œç›¸äº’ç‹¬ç«‹
+		4.ä¸€è‡´æ€§ï¼šäº‹åŠ¡æ“ä½œå‰åŽæ•°æ®æ€»é‡ä¸å˜
+	3.äº‹åŠ¡çš„éš”ç¦»çº§åˆ«(äº†è§£)
+		æ¦‚å¿µï¼šå¤šä¸ªäº‹åŠ¡ä¹‹é—´éš”ç¦»ï¼Œç›¸äº’ç‹¬ç«‹ã€‚ä½†æ˜¯å¦‚æžœå¤šä¸ªäº‹åŠ¡æ“ä½œåŒä¸€æ‰¹æ•°æ®ï¼Œåˆ™ä¼šå¼•å‘é—®é¢˜ï¼Œéœ€è¦è®¾ç½®ä¸åŒçš„éš”ç¦»çº§åˆ«
+		å­˜åœ¨é—®é¢˜
+			1.è„è¯»ï¼šä¸€ä¸ªäº‹åŠ¡è¯»åˆ°äº†å¦ä¸€ä¸ªäº‹åŠ¡ä¸­æ²¡æœ‰æäº¤çš„æ•°æ®
+			2.ä¸å¯é‡å¤è¯»ï¼šåœ¨åŒä¸€ä¸ªäº‹åŠ¡ä¸­ï¼Œä¸¤æ¬¡è¯»å–çš„æ•°æ®ä¸ä¸€æ ·
+			3.å¹»è¯»ï¼šä¸€ä¸ªäº‹åŠ¡æ“ä½œæ•°æ®è¡¨ä¸­æ‰€æœ‰è®°å½•ï¼Œå¦ä¸€ä¸ªäº‹åŠ¡æ·»åŠ äº†ä¸€æ¡æ•°æ®ï¼Œåˆ™ç¬¬ä¸€ä¸ªäº‹åŠ¡æŸ¥è¯¢ä¸åˆ°è‡ªå·±çš„ä¿®æ”¹
+		éš”ç¦»çº§åˆ«
+			1.read uncommittedï¼šè¯»æœªæäº¤
+				å¯èƒ½äº§ç”Ÿé—®é¢˜ï¼šè„è¯»ã€ä¸å¯é‡å¤è¯»ã€å¹»è¯»
+			2.read committedï¼šè¯»å·²æäº¤
+				å¯èƒ½äº§ç”Ÿé—®é¢˜ï¼šä¸å¯é‡å¤è¯»ã€å¹»è¯»
+			3.repeatable readï¼šå¯é‡å¤è¯»
+				å¯èƒ½äº§ç”Ÿé—®é¢˜ï¼šå¹»è¯»
+			4.serializableï¼šä¸²è¡ŒåŒ–
+				å¯ä»¥è§£å†³æ‰€æœ‰é—®é¢˜
+			å®‰å…¨æ€§è¶Šé«˜ï¼Œæ•ˆçŽ‡è¶Šä½Ž
+			æ•°æ®åº“æŸ¥è¯¢éš”ç¦»çº§åˆ«ï¼šselect @@tx_isolation;
+			æ•°æ®åº“è®¾ç½®éš”ç¦»çº§åˆ«ï¼šset global transaction isolation level çº§åˆ«å­—ç¬¦ä¸²;
 			
-DCL:¹ÜÀíÓÃ»§£¬ÊÚÈ¨
-	1.¹ÜÀíÓÃ»§
-		1.Ìí¼ÓÓÃ»§
-			* create user 'ÓÃ»§Ãû'@'Ö÷»úÃû' IDENTIFIED BY 'ÃÜÂë';
-		2.É¾³ýÓÃ»§
-			* drop user 'ÓÃ»§Ãû'@'Ö÷»úÃû';
-		3.ÐÞ¸ÄÓÃ»§ÃÜÂë
-			* update user set password = password('ÐÂÃÜÂë')where user = 'ÓÃ»§Ãû';
-			* set password for 'ÓÃ»§Ãû'@'Ö÷»úÃû' = password('ÐÂÃÜÂë');
-		4.²éÑ¯ÓÃ»§
+DCL:ç®¡ç†ç”¨æˆ·ï¼ŒæŽˆæƒ
+	1.ç®¡ç†ç”¨æˆ·
+		1.æ·»åŠ ç”¨æˆ·
+			* create user 'ç”¨æˆ·å'@'ä¸»æœºå' IDENTIFIED BY 'å¯†ç ';
+		2.åˆ é™¤ç”¨æˆ·
+			* drop user 'ç”¨æˆ·å'@'ä¸»æœºå';
+		3.ä¿®æ”¹ç”¨æˆ·å¯†ç 
+			* update user set password = password('æ–°å¯†ç ')where user = 'ç”¨æˆ·å';
+			* set password for 'ç”¨æˆ·å'@'ä¸»æœºå' = password('æ–°å¯†ç ');
+		4.æŸ¥è¯¢ç”¨æˆ·
 			* use mysql;
 			* select * from user;
-		Íü¼ÇrootÓÃ»§ÃÜÂë
-			1.ÓÃ¹ÜÀíÔ±ÔËÐÐcmd
+		å¿˜è®°rootç”¨æˆ·å¯†ç 
+			1.ç”¨ç®¡ç†å‘˜è¿è¡Œcmd
 			2.net stop mysql
 			3.mysqld --skip-grant-tables
-				¾Í¿ÉÒÔÎÞÃÜÂëµÇÂ½ÁË¡£
-			4.ÐÞ¸ÄÃÜÂë
-			5.ÈÎÎñ¹ÜÀíÆ÷£¬¹Ø±Õmysqld
-			6.ÓÃ¹ÜÀíÔ±ÔËÐÐcmd net start mysql
-	2.ÊÚÈ¨
-		²éÑ¯È¨ÏÞ
-			show grant for 'ÓÃ»§Ãû'@'Ö÷»úÃû';
-		ÊÚÓèÈ¨ÏÞ
-			grant È¨ÏÞÁÐ±í on Êý¾Ý¿âÃû.±íÃ÷ TO 'ÓÃ»§Ãû'@'Ö÷»úÃû';
-			ALL¿ÉÒÔ´ú±íËùÓÐÈ¨ÏÞ£¬*.*¿ÉÒÔ´ú±íËùÓÐÊý¾Ý¿âÊý¾Ý±í
-		³·ÏúÈ¨ÏÞ
-			revoke È¨ÏÞÁÐ±í on Êý¾Ý¿âÃû.±íÃû FROM 'ÓÃ»§Ãû'@'Ö÷»úÃû';
-			ALL¿ÉÒÔ´ú±íËùÓÐÈ¨ÏÞ£¬*.*¿ÉÒÔ´ú±íËùÓÐÊý¾Ý¿âÊý¾Ý±í
+				å°±å¯ä»¥æ— å¯†ç ç™»é™†äº†ã€‚
+			4.ä¿®æ”¹å¯†ç 
+			5.ä»»åŠ¡ç®¡ç†å™¨ï¼Œå…³é—­mysqld
+			6.ç”¨ç®¡ç†å‘˜è¿è¡Œcmd net start mysql
+	2.æŽˆæƒ
+		æŸ¥è¯¢æƒé™
+			show grant for 'ç”¨æˆ·å'@'ä¸»æœºå';
+		æŽˆäºˆæƒé™
+			grant æƒé™åˆ—è¡¨ on æ•°æ®åº“å.è¡¨æ˜Ž TO 'ç”¨æˆ·å'@'ä¸»æœºå';
+			ALLå¯ä»¥ä»£è¡¨æ‰€æœ‰æƒé™ï¼Œ*.*å¯ä»¥ä»£è¡¨æ‰€æœ‰æ•°æ®åº“æ•°æ®è¡¨
+		æ’¤é”€æƒé™
+			revoke æƒé™åˆ—è¡¨ on æ•°æ®åº“å.è¡¨å FROM 'ç”¨æˆ·å'@'ä¸»æœºå';
+			ALLå¯ä»¥ä»£è¡¨æ‰€æœ‰æƒé™ï¼Œ*.*å¯ä»¥ä»£è¡¨æ‰€æœ‰æ•°æ®åº“æ•°æ®è¡¨
 	
 
 
